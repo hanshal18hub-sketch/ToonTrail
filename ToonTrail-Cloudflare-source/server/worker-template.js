@@ -105,6 +105,13 @@ export default {async fetch(request,env){
       const b=await request.json(); const id=Number(b.mediaId),score=Number(b.score); if(!id||score<1||score>5)return json({error:"Rating must be 1–5"},400);
       await env.DB.prepare("INSERT INTO user_ratings(user_email,media_id,score,updated_at) VALUES(?,?,?,CURRENT_TIMESTAMP) ON CONFLICT(user_email,media_id) DO UPDATE SET score=excluded.score,updated_at=CURRENT_TIMESTAMP").bind(email,id,score).run(); return json({ok:true});
     }
+    if(path==="/api/account"&&request.method==="DELETE"){
+      await env.DB.batch([
+        env.DB.prepare("DELETE FROM user_library WHERE user_email=?").bind(email),
+        env.DB.prepare("DELETE FROM user_ratings WHERE user_email=?").bind(email)
+      ]);
+      return new Response(JSON.stringify({ok:true}),{status:200,headers:{...JSON_HEADERS,"set-cookie":cookie("toontrail_session","",0)}});
+    }
     return json({error:"Not found"},404);
   }
   if(request.method!=="GET"&&request.method!=="HEAD")return new Response("Method not allowed",{status:405});
