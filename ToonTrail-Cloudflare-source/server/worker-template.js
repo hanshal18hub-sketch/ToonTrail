@@ -51,6 +51,17 @@ async function catalog(url){
     const media=data.data.Page.media.map(m=>({...m,kind:m.countryOfOrigin==="KR"?"Manhwa":m.countryOfOrigin==="CN"?"Manhua":"Manga",externalLinks:(m.externalLinks||[]).filter(x=>x.url)}));
     return json({media,pageInfo:data.data.Page.pageInfo,catalogueMode:"anilist-live"});
   }catch(error){
+    try{
+      const genreIds={Action:1,Adventure:2,Comedy:4,Drama:8,Fantasy:10,Horror:14,Mystery:7,Romance:22,"Sci-Fi":24,"Slice of Life":36,Sports:30,Supernatural:37};
+      const params=new URLSearchParams({page:String(page),limit:"18",order_by:"popularity",sort:"asc",sfw:"true"});
+      if(search)params.set("q",search); if(kind!=="ALL")params.set("type",kind.toLowerCase()); if(genre!=="ALL"&&genreIds[genre])params.set("genres",String(genreIds[genre]));
+      if(status==="RELEASING")params.set("status","publishing"); if(status==="FINISHED")params.set("status","complete");
+      const response=await fetch(`https://api.jikan.moe/v4/manga?${params}`,{headers:{accept:"application/json","user-agent":"ToonTrail/0.1 (catalogue discovery)"}});
+      if(!response.ok)throw Error(`Jikan returned ${response.status}`); const data=await response.json();
+      let media=(data.data||[]).map(m=>({id:m.mal_id,title:{english:m.title_english||m.title,romaji:m.title||m.title_english,native:m.title_japanese||""},kind:/manhwa/i.test(m.type)?"Manhwa":/manhua/i.test(m.type)?"Manhua":"Manga",format:m.type||"Manga",status:/finished/i.test(m.status)?"FINISHED":/hiatus/i.test(m.status)?"HIATUS":"RELEASING",description:m.synopsis||"",genres:(m.genres||[]).map(g=>g.name),chapters:m.chapters||null,coverImage:{large:m.images?.webp?.large_image_url||m.images?.jpg?.large_image_url||m.images?.jpg?.image_url||"",color:null},averageScore:m.score?Math.round(m.score*10):0,popularity:m.members||0,siteUrl:m.url||"",externalLinks:[]}));
+      if(status==="HIATUS")media=media.filter(m=>m.status==="HIATUS");
+      const p=data.pagination||{}; return json({media,pageInfo:{currentPage:p.current_page||page,hasNextPage:Boolean(p.has_next_page),lastPage:p.last_visible_page,total:p.items?.total},catalogueMode:"jikan-live"});
+    }catch(secondaryError){}
     const term=search?.toLowerCase(); let filtered=CATALOG.filter(x=>(kind==="ALL"||x.kind.toUpperCase()===kind)&&(genre==="ALL"||x.genres.includes(genre))&&(status==="ALL"||(status==="FINISHED"?x.status==="COMPLETED":x.status===status)));
     if(term)filtered=filtered.filter(x=>[x.title.english,x.title.romaji,x.title.native,x.kind,...x.genres].join(" ").toLowerCase().includes(term));
     const start=(page-1)*18,media=filtered.slice(start,start+18); return json({media,pageInfo:{currentPage:page,hasNextPage:start+18<filtered.length,lastPage:Math.max(1,Math.ceil(filtered.length/18)),total:filtered.length},catalogueMode:"curated-fallback",...(url.searchParams.get("debug")==="1"?{fallbackReason:String(error)}:{})});
