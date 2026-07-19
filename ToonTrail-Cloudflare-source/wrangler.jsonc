@@ -1,8 +1,16 @@
 {
   "$schema": "node_modules/wrangler/config-schema.json",
-  "name": "toontrail",
+  "name": "toontrail-beta",
   "main": "dist/server/index.js",
   "compatibility_date": "2026-07-19",
   "workers_dev": true,
-  "preview_urls": true
+  "preview_urls": true,
+  "keep_vars": true,
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "toontrail-db",
+      "database_id": "153163da-d40e-4611-80be-56a22c8ca752"
+    }
+  ]
 }
