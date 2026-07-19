@@ -1,3 +1,9 @@
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+npm notice
+npm notice New minor version of npm available! 11.9.0 -> 11.18.0
+npm notice Changelog: https://github.com/npm/cli/releases/tag/v11.18.0
+npm notice To update run: npm install -g npm@11.18.0
+npm notice
 import React, { useEffect, useMemo, useRef, useState } from "react";
 import { createRoot } from "react-dom/client";
 import {
@@ -1293,7 +1299,7 @@ function Detail({
             ))}
           </div>
         </div>
-        <h3>Official places to read</h3>
+        <h3>Official reading and discovery options</h3>
         {links.length ? (
           links.map((link, i) => {
             const info = sourceInfo(link);
