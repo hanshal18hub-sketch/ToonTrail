@@ -1,0 +1,8 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "toontrail",
+  "main": "dist/server/index.js",
+  "compatibility_date": "2026-07-19",
+  "workers_dev": true,
+  "preview_urls": true
+}
