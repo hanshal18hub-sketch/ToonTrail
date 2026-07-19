@@ -1,6 +1,7 @@
 const HTML = __TOONTRAIL_HTML__;
 const JSON_HEADERS = {"content-type":"application/json; charset=utf-8","cache-control":"no-store"};
 const json = (data, status=200) => new Response(JSON.stringify(data), {status, headers:JSON_HEADERS});
+const MAX_JSON_BYTES=16*1024;
 const enc = new TextEncoder();
 const b64u = bytes => btoa(String.fromCharCode(...new Uint8Array(bytes))).replaceAll("+","-").replaceAll("/","_").replaceAll("=","");
 const unb64u = value => Uint8Array.from(atob(value.replaceAll("-","+").replaceAll("_","/")+"===".slice((value.length+3)%4)),c=>c.charCodeAt(0));
@@ -11,6 +12,17 @@ async function verified(secret,value){if(!value||!secret)return null;const [body
 const cookie=(name,value,maxAge)=>`${name}=${value}; Path=/; HttpOnly; Secure; SameSite=Lax; Max-Age=${maxAge}`;
 async function viewer(request,env){return verified(env.SESSION_SECRET,cookies(request).toontrail_session)}
 const oauthReady=env=>Boolean(env.GOOGLE_CLIENT_ID&&env.GOOGLE_CLIENT_SECRET&&env.SESSION_SECRET);
+const sameOrigin=request=>request.headers.get("origin")===new URL(request.url).origin;
+const safeInteger=value=>Number.isSafeInteger(Number(value))&&Number(value)>0?Number(value):null;
+const httpsUrl=(value,max=1000)=>{try{const text=String(value||"").slice(0,max),url=new URL(text);return url.protocol==="https:"?text:""}catch{return ""}};
+async function readJson(request){
+  if(!(request.headers.get("content-type")||"").toLowerCase().startsWith("application/json"))return {error:json({error:"Content-Type must be application/json"},415)};
+  const declared=Number(request.headers.get("content-length")||0); if(declared>MAX_JSON_BYTES)return {error:json({error:"Request body is too large"},413)};
+  const text=await request.text(); if(new TextEncoder().encode(text).byteLength>MAX_JSON_BYTES)return {error:json({error:"Request body is too large"},413)};
+  try{return {value:JSON.parse(text)}}catch{return {error:json({error:"Invalid JSON"},400)}}
+}
+async function limited(binding,key){if(!binding)return false;try{return !(await binding.limit({key})).success}catch{return false}}
+async function actorKey(request,env,scope,me){const actor=me?.sub||request.headers.get("cf-connecting-ip")||"unknown";return `${scope}:${await hmac(env.SESSION_SECRET||"toontrail",actor)}`}
 async function init(db){
   await db.batch([
     db.prepare("CREATE TABLE IF NOT EXISTS user_library (user_email TEXT NOT NULL, media_id INTEGER NOT NULL, title TEXT NOT NULL, cover_url TEXT, media_type TEXT, status TEXT NOT NULL DEFAULT 'PLANNING', progress INTEGER NOT NULL DEFAULT 0, chapters INTEGER, updated_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP, PRIMARY KEY (user_email, media_id))"),
@@ -22,7 +34,7 @@ async function init(db){
 const CURATED_COVERS={
   10001:"https://us-a.tapas.io/sa/71/026a5d2a-9a64-45fa-8ec1-ef2a719d5524.jpg",10002:"https://us-a.tapas.io/sa/19/1f9bdc5e-da7c-424a-b510-d2e5c77759ff.jpg",10003:"https://swebtoon-phinf.pstatic.net/20251108_229/17625507016773FMqp_JPEG/4%29%20Thumb_Poster_2154.jpg?type=crop540_540",10004:"https://swebtoon-phinf.pstatic.net/20250204_46/17386458444547o1b2_JPEG/95.jpg?type=crop540_540",10005:"https://swebtoon-phinf.pstatic.net/20250204_219/17386458996443rqh1_JPEG/1436.jpg?type=crop540_540",10006:"https://us-a.tapas.io/sa/bd/34d7a6aa-ae4d-4f68-bbde-0557c41ae751.jpg",10007:"https://us-a.tapas.io/sa/a8/d8f5026f-0286-45fd-99b2-784fabf425c5.jpg",10008:"https://us-a.tapas.io/sa/b2/290189a5-7a6c-4365-a51b-60b68ad61f3c.jpg",10009:"https://dw9to29mmj727.cloudfront.net/social/91-OP_600x314.jpg",10010:"https://dw9to29mmj727.cloudfront.net/social/2465-SocialShareAssets_ChainsawMan_600x314.jpg",10011:"https://dw9to29mmj727.cloudfront.net/social/2376-SocialShareAssets_SpyFamily_600x314.jpg",10012:"https://dw9to29mmj727.cloudfront.net/social/3049-SocialShareAssets_KaijuNo8_600x314.jpg",10013:"https://dw9to29mmj727.cloudfront.net/social/3289-SocialShareAssets_Dandadan_600x314.jpg",10014:"https://i1.inkr.com/p/image/ce9e9f6a48b047e118708ef7a6bd1698.png/462.webp/thumbnail-apotheosis.webp",10015:"https://i1.inkr.com/p/image/1b8789dbb967f5273837df243d43204d.png/462.webp/thumbnail-tales-of-demons-and-gods.webp",10016:"https://i1.inkr.com/p/image/64cfffb9b4ae2f86fa96bc69b490016f.png/462.webp/thumbnail-apocalypse-online.webp"
 };
-const item=(id,english,romaji,native,kind,status,description,genres,links)=>({id,title:{english,romaji,native},kind,format:kind,status,description,genres,chapters:null,coverImage:{large:CURATED_COVERS[id]||"",color:null},averageScore:0,popularity:0,siteUrl:links[0].url,externalLinks:links.map(x=>({site:x.site,url:x.url,type:x.type||"OFFICIAL",language:"English",isDisabled:false}))});
+const item=(id,english,romaji,native,kind,status,description,genres,links)=>({id,title:{english,romaji,native},kind,format:kind,status,description,genres,chapters:null,coverImage:{large:CURATED_COVERS[id]||"",color:null},averageScore:0,popularity:0,siteUrl:links[0].url,externalLinks:links.map(x=>({site:x.site,url:x.url,type:x.type||"OFFICIAL",language:"English",region:x.region||"Availability varies by region",access:x.access||"Chapter access may vary",isDisabled:false}))});
 const CATALOG=[
  item(10001,"Solo Leveling","Solo Leveling","나 혼자만 레벨업","Manhwa","COMPLETED","Sung Jinwoo, once known as humanity's weakest hunter, receives an extraordinary chance to level up beyond normal limits.",["Action","Fantasy"],[{site:"Tapas — official English comic",url:"https://tapas.io/series/solo-leveling-comic/info"}]),
  item(10002,"Solo Leveling: Ragnarok","Solo Leveling: Ragnarok","나 혼자만 레벨업: 라그나로크","Manhwa","RELEASING","Sung Suho faces a new threat as gates spill monsters into the world and his inherited powers awaken.",["Action","Fantasy"],[{site:"Tapas — official English comic",url:"https://tapas.io/series/solo-leveling-ragnarok/info"}]),
@@ -32,11 +44,11 @@ const CATALOG=[
  item(10006,"Tomb Raider King","Tomb Raider King","도굴왕","Manhwa","COMPLETED","A betrayed relic explorer returns to the past before supernatural tombs appeared and uses his knowledge to change his fate.",["Action","Fantasy"],[{site:"Tapas — official English comic",url:"https://tapas.io/series/tomb-raider-king/info"}]),
  item(10007,"Latna Saga: Survival of a Sword King","Survival Story of a Sword King","이계 검왕 생존기","Manhwa","RELEASING","A man trapped in a broken tutorial for years finally enters another world where outsiders are feared.",["Action","Fantasy","Isekai"],[{site:"Tapas — official English comic",url:"https://tapas.io/series/latna-saga-survival-of-a-sword-king/info"}]),
  item(10008,"Leveling Up Alone","Leveling Up Alone","나 홀로 주문 사용자","Manhwa","COMPLETED","A powerless porter receives unexpected abilities in a world protected by supernatural hunters.",["Action","Fantasy"],[{site:"Tapas — official English comic",url:"https://tapas.io/series/leveling-up-alone/info"}]),
- item(10009,"One Piece","One Piece","ワンピース","Manga","RELEASING","Monkey D. Luffy sails with his crew in search of the legendary treasure known as the One Piece.",["Adventure","Action","Fantasy"],[{site:"MANGA Plus — official publisher platform",url:"https://mangaplus.shueisha.co.jp/"},{site:"VIZ Shonen Jump — official publisher",url:"https://www.viz.com/shonenjump"}]),
- item(10010,"Chainsaw Man","Chainsaw Man","チェンソーマン","Manga","RELEASING","A young devil hunter merges with his chainsaw devil companion and is drawn into a violent supernatural world.",["Action","Horror","Supernatural"],[{site:"MANGA Plus — official publisher platform",url:"https://mangaplus.shueisha.co.jp/"},{site:"VIZ Shonen Jump — official publisher",url:"https://www.viz.com/shonenjump"}]),
- item(10011,"SPY x FAMILY","SPY x FAMILY","SPY×FAMILY","Manga","RELEASING","A spy, an assassin, and a telepath form a family while each hides their true identity.",["Comedy","Action","Family"],[{site:"MANGA Plus — official publisher platform",url:"https://mangaplus.shueisha.co.jp/"},{site:"VIZ Shonen Jump — official publisher",url:"https://www.viz.com/shonenjump"}]),
- item(10012,"Kaiju No. 8","Kaiju No. 8","怪獣8号","Manga","COMPLETED","A cleanup worker gains kaiju powers while pursuing his old dream of joining the defence force.",["Action","Science Fiction"],[{site:"MANGA Plus — official publisher platform",url:"https://mangaplus.shueisha.co.jp/"},{site:"VIZ Shonen Jump — official publisher",url:"https://www.viz.com/shonenjump"}]),
- item(10013,"Dandadan","Dandadan","ダンダダン","Manga","RELEASING","Two students clash over ghosts and aliens before discovering that both kinds of supernatural threat are real.",["Action","Comedy","Supernatural"],[{site:"MANGA Plus — official publisher platform",url:"https://mangaplus.shueisha.co.jp/"},{site:"VIZ Shonen Jump — official publisher",url:"https://www.viz.com/shonenjump"}]),
+ item(10009,"One Piece","One Piece","ワンピース","Manga","RELEASING","Monkey D. Luffy sails with his crew in search of the legendary treasure known as the One Piece.",["Adventure","Action","Fantasy"],[{site:"MANGA Plus — official title page",url:"https://mangaplus.shueisha.co.jp/titles/100020",access:"Latest chapters are free; catalogue access varies"},{site:"VIZ Shonen Jump — official chapter page",url:"https://www.viz.com/shonenjump/chapters/one-piece",region:"Available in supported VIZ territories",access:"Free chapters; membership for archive access"}]),
+ item(10010,"Chainsaw Man","Chainsaw Man","チェンソーマン","Manga","RELEASING","A young devil hunter merges with his chainsaw devil companion and is drawn into a violent supernatural world.",["Action","Horror","Supernatural"],[{site:"MANGA Plus — official title page",url:"https://mangaplus.shueisha.co.jp/titles/100037",access:"Latest chapters are free; catalogue access varies"},{site:"VIZ Shonen Jump — official chapter page",url:"https://www.viz.com/shonenjump/chapters/chainsaw-man",region:"Available in supported VIZ territories",access:"Free chapters; membership for archive access"}]),
+ item(10011,"SPY x FAMILY","SPY x FAMILY","SPY×FAMILY","Manga","RELEASING","A spy, an assassin, and a telepath form a family while each hides their true identity.",["Comedy","Action","Family"],[{site:"MANGA Plus — official title page",url:"https://mangaplus.shueisha.co.jp/titles/100056",access:"Latest chapters are free; catalogue access varies"},{site:"VIZ Shonen Jump — official chapter page",url:"https://www.viz.com/shonenjump/chapters/spy-x-family",region:"Available in supported VIZ territories",access:"Free chapters; membership for archive access"}]),
+ item(10012,"Kaiju No. 8","Kaiju No. 8","怪獣8号","Manga","COMPLETED","A cleanup worker gains kaiju powers while pursuing his old dream of joining the defence force.",["Action","Science Fiction"],[{site:"MANGA Plus — official title page",url:"https://mangaplus.shueisha.co.jp/titles/200053",access:"Available chapters vary by language and region"},{site:"VIZ Shonen Jump — official chapter page",url:"https://www.viz.com/shonenjump/chapters/kaiju-no-8",region:"Available in supported VIZ territories",access:"Free chapters; membership for archive access"}]),
+ item(10013,"Dandadan","Dandadan","ダンダダン","Manga","RELEASING","Two students clash over ghosts and aliens before discovering that both kinds of supernatural threat are real.",["Action","Comedy","Supernatural"],[{site:"MANGA Plus — official title page",url:"https://mangaplus.shueisha.co.jp/titles/400007",access:"Available chapters vary by language and region"},{site:"VIZ Shonen Jump — official chapter page",url:"https://www.viz.com/shonenjump/chapters/dandadan",region:"Available in supported VIZ territories",access:"Latest free chapters may redirect to MANGA Plus"}]),
  item(10014,"Apotheosis","Apotheosis","百炼成神","Manhua","RELEASING","A fallen young master begins a cultivation journey through a world of martial power and dangerous rivals.",["Action","Cultivation","Fantasy"],[{site:"INKR — official English series",url:"https://comics.inkr.com/title/155-apotheosis"}]),
  item(10015,"Tales of Demons and Gods","Tales of Demons and Gods","妖神记","Manhua","RELEASING","A powerful spiritualist is reborn into his younger self and uses memories of his former life to protect his city.",["Action","Cultivation","Fantasy"],[{site:"INKR — official English series",url:"https://comics.inkr.com/title/480-tales-of-demons-and-gods"}]),
  item(10016,"Apocalypse Online","Apocalypse Online","诸界末日在线","Manhua","RELEASING","A fighter returns to an earlier point in an apocalyptic timeline with knowledge that may avert disaster.",["Action","Fantasy","Science Fiction"],[{site:"INKR — official English series",url:"https://comics.inkr.com/title/1075-apocalypse-online"}])
@@ -72,6 +84,9 @@ async function catalog(url){
 }
 export default {async fetch(request,env){
   const url=new URL(request.url); const path=url.pathname;
+  const mutating=["POST","PUT","PATCH","DELETE"].includes(request.method);
+  if(mutating&&!sameOrigin(request))return json({error:"Request origin was not accepted"},403);
+  if(path.startsWith("/auth/")&&await limited(env.AUTH_RATE_LIMITER,await actorKey(request,env,"auth")))return json({error:"Too many sign-in requests. Please wait and try again."},429);
   if(path==="/auth/google"&&request.method==="GET"){
     if(!oauthReady(env))return new Response("Google sign-in is not configured",{status:503});
     const state=crypto.randomUUID(); const stateValue=await signed(env.SESSION_SECRET,{state,exp:Math.floor(Date.now()/1000)+600});
@@ -96,17 +111,18 @@ export default {async fetch(request,env){
     const session=await signed(env.SESSION_SECRET,{sub:profile.sub,email:profile.email,name:String(profile.name||"").slice(0,120),exp:Math.floor(Date.now()/1000)+60*60*24*30});
     return new Response(null,{status:302,headers:{location:"/","set-cookie":cookie("toontrail_session",session,60*60*24*30),"cache-control":"no-store"}});
   }
-  if(path==="/auth/logout"&&(request.method==="POST"||request.method==="GET"))return new Response(null,{status:303,headers:{location:"/","set-cookie":cookie("toontrail_session","",0),"cache-control":"no-store"}});
+  if(path==="/auth/logout"&&request.method==="POST")return new Response(null,{status:204,headers:{"set-cookie":cookie("toontrail_session","",0),"cache-control":"no-store"}});
   if(path==="/api/catalog"&&request.method==="GET")return catalog(url);
   if(/^\/api\/catalog\/\d+$/.test(path)&&request.method==="GET"){
     const media=CATALOG.find(x=>x.id===Number(path.split("/").pop())); return media?json({media}):json({error:"Title not found"},404);
   }
-  if(path==="/api/me"){
+  if(path==="/api/me"&&request.method==="GET"){
     const me=await viewer(request,env); return json({signedIn:!!me,email:me?.email||"",name:me?.name||"",signInUrl:"/auth/google",signOutUrl:"/auth/logout",authConfigured:oauthReady(env)});
   }
   if(path.startsWith("/api/")){
     if(!env.DB)return json({error:"Database is not configured"},503);
     await init(env.DB); const me=await viewer(request,env); const email=me?.email||"";
+    if(mutating&&await limited(env.WRITE_RATE_LIMITER,await actorKey(request,env,path,me)))return json({error:"Too many changes. Please wait a minute and try again."},429);
     if(path==="/api/ratings"&&request.method==="GET"){
       const ids=(url.searchParams.get("ids")||"").split(",").map(Number).filter(Boolean).slice(0,50);
       if(!ids.length)return json({ratings:{}});
@@ -120,15 +136,17 @@ export default {async fetch(request,env){
       const rows=await env.DB.prepare("SELECT media_id id,title,cover_url cover,media_type kind,status,progress,chapters,updated_at updatedAt FROM user_library WHERE user_email=? ORDER BY updated_at DESC").bind(email).all(); return json({items:rows.results});
     }
     if(path==="/api/library"&&request.method==="POST"){
-      const b=await request.json(); const id=Number(b.id),progress=Math.max(0,Number(b.progress)||0); if(!id||!b.title)return json({error:"Invalid title"},400);
+      const parsed=await readJson(request); if(parsed.error)return parsed.error; const b=parsed.value;
+      const id=safeInteger(b.id),progress=Math.max(0,Math.min(100000,Math.trunc(Number(b.progress)||0))); if(!id||typeof b.title!=="string"||!b.title.trim()||b.title.length>240)return json({error:"Invalid title"},400);
       const allowed=["PLANNING","READING","COMPLETED","PAUSED","DROPPED"]; const status=allowed.includes(b.status)?b.status:"PLANNING";
-      await env.DB.prepare("INSERT INTO user_library(user_email,media_id,title,cover_url,media_type,status,progress,chapters,updated_at) VALUES(?,?,?,?,?,?,?,?,CURRENT_TIMESTAMP) ON CONFLICT(user_email,media_id) DO UPDATE SET title=excluded.title,cover_url=excluded.cover_url,media_type=excluded.media_type,status=excluded.status,progress=excluded.progress,chapters=excluded.chapters,updated_at=CURRENT_TIMESTAMP").bind(email,id,String(b.title).slice(0,240),String(b.cover||"").slice(0,1000),String(b.kind||"Manga").slice(0,30),status,progress,b.chapters?Number(b.chapters):null).run(); return json({ok:true});
+      const kinds=["Manga","Manhwa","Manhua"],kind=kinds.includes(b.kind)?b.kind:"Manga",chapters=safeInteger(b.chapters);
+      await env.DB.prepare("INSERT INTO user_library(user_email,media_id,title,cover_url,media_type,status,progress,chapters,updated_at) VALUES(?,?,?,?,?,?,?,?,CURRENT_TIMESTAMP) ON CONFLICT(user_email,media_id) DO UPDATE SET title=excluded.title,cover_url=excluded.cover_url,media_type=excluded.media_type,status=excluded.status,progress=excluded.progress,chapters=excluded.chapters,updated_at=CURRENT_TIMESTAMP").bind(email,id,b.title.trim(),httpsUrl(b.cover),kind,status,progress,chapters).run(); return json({ok:true});
     }
     if(path.startsWith("/api/library/")&&request.method==="DELETE"){
-      await env.DB.prepare("DELETE FROM user_library WHERE user_email=? AND media_id=?").bind(email,Number(path.split("/").pop())).run(); return json({ok:true});
+      const id=safeInteger(path.split("/").pop()); if(!id)return json({error:"Invalid title"},400); await env.DB.prepare("DELETE FROM user_library WHERE user_email=? AND media_id=?").bind(email,id).run(); return json({ok:true});
     }
     if(path==="/api/rating"&&request.method==="POST"){
-      const b=await request.json(); const id=Number(b.mediaId),score=Number(b.score); if(!id||score<1||score>5)return json({error:"Rating must be 1–5"},400);
+      const parsed=await readJson(request); if(parsed.error)return parsed.error; const b=parsed.value; const id=safeInteger(b.mediaId),score=Number(b.score); if(!id||!Number.isInteger(score)||score<1||score>5)return json({error:"Rating must be 1–5"},400);
       await env.DB.prepare("INSERT INTO user_ratings(user_email,media_id,score,updated_at) VALUES(?,?,?,CURRENT_TIMESTAMP) ON CONFLICT(user_email,media_id) DO UPDATE SET score=excluded.score,updated_at=CURRENT_TIMESTAMP").bind(email,id,score).run(); return json({ok:true});
     }
     if(path==="/api/account"&&request.method==="DELETE"){
@@ -141,5 +159,5 @@ export default {async fetch(request,env){
     return json({error:"Not found"},404);
   }
   if(request.method!=="GET"&&request.method!=="HEAD")return new Response("Method not allowed",{status:405});
-  return new Response(request.method==="HEAD"?null:HTML,{headers:{"content-type":"text/html; charset=utf-8","cache-control":"public, max-age=60","x-content-type-options":"nosniff","x-frame-options":"DENY","referrer-policy":"strict-origin-when-cross-origin","permissions-policy":"camera=(), microphone=(), geolocation=(), payment=(), usb=()","content-security-policy":"default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' https: data:; connect-src 'self'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'; object-src 'none'; upgrade-insecure-requests"}});
+  return new Response(request.method==="HEAD"?null:HTML,{headers:{"content-type":"text/html; charset=utf-8","cache-control":"public, max-age=60","strict-transport-security":"max-age=31536000; includeSubDomains","cross-origin-opener-policy":"same-origin","cross-origin-resource-policy":"same-origin","x-content-type-options":"nosniff","x-frame-options":"DENY","referrer-policy":"strict-origin-when-cross-origin","permissions-policy":"camera=(), microphone=(), geolocation=(), payment=(), usb=(), browsing-topics=()","content-security-policy":"default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' https: data:; connect-src 'self'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'; object-src 'none'; upgrade-insecure-requests"}});
 }};
