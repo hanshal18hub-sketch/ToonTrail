@@ -1,4 +1,6 @@
 const HTML = __TOONTRAIL_HTML__;
+const CATALOG_SEED = __TOONTRAIL_CATALOG_SEED__;
+const CATALOG_SEED_VERSION = 1;
 const JSON_HEADERS = {"content-type":"application/json; charset=utf-8","cache-control":"no-store"};
 const json = (data, status=200) => new Response(JSON.stringify(data), {status, headers:JSON_HEADERS});
 const MAX_JSON_BYTES=16*1024;
@@ -28,7 +30,11 @@ async function init(db){
     db.prepare("CREATE TABLE IF NOT EXISTS user_library (user_email TEXT NOT NULL, media_id INTEGER NOT NULL, title TEXT NOT NULL, cover_url TEXT, media_type TEXT, status TEXT NOT NULL DEFAULT 'PLANNING', progress INTEGER NOT NULL DEFAULT 0, chapters INTEGER, updated_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP, PRIMARY KEY (user_email, media_id))"),
     db.prepare("CREATE INDEX IF NOT EXISTS user_library_user_updated_idx ON user_library(user_email, updated_at DESC)"),
     db.prepare("CREATE TABLE IF NOT EXISTS user_ratings (user_email TEXT NOT NULL, media_id INTEGER NOT NULL, score INTEGER NOT NULL CHECK(score BETWEEN 1 AND 5), updated_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP, PRIMARY KEY (user_email, media_id))"),
-    db.prepare("CREATE INDEX IF NOT EXISTS user_ratings_media_idx ON user_ratings(media_id)")
+    db.prepare("CREATE INDEX IF NOT EXISTS user_ratings_media_idx ON user_ratings(media_id)"),
+    db.prepare("CREATE TABLE IF NOT EXISTS catalog_titles (id INTEGER PRIMARY KEY, source TEXT NOT NULL, source_id TEXT, english_title TEXT, romaji_title TEXT NOT NULL, native_title TEXT, kind TEXT NOT NULL, format TEXT NOT NULL, status TEXT NOT NULL, description TEXT, genres_json TEXT NOT NULL DEFAULT '[]', chapters INTEGER, cover_url TEXT, average_score INTEGER NOT NULL DEFAULT 0, popularity INTEGER NOT NULL DEFAULT 0, site_url TEXT, external_links_json TEXT NOT NULL DEFAULT '[]', updated_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP)"),
+    db.prepare("CREATE INDEX IF NOT EXISTS catalog_kind_status_idx ON catalog_titles(kind,status)"),
+    db.prepare("CREATE INDEX IF NOT EXISTS catalog_popularity_idx ON catalog_titles(popularity DESC)"),
+    db.prepare("CREATE TABLE IF NOT EXISTS app_meta (key TEXT PRIMARY KEY, value TEXT NOT NULL)")
   ]);
 }
 const CURATED_COVERS={
@@ -53,6 +59,36 @@ const CATALOG=[
  item(10015,"Tales of Demons and Gods","Tales of Demons and Gods","妖神记","Manhua","RELEASING","A powerful spiritualist is reborn into his younger self and uses memories of his former life to protect his city.",["Action","Cultivation","Fantasy"],[{site:"INKR — official English series",url:"https://comics.inkr.com/title/480-tales-of-demons-and-gods"}]),
  item(10016,"Apocalypse Online","Apocalypse Online","诸界末日在线","Manhua","RELEASING","A fighter returns to an earlier point in an apocalyptic timeline with knowledge that may avert disaster.",["Action","Fantasy","Science Fiction"],[{site:"INKR — official English series",url:"https://comics.inkr.com/title/1075-apocalypse-online"}])
 ];
+const catalogRow=value=>({
+  id:value.id,source:value.source||"curated",sourceId:value.sourceId||String(value.id),english:value.english??value.title?.english??"",romaji:value.romaji??value.title?.romaji??value.english??"",native:value.native??value.title?.native??"",
+  kind:value.kind||"Manga",format:value.format||value.kind||"Manga",status:(value.status==="COMPLETED"?"FINISHED":value.status)||"HIATUS",description:value.description||"",genres:value.genres||[],chapters:value.chapters||null,
+  cover:value.cover??value.coverImage?.large??"",score:value.score??value.averageScore??0,popularity:value.popularity||0,siteUrl:value.siteUrl||value.links?.[0]?.url||"",links:value.links??value.externalLinks??[]
+});
+async function seedCatalog(db){
+  const meta=await db.prepare("SELECT value FROM app_meta WHERE key='catalog_seed_version'").first();
+  if(Number(meta?.value)===CATALOG_SEED_VERSION)return;
+  const values=[...CATALOG_SEED.map(catalogRow),...CATALOG.map(catalogRow)];
+  for(let offset=0;offset<values.length;offset+=40){
+    const statements=values.slice(offset,offset+40).map(v=>db.prepare("INSERT INTO catalog_titles(id,source,source_id,english_title,romaji_title,native_title,kind,format,status,description,genres_json,chapters,cover_url,average_score,popularity,site_url,external_links_json,updated_at) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,CURRENT_TIMESTAMP) ON CONFLICT(id) DO UPDATE SET source=excluded.source,source_id=excluded.source_id,english_title=excluded.english_title,romaji_title=excluded.romaji_title,native_title=excluded.native_title,kind=excluded.kind,format=excluded.format,status=excluded.status,description=excluded.description,genres_json=excluded.genres_json,chapters=excluded.chapters,cover_url=excluded.cover_url,average_score=excluded.average_score,popularity=excluded.popularity,site_url=excluded.site_url,external_links_json=CASE WHEN excluded.external_links_json='[]' THEN catalog_titles.external_links_json ELSE excluded.external_links_json END,updated_at=CURRENT_TIMESTAMP").bind(v.id,v.source,v.sourceId,v.english,v.romaji,v.native,v.kind,v.format,v.status,v.description,JSON.stringify(v.genres),v.chapters,httpsUrl(v.cover),v.score,v.popularity,httpsUrl(v.siteUrl),JSON.stringify(v.links)));
+    await db.batch(statements);
+  }
+  await db.prepare("INSERT INTO app_meta(key,value) VALUES('catalog_seed_version',?) ON CONFLICT(key) DO UPDATE SET value=excluded.value").bind(String(CATALOG_SEED_VERSION)).run();
+}
+const parseJson=(value,fallback)=>{try{return JSON.parse(value)}catch{return fallback}};
+const mediaFromRow=row=>({id:row.id,title:{english:row.english_title||undefined,romaji:row.romaji_title,native:row.native_title||undefined},kind:row.kind,format:row.format,status:row.status,description:row.description||"",genres:parseJson(row.genres_json,[]),chapters:row.chapters,coverImage:{large:row.cover_url||"",color:null},averageScore:row.average_score||0,popularity:row.popularity||0,siteUrl:row.site_url||"",externalLinks:parseJson(row.external_links_json,[])});
+async function d1Catalog(url,db){
+  const page=Math.max(1,Math.min(1000,Number(url.searchParams.get("page"))||1)),search=(url.searchParams.get("q")||"").trim().slice(0,120),kind=url.searchParams.get("kind")||"ALL",genre=(url.searchParams.get("genre")||"ALL").slice(0,40),status=url.searchParams.get("status")||"ALL";
+  const where=[],bind=[];
+  if(search){where.push("(LOWER(english_title) LIKE ? OR LOWER(romaji_title) LIKE ? OR LOWER(native_title) LIKE ?)");const term=`%${search.toLowerCase()}%`;bind.push(term,term,term)}
+  if(["MANGA","MANHWA","MANHUA"].includes(kind)){where.push("UPPER(kind)=?");bind.push(kind)}
+  if(genre!=="ALL"){where.push("genres_json LIKE ?");bind.push(`%\"${genre.replaceAll('"','')}\"%`)}
+  if(["RELEASING","FINISHED","HIATUS"].includes(status)){where.push("status=?");bind.push(status)}
+  const clause=where.length?` WHERE ${where.join(" AND ")}`:"";
+  const totalRow=await db.prepare(`SELECT COUNT(*) total FROM catalog_titles${clause}`).bind(...bind).first();
+  const total=Number(totalRow?.total)||0,offset=(page-1)*18;
+  const rows=await db.prepare(`SELECT * FROM catalog_titles${clause} ORDER BY popularity DESC, english_title COLLATE NOCASE LIMIT 18 OFFSET ?`).bind(...bind,offset).all();
+  return json({media:rows.results.map(mediaFromRow),pageInfo:{currentPage:page,hasNextPage:offset+18<total,lastPage:Math.max(1,Math.ceil(total/18)),total},catalogueMode:"cloudflare-d1"});
+}
 const ANILIST_QUERY=`query($page:Int,$search:String,$country:CountryCode,$status:MediaStatus,$genre:String){Page(page:$page,perPage:18){pageInfo{currentPage hasNextPage lastPage total}media(type:MANGA,isAdult:false,search:$search,countryOfOrigin:$country,status:$status,genre:$genre,sort:POPULARITY_DESC){id title{english romaji native}format status description genres chapters coverImage{large color}averageScore popularity siteUrl countryOfOrigin externalLinks{site url type}}}}`;
 async function catalog(url){
   const search=url.searchParams.get("q")?.trim()||null;
@@ -113,9 +149,11 @@ export default {async fetch(request,env){
     return new Response(null,{status:302,headers:{location:"/","set-cookie":cookie("toontrail_session",session,60*60*24*30),"cache-control":"no-store"}});
   }
   if(path==="/auth/logout"&&request.method==="POST")return new Response(null,{status:204,headers:{"set-cookie":cookie("toontrail_session","",0),"cache-control":"no-store"}});
-  if(path==="/api/catalog"&&request.method==="GET")return catalog(url);
+  if(path==="/api/catalog"&&request.method==="GET"){
+    if(!env.DB)return json({error:"Catalogue database is not configured"},503); await init(env.DB); await seedCatalog(env.DB); return d1Catalog(url,env.DB);
+  }
   if(/^\/api\/catalog\/\d+$/.test(path)&&request.method==="GET"){
-    const media=CATALOG.find(x=>x.id===Number(path.split("/").pop())); return media?json({media}):json({error:"Title not found"},404);
+    if(!env.DB)return json({error:"Catalogue database is not configured"},503); await init(env.DB); await seedCatalog(env.DB); const row=await env.DB.prepare("SELECT * FROM catalog_titles WHERE id=?").bind(Number(path.split("/").pop())).first(); return row?json({media:mediaFromRow(row)}):json({error:"Title not found"},404);
   }
   if(path==="/api/me"&&request.method==="GET"){
     const me=await viewer(request,env); return json({signedIn:!!me,email:me?.email||"",name:me?.name||"",signInUrl:"/auth/google",signOutUrl:"/auth/logout",authConfigured:oauthReady(env)});
