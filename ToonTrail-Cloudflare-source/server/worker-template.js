@@ -1,6 +1,6 @@
 const HTML = __TOONTRAIL_HTML__;
 const CATALOG_SEED = __TOONTRAIL_CATALOG_SEED__;
-const CATALOG_SEED_VERSION = 1;
+const CATALOG_SEED_VERSION = __TOONTRAIL_CATALOG_SEED_VERSION__;
 const JSON_HEADERS = {"content-type":"application/json; charset=utf-8","cache-control":"no-store"};
 const json = (data, status=200) => new Response(JSON.stringify(data), {status, headers:JSON_HEADERS});
 const MAX_JSON_BYTES=16*1024;
@@ -66,7 +66,7 @@ const catalogRow=value=>({
 });
 async function seedCatalog(db){
   const meta=await db.prepare("SELECT value FROM app_meta WHERE key='catalog_seed_version'").first();
-  if(Number(meta?.value)===CATALOG_SEED_VERSION)return;
+  if(meta?.value===CATALOG_SEED_VERSION)return;
   const values=[...CATALOG_SEED.map(catalogRow),...CATALOG.map(catalogRow)];
   for(let offset=0;offset<values.length;offset+=40){
     const statements=values.slice(offset,offset+40).map(v=>db.prepare("INSERT INTO catalog_titles(id,source,source_id,english_title,romaji_title,native_title,kind,format,status,description,genres_json,chapters,cover_url,average_score,popularity,site_url,external_links_json,updated_at) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,CURRENT_TIMESTAMP) ON CONFLICT(id) DO UPDATE SET source=excluded.source,source_id=excluded.source_id,english_title=excluded.english_title,romaji_title=excluded.romaji_title,native_title=excluded.native_title,kind=excluded.kind,format=excluded.format,status=excluded.status,description=excluded.description,genres_json=excluded.genres_json,chapters=excluded.chapters,cover_url=excluded.cover_url,average_score=excluded.average_score,popularity=excluded.popularity,site_url=excluded.site_url,external_links_json=CASE WHEN excluded.external_links_json='[]' THEN catalog_titles.external_links_json ELSE excluded.external_links_json END,updated_at=CURRENT_TIMESTAMP").bind(v.id,v.source,v.sourceId,v.english,v.romaji,v.native,v.kind,v.format,v.status,v.description,JSON.stringify(v.genres),v.chapters,httpsUrl(v.cover),v.score,v.popularity,httpsUrl(v.siteUrl),JSON.stringify(v.links)));
