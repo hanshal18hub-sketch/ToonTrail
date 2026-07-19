@@ -87,6 +87,7 @@ export default {async fetch(request,env){
   const mutating=["POST","PUT","PATCH","DELETE"].includes(request.method);
   if(mutating&&!sameOrigin(request))return json({error:"Request origin was not accepted"},403);
   if(path.startsWith("/auth/")&&await limited(env.AUTH_RATE_LIMITER,await actorKey(request,env,"auth")))return json({error:"Too many sign-in requests. Please wait and try again."},429);
+  if(path.startsWith("/api/catalog")&&await limited(env.PUBLIC_API_RATE_LIMITER,await actorKey(request,env,"catalog")))return json({error:"Too many catalogue requests. Please wait a minute and try again."},429);
   if(path==="/auth/google"&&request.method==="GET"){
     if(!oauthReady(env))return new Response("Google sign-in is not configured",{status:503});
     const state=crypto.randomUUID(); const stateValue=await signed(env.SESSION_SECRET,{state,exp:Math.floor(Date.now()/1000)+600});
