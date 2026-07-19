@@ -45,7 +45,7 @@ async function catalog(url){
   const kind=url.searchParams.get("kind")||"ALL",genre=url.searchParams.get("genre")||"ALL",status=url.searchParams.get("status")||"ALL";
   const country=kind==="MANGA"?"JP":kind==="MANHWA"?"KR":kind==="MANHUA"?"CN":null;
   try{
-    const response=await fetch("https://graphql.anilist.co",{method:"POST",headers:{"content-type":"application/json","accept":"application/json"},body:JSON.stringify({query:ANILIST_QUERY,variables:{page,search,country,status:status==="ALL"?null:status,genre:genre==="ALL"?null:genre}})});
+    const response=await fetch("https://graphql.anilist.co",{method:"POST",headers:{"content-type":"application/json","accept":"application/json","user-agent":"ToonTrail/0.1 (catalogue discovery)"},body:JSON.stringify({query:ANILIST_QUERY,variables:{page,search,country,status:status==="ALL"?null:status,genre:genre==="ALL"?null:genre}})});
     if(!response.ok)throw Error(`AniList returned ${response.status}`);
     const data=await response.json(); if(data.errors||!data.data?.Page)throw Error("AniList catalogue unavailable");
     const media=data.data.Page.media.map(m=>({...m,kind:m.countryOfOrigin==="KR"?"Manhwa":m.countryOfOrigin==="CN"?"Manhua":"Manga",externalLinks:(m.externalLinks||[]).filter(x=>x.url)}));
@@ -53,7 +53,7 @@ async function catalog(url){
   }catch(error){
     const term=search?.toLowerCase(); let filtered=CATALOG.filter(x=>(kind==="ALL"||x.kind.toUpperCase()===kind)&&(genre==="ALL"||x.genres.includes(genre))&&(status==="ALL"||(status==="FINISHED"?x.status==="COMPLETED":x.status===status)));
     if(term)filtered=filtered.filter(x=>[x.title.english,x.title.romaji,x.title.native,x.kind,...x.genres].join(" ").toLowerCase().includes(term));
-    const start=(page-1)*18,media=filtered.slice(start,start+18); return json({media,pageInfo:{currentPage:page,hasNextPage:start+18<filtered.length,lastPage:Math.max(1,Math.ceil(filtered.length/18)),total:filtered.length},catalogueMode:"curated-fallback"});
+    const start=(page-1)*18,media=filtered.slice(start,start+18); return json({media,pageInfo:{currentPage:page,hasNextPage:start+18<filtered.length,lastPage:Math.max(1,Math.ceil(filtered.length/18)),total:filtered.length},catalogueMode:"curated-fallback",...(url.searchParams.get("debug")==="1"?{fallbackReason:String(error)}:{})});
   }
 }
 export default {async fetch(request,env){
