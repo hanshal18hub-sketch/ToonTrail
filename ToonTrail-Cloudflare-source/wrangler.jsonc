@@ -16,6 +16,11 @@
       "name": "WRITE_RATE_LIMITER",
       "namespace_id": "18002",
       "simple": { "limit": 30, "period": 60 }
+    },
+    {
+      "name": "PUBLIC_API_RATE_LIMITER",
+      "namespace_id": "18003",
+      "simple": { "limit": 120, "period": 60 }
     }
   ],
   "d1_databases": [
