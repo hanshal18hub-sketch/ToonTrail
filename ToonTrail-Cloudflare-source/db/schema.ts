@@ -1,4 +1,13 @@
 export const schema = {
+  accounts: `CREATE TABLE IF NOT EXISTS user_accounts (
+    google_sub TEXT PRIMARY KEY,
+    email TEXT NOT NULL UNIQUE,
+    display_name TEXT NOT NULL DEFAULT '',
+    created_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    last_login_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    last_activity_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    login_count INTEGER NOT NULL DEFAULT 1 CHECK(login_count > 0)
+  )`,
   library: `CREATE TABLE IF NOT EXISTS user_library (
     user_email TEXT NOT NULL,
     media_id INTEGER NOT NULL,
