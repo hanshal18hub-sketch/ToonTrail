@@ -98,8 +98,8 @@ const titleOf = (m: Media) => m.title.english || m.title.romaji;
 const clean = (s = "") =>
   s
     .replace(/<[^>]+>/g, "")
-    .replace(/\n/g, " ")
-    .slice(0, 420);
+    .replace(/\s+/g, " ")
+    .trim();
 const sourceInfo = (link: Link) => {
   try {
     const domain = new URL(link.url).hostname.toLowerCase();
@@ -1297,6 +1297,7 @@ function Detail({
         {links.length ? (
           links.map((link, i) => {
             const info = sourceInfo(link);
+            const isSearch = link.type?.includes("SEARCH");
             return (
               <div className="source" key={link.url}>
                 <div className="rank" aria-hidden="true">
@@ -1315,10 +1316,15 @@ function Detail({
                   </div>
                 </div>
                 <span className={info.verified ? "verified" : "unverified"}>
-                  {info.verified ? (
+                  {info.verified && !isSearch ? (
                     <>
                       <ShieldCheck />
                       Verified provider
+                    </>
+                  ) : info.verified ? (
+                    <>
+                      <Search />
+                      Official catalogue search
                     </>
                   ) : (
                     <>External link</>
@@ -1328,9 +1334,9 @@ function Detail({
                   href={link.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  aria-label={`Read ${titleOf(media)} on ${link.site} (opens in a new tab)`}
+                  aria-label={`${isSearch ? "Search for" : "Read"} ${titleOf(media)} on ${link.site} (opens in a new tab)`}
                 >
-                  Read officially
+                  {isSearch ? "Search provider" : "Read officially"}
                   <ExternalLink />
                 </a>
               </div>
@@ -1350,8 +1356,10 @@ function Detail({
         )}
         <p className="link-note">
           <ShieldCheck /> “Verified provider” confirms the domain belongs to a
-          recognised publisher or licensed platform. Region and access labels
-          are guidance; the publisher's page is authoritative when opened.
+          recognised publisher or licensed platform. A catalogue-search label
+          means the provider is legitimate but ToonTrail has not confirmed that
+          it carries this specific title. Region and access labels are guidance;
+          the publisher's page is authoritative when opened.
         </p>
         <a
           className="report-link"
