@@ -38,11 +38,23 @@ const CATALOG=[
  item(10015,"Tales of Demons and Gods","Tales of Demons and Gods","妖神记","Manhua","RELEASING","A powerful spiritualist is reborn into his younger self and uses memories of his former life to protect his city.",["Action","Cultivation","Fantasy"],[{site:"INKR — officially licensed manhua catalogue",url:"https://comics.inkr.com/manhua"}]),
  item(10016,"Apocalypse Online","Apocalypse Online","诸界末日在线","Manhua","RELEASING","A fighter returns to an earlier point in an apocalyptic timeline with knowledge that may avert disaster.",["Action","Fantasy","Science Fiction"],[{site:"INKR — officially licensed manhua catalogue",url:"https://comics.inkr.com/manhua"}])
 ];
+const ANILIST_QUERY=`query($page:Int,$search:String,$country:CountryCode,$status:MediaStatus,$genre:String){Page(page:$page,perPage:18){pageInfo{currentPage hasNextPage lastPage total}media(type:MANGA,isAdult:false,search:$search,countryOfOrigin:$country,status:$status,genre:$genre,sort:POPULARITY_DESC){id title{english romaji native}format status description genres chapters coverImage{large color}averageScore popularity siteUrl countryOfOrigin externalLinks{site url type}}}}`;
 async function catalog(url){
   const search=url.searchParams.get("q")?.trim()||null;
-  const page=Math.max(1,Math.min(20,Number(url.searchParams.get("page"))||1));
-  const term=search?.toLowerCase(); const filtered=term?CATALOG.filter(x=>[x.title.english,x.title.romaji,x.title.native,x.kind,...x.genres].join(" ").toLowerCase().includes(term)):CATALOG; const start=(page-1)*18; const media=filtered.slice(start,start+18);
-  return json({media,pageInfo:{currentPage:page,hasNextPage:start+18<filtered.length},catalogueMode:"curated-beta"});
+  const page=Math.max(1,Math.min(1000,Number(url.searchParams.get("page"))||1));
+  const kind=url.searchParams.get("kind")||"ALL",genre=url.searchParams.get("genre")||"ALL",status=url.searchParams.get("status")||"ALL";
+  const country=kind==="MANGA"?"JP":kind==="MANHWA"?"KR":kind==="MANHUA"?"CN":null;
+  try{
+    const response=await fetch("https://graphql.anilist.co",{method:"POST",headers:{"content-type":"application/json","accept":"application/json"},body:JSON.stringify({query:ANILIST_QUERY,variables:{page,search,country,status:status==="ALL"?null:status,genre:genre==="ALL"?null:genre}})});
+    if(!response.ok)throw Error(`AniList returned ${response.status}`);
+    const data=await response.json(); if(data.errors||!data.data?.Page)throw Error("AniList catalogue unavailable");
+    const media=data.data.Page.media.map(m=>({...m,kind:m.countryOfOrigin==="KR"?"Manhwa":m.countryOfOrigin==="CN"?"Manhua":"Manga",externalLinks:(m.externalLinks||[]).filter(x=>x.url)}));
+    return json({media,pageInfo:data.data.Page.pageInfo,catalogueMode:"anilist-live"});
+  }catch(error){
+    const term=search?.toLowerCase(); let filtered=CATALOG.filter(x=>(kind==="ALL"||x.kind.toUpperCase()===kind)&&(genre==="ALL"||x.genres.includes(genre))&&(status==="ALL"||(status==="FINISHED"?x.status==="COMPLETED":x.status===status)));
+    if(term)filtered=filtered.filter(x=>[x.title.english,x.title.romaji,x.title.native,x.kind,...x.genres].join(" ").toLowerCase().includes(term));
+    const start=(page-1)*18,media=filtered.slice(start,start+18); return json({media,pageInfo:{currentPage:page,hasNextPage:start+18<filtered.length,lastPage:Math.max(1,Math.ceil(filtered.length/18)),total:filtered.length},catalogueMode:"curated-fallback"});
+  }
 }
 export default {async fetch(request,env){
   const url=new URL(request.url); const path=url.pathname;
