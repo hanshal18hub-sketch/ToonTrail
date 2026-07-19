@@ -268,6 +268,22 @@ function App() {
     setMenu(false);
     scrollTo(0, 0);
   }
+  function goHome() {
+    navigate("/");
+    setTab("discover");
+    setActive(null);
+    setQuery("");
+    setSubmitted("");
+    setKind("ALL");
+    setGenre("ALL");
+    setStatus("ALL");
+    setPage(1);
+    setNotice("");
+    requestAnimationFrame(() => {
+      document.getElementById("main-content")?.focus({ preventScroll: true });
+      scrollTo({ top: 0, behavior: "smooth" });
+    });
+  }
   useEffect(() => {
     const pop = () => setLegal(location.pathname);
     addEventListener("popstate", pop);
@@ -282,11 +298,8 @@ function App() {
       <header>
         <button
           className="brand"
-          onClick={() => {
-            navigate("/");
-            setTab("discover");
-          }}
-          aria-label="ToonTrail home"
+          onClick={goHome}
+          aria-label="ToonTrail home — clear search and filters"
         >
           <span aria-hidden="true">TT</span>ToonTrail
         </button>
@@ -371,7 +384,7 @@ function App() {
           </button>
         </div>
       )}
-      <main id="main-content">
+      <main id="main-content" tabIndex={-1}>
         {legalPage ? (
           <LegalPage path={legal} me={me} onNavigate={navigate} />
         ) : tab === "discover" ? (
@@ -716,7 +729,7 @@ function App() {
       </main>
       <footer>
         <div>
-          <button className="brand footer-brand" onClick={() => navigate("/")}>
+          <button className="brand footer-brand" onClick={goHome}>
             <span>TT</span>ToonTrail
           </button>
           <p>A safer path to official manga, manhwa, and manhua sources.</p>
