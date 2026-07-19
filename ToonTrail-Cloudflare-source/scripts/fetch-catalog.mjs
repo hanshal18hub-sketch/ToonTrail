@@ -25,7 +25,7 @@ for(let page=0;page<pages;page++){
       english:a.titles?.en||a.titles?.en_jp||a.canonicalTitle||'',romaji:a.titles?.en_jp||a.canonicalTitle||'',native:a.titles?.ja_jp||'',
       kind:subtype==='manhwa'?'Manhwa':subtype==='manhua'?'Manhua':'Manga',format:subtype==='oneshot'?'One-shot':'Manga',
       status:a.status==='finished'?'FINISHED':a.status==='current'?'RELEASING':'HIATUS',
-      description:String(a.synopsis||a.description||'').replace(/<[^>]*>/g,' ').replace(/\s+/g,' ').trim().slice(0,1200),
+      description:String(a.synopsis||a.description||'').replace(/<[^>]*>/g,' ').replace(/\s+/g,' ').trim().slice(0,5000),
       genres:genreIds.map(x=>categories.get(x.id)).filter(Boolean).slice(0,12),chapters:Number(a.chapterCount)||null,
       cover:a.posterImage?.large||a.posterImage?.medium||a.posterImage?.original||'',score:Math.round(Number(a.averageRating)||0),
       popularity:Math.max(0,100000-(Number(a.popularityRank)||100000)),links:[]
