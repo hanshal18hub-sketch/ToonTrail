@@ -595,6 +595,53 @@ const parseJson = (value, fallback) => {
     return fallback;
   }
 };
+const providerDiscoveryLinks = (row) => {
+  const title = row.english_title || row.romaji_title;
+  const query = encodeURIComponent(title);
+  const shared = {
+    type: "OFFICIAL_CATALOG_SEARCH",
+    region: "Availability varies by region",
+    access: "Provider search; this title is not yet confirmed",
+  };
+  if (String(row.kind).toUpperCase() === "MANHWA")
+    return [
+      {
+        ...shared,
+        site: "WEBTOON — official catalogue search",
+        url: `https://www.webtoons.com/en/search?keyword=${query}`,
+      },
+      {
+        ...shared,
+        site: "Tapas — official catalogue search",
+        url: `https://tapas.io/search?q=${query}&t=COMICS`,
+      },
+    ];
+  if (String(row.kind).toUpperCase() === "MANHUA")
+    return [
+      {
+        ...shared,
+        site: "INKR — licensed comics catalogue",
+        url: "https://comics.inkr.com/",
+      },
+      {
+        ...shared,
+        site: "Tapas — official catalogue search",
+        url: `https://tapas.io/search?q=${query}&t=COMICS`,
+      },
+    ];
+  return [
+    {
+      ...shared,
+      site: "VIZ — official catalogue search",
+      url: `https://www.viz.com/search?search=${query}`,
+    },
+    {
+      ...shared,
+      site: "INKR — licensed manga catalogue",
+      url: "https://comics.inkr.com/",
+    },
+  ];
+};
 const mediaFromRow = (row) => ({
   id: row.id,
   title: {
@@ -612,7 +659,10 @@ const mediaFromRow = (row) => ({
   averageScore: row.average_score || 0,
   popularity: row.popularity || 0,
   siteUrl: row.site_url || "",
-  externalLinks: parseJson(row.external_links_json, []),
+  externalLinks: (() => {
+    const exact = parseJson(row.external_links_json, []);
+    return exact.length ? exact : providerDiscoveryLinks(row);
+  })(),
 });
 async function d1Catalog(url, db) {
   const page = Math.max(
