@@ -1,9 +1,3 @@
-npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
-npm notice
-npm notice New minor version of npm available! 11.9.0 -> 11.18.0
-npm notice Changelog: https://github.com/npm/cli/releases/tag/v11.18.0
-npm notice To update run: npm install -g npm@11.18.0
-npm notice
 import React, { useEffect, useMemo, useRef, useState } from "react";
 import { createRoot } from "react-dom/client";
 import {
@@ -101,6 +95,11 @@ const verifiedDomains = new Set([
   "www.crunchyroll.com",
 ]);
 const titleOf = (m: Media) => m.title.english || m.title.romaji;
+const humanize = (value = "") =>
+  value
+    .replaceAll("_", " ")
+    .toLowerCase()
+    .replace(/\b\w/g, (letter) => letter.toUpperCase());
 const clean = (s = "") =>
   s
     .replace(/<[^>]+>/g, "")
@@ -408,7 +407,7 @@ function App() {
               <div className="trust" aria-label="ToonTrail benefits">
                 <span>
                   <ShieldCheck />
-                  Verified-link labels
+              Clear source labels
                 </span>
                 <span>
                   <Library />
@@ -700,8 +699,8 @@ function App() {
               <b>02</b>
               <h3>Choose transparently</h3>
               <p>
-                Every reading link is labelled verified or unverified so users
-                can make an informed choice.
+              Direct title pages and provider searches are clearly separated so
+              users always know what will open.
               </p>
             </div>
             <div>
@@ -1174,6 +1173,8 @@ function Detail({
   const links = media.externalLinks || [],
     dialog = useRef<HTMLElement>(null),
     close = useRef<HTMLButtonElement>(null);
+  const [fullDescription, setFullDescription] = useState(false);
+  const description = clean(media.description);
   useEffect(() => {
     const previous = document.activeElement as HTMLElement;
     document.body.classList.add("dialog-open");
@@ -1242,7 +1243,7 @@ function Detail({
           )}
           <div>
             <span className="type">
-              {media.kind} · {media.status?.replaceAll("_", " ")}
+              {media.kind} · {humanize(media.status)}
             </span>
             <h2 id="detail-title">{titleOf(media)}</h2>
             <p className="aliases">
@@ -1262,15 +1263,27 @@ function Detail({
             <b>{media.chapters || "—"}</b> Chapters
           </span>
           <span>
-            <b>{media.format?.replaceAll("_", " ") || "—"}</b> Format
+            <b>{humanize(media.format) || "—"}</b> Format
           </span>
           <span>
-            <b>{media.status?.replaceAll("_", " ") || "—"}</b> Status
+            <b>{humanize(media.status) || "—"}</b> Status
           </span>
         </div>
-        <p>
-          {clean(media.description) || "No description is currently available."}
-        </p>
+        <section className="description-block" aria-labelledby="about-title">
+          <h3 id="about-title">About this title</h3>
+          <p className={fullDescription ? "" : "description-collapsed"}>
+            {description || "No description is currently available."}
+          </p>
+          {description.length > 560 && (
+            <button
+              className="description-toggle"
+              onClick={() => setFullDescription((value) => !value)}
+              aria-expanded={fullDescription}
+            >
+              {fullDescription ? "Show less" : "Show full description"}
+            </button>
+          )}
+        </section>
         <div className="rating-box">
           <div>
             <b>Your rating</b>
@@ -1299,21 +1312,48 @@ function Detail({
             ))}
           </div>
         </div>
-        <h3>Official reading and discovery options</h3>
+        <div className="source-heading">
+          <div>
+            <span className="kicker">Safe destinations</span>
+            <h3>Official reading and discovery options</h3>
+          </div>
+          <small>{links.length} option{links.length === 1 ? "" : "s"}</small>
+        </div>
         {links.length ? (
           links.map((link, i) => {
             const info = sourceInfo(link);
             const isSearch = link.type?.includes("SEARCH");
+            const provider = link.site.split("—")[0].trim();
+            const statusLabel = isSearch
+              ? "Official provider search"
+              : info.verified
+                ? "Verified title page"
+                : "External resource";
             return (
-              <div className="source" key={link.url}>
+              <article
+                className={`source ${isSearch ? "source-search" : "source-direct"}`}
+                key={link.url}
+              >
                 <div className="rank" aria-hidden="true">
                   {i + 1}
                 </div>
                 <div className="source-copy">
-                  <b>{link.site}</b>
-                  <small>
-                    {info.domain} · {link.type || "Official resource"}
-                  </small>
+                  <div className="provider-heading">
+                    <b>{provider}</b>
+                    <span
+                      className={info.verified ? "verified" : "unverified"}
+                    >
+                      {info.verified ? (
+                        isSearch ? (
+                          <Search />
+                        ) : (
+                          <ShieldCheck />
+                        )
+                      ) : null}
+                      {statusLabel}
+                    </span>
+                  </div>
+                  <small className="provider-domain">{info.domain}</small>
                   <div className="availability">
                     <span>
                       {link.region || "Availability varies by region"}
@@ -1321,31 +1361,16 @@ function Detail({
                     <span>{link.access || "Chapter access may vary"}</span>
                   </div>
                 </div>
-                <span className={info.verified ? "verified" : "unverified"}>
-                  {info.verified && !isSearch ? (
-                    <>
-                      <ShieldCheck />
-                      Verified provider
-                    </>
-                  ) : info.verified ? (
-                    <>
-                      <Search />
-                      Official catalogue search
-                    </>
-                  ) : (
-                    <>External link</>
-                  )}
-                </span>
                 <a
                   href={link.url}
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label={`${isSearch ? "Search for" : "Read"} ${titleOf(media)} on ${link.site} (opens in a new tab)`}
                 >
-                  {isSearch ? "Search provider" : "Read officially"}
+                  {isSearch ? `Search ${provider}` : "Read officially"}
                   <ExternalLink />
                 </a>
-              </div>
+              </article>
             );
           })
         ) : (
@@ -1360,13 +1385,14 @@ function Detail({
             </div>
           </div>
         )}
-        <p className="link-note">
-          <ShieldCheck /> “Verified provider” confirms the domain belongs to a
-          recognised publisher or licensed platform. A catalogue-search label
-          means the provider is legitimate but ToonTrail has not confirmed that
-          it carries this specific title. Region and access labels are guidance;
-          the publisher's page is authoritative when opened.
-        </p>
+        <div className="link-note">
+          <ShieldCheck />
+          <p>
+            <b>How to read these labels:</b> a verified title page is a confirmed
+            match. An official provider search is safe to visit, but that
+            platform may not carry this title in your region.
+          </p>
+        </div>
         <a
           className="report-link"
           href={report}
