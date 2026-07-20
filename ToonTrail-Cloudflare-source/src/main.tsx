@@ -137,6 +137,7 @@ function App() {
     [loading, setLoading] = useState(true),
     [notice, setNotice] = useState(""),
     [feedbackOpen, setFeedbackOpen] = useState(false),
+    [feedbackDraft, setFeedbackDraft] = useState({ category: "GENERAL", message: "" }),
     [me, setMe] = useState<Me | null>(null),
     [library, setLibrary] = useState<Saved[]>([]),
     [savingIds, setSavingIds] = useState<Set<number>>(new Set()),
@@ -478,7 +479,15 @@ function App() {
       )}
       <main id="main-content" tabIndex={-1}>
         {legalPage ? (
-          <LegalPage path={legal} me={me} onNavigate={navigate} />
+          <LegalPage
+            path={legal}
+            me={me}
+            onNavigate={navigate}
+            onFeedback={() => {
+              setFeedbackDraft({ category: "GENERAL", message: "" });
+              setFeedbackOpen(true);
+            }}
+          />
         ) : tab === "discover" ? (
           <>
             <section className="hero" aria-labelledby="hero-title">
@@ -834,7 +843,10 @@ function App() {
         <nav aria-label="Legal">
           <button
             className="feedback-link"
-            onClick={() => setFeedbackOpen(true)}
+            onClick={() => {
+              setFeedbackDraft({ category: "GENERAL", message: "" });
+              setFeedbackOpen(true);
+            }}
           >
             <MessageSquare />
             Send Beta Feedback
@@ -856,10 +868,20 @@ function App() {
           onSave={saveMedia}
           onRemove={removeSaved}
           onRate={rate}
+          onFeedback={() => {
+            setFeedbackDraft({
+              category: "READING_LINK",
+              message: `Title: ${titleOf(active)}\nToonTrail ID: ${active.id}\n\nWhat is wrong with the link or availability label?\n`,
+            });
+            setActive(null);
+            setFeedbackOpen(true);
+          }}
         />
       )}
       {feedbackOpen && (
         <FeedbackDialog
+          initialCategory={feedbackDraft.category}
+          initialMessage={feedbackDraft.message}
           onClose={() => setFeedbackOpen(false)}
           onSubmitted={() => {
             setFeedbackOpen(false);
@@ -874,13 +896,17 @@ function App() {
 function FeedbackDialog({
   onClose,
   onSubmitted,
+  initialCategory = "GENERAL",
+  initialMessage = "",
 }: {
   onClose: () => void;
   onSubmitted: () => void;
+  initialCategory?: string;
+  initialMessage?: string;
 }) {
-  const [category, setCategory] = useState("GENERAL"),
+  const [category, setCategory] = useState(initialCategory),
     [score, setScore] = useState(0),
-    [message, setMessage] = useState(""),
+    [message, setMessage] = useState(initialMessage),
     [contact, setContact] = useState(""),
     [website, setWebsite] = useState(""),
     [submitting, setSubmitting] = useState(false),
@@ -982,10 +1008,12 @@ function LegalPage({
   path,
   me,
   onNavigate,
+  onFeedback,
 }: {
   path: string;
   me: Me | null;
   onNavigate: (p: string) => void;
+  onFeedback: () => void;
 }) {
   const [confirm, setConfirm] = useState(""),
     [deleting, setDeleting] = useState(false),
@@ -1085,16 +1113,11 @@ function LegalPage({
         <h2>Changes and contact</h2>
         <p>
           Material changes will be posted here with a revised effective date.
-          Privacy questions and requests can be submitted through the public{" "}
-          <a
-            href="https://github.com/hanshal18hub-sketch/ToonTrail/issues"
-            target="_blank"
-            rel="noreferrer"
-          >
-            ToonTrail support tracker
-          </a>
-          . Do not include passwords or other sensitive information in a public
-          issue.
+          Privacy questions and requests can be submitted through the account-free{" "}
+          <button className="inline-feedback" onClick={onFeedback}>
+            ToonTrail feedback form
+          </button>
+          . Do not include passwords or other sensitive information.
         </p>
       </article>
     );
@@ -1171,15 +1194,10 @@ function LegalPage({
         <h2>Changes and contact</h2>
         <p>
           Updated Terms will be posted here with a new effective date. Questions
-          may be submitted through the{" "}
-          <a
-            href="https://github.com/hanshal18hub-sketch/ToonTrail/issues"
-            target="_blank"
-            rel="noreferrer"
-          >
-            ToonTrail support tracker
-          </a>
-          .
+          may be submitted through the account-free{" "}
+          <button className="inline-feedback" onClick={onFeedback}>
+            ToonTrail feedback form
+          </button>.
         </p>
       </article>
     );
@@ -1459,6 +1477,7 @@ function Detail({
   onSave,
   onRemove,
   onRate,
+  onFeedback,
 }: {
   media: Media;
   saved: boolean;
@@ -1467,6 +1486,7 @@ function Detail({
   onSave: (m: Media, s?: string, p?: number) => void;
   onRemove: (id: number) => void;
   onRate: (id: number, s: number) => void;
+  onFeedback: () => void;
 }) {
   const links = media.externalLinks || [],
     dialog = useRef<HTMLElement>(null),
@@ -1504,7 +1524,6 @@ function Detail({
       previous?.focus();
     };
   }, [onClose]);
-  const report = `https://github.com/hanshal18hub-sketch/ToonTrail/issues/new?title=${encodeURIComponent(`Broken or incorrect link: ${titleOf(media)}`)}&body=${encodeURIComponent(`Title: ${titleOf(media)}\nToonTrail ID: ${media.id}\nProblem with the link or availability label:\n`)}`;
   return (
     <div
       className="overlay"
@@ -1691,15 +1710,13 @@ function Detail({
             platform may not carry this title in your region.
           </p>
         </div>
-        <a
+        <button
           className="report-link"
-          href={report}
-          target="_blank"
-          rel="noopener noreferrer"
+          onClick={onFeedback}
         >
           <TriangleAlert />
           Report a broken or incorrect link
-        </a>
+        </button>
         <button
           className="save"
           onClick={() => (saved ? onRemove(media.id) : onSave(media))}
