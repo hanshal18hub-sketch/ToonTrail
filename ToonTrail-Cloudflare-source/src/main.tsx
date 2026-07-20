@@ -113,6 +113,13 @@ const sourceInfo = (link: Link) => {
     return { verified: false, domain: "" };
   }
 };
+const betaFeedbackUrl =
+  "https://github.com/hanshal18hub-sketch/ToonTrail/issues/new?title=" +
+  encodeURIComponent("ToonTrail beta feedback") +
+  "&body=" +
+  encodeURIComponent(
+    "What were you trying to do?\n\nWhat happened?\n\nWhat would make ToonTrail better?\n\nDevice/browser (optional):\n",
+  );
 
 function App() {
   const [dark, setDark] = useState(false),
@@ -368,7 +375,12 @@ function App() {
             <button className="signin" onClick={requireSignIn}>
               {me?.authConfigured === false
                 ? "Sign-in setup pending"
-                : "Continue with Google"}
+                : (
+                  <>
+                    <span className="signin-full">Continue with Google</span>
+                    <span className="signin-short">Sign in</span>
+                  </>
+                )}
             </button>
           )}
         </div>
@@ -696,7 +708,7 @@ function App() {
             onRemove={removeSaved}
           />
         )}
-        <section className="how" id="how">
+        {!legalPage && <section className="how" id="how">
           <span className="kicker">Built for a proper beta</span>
           <h2>Discovery, decisions, and progress in one place.</h2>
           <div className="steps">
@@ -725,7 +737,7 @@ function App() {
               </p>
             </div>
           </div>
-        </section>
+        </section>}
       </main>
       <footer>
         <div>
@@ -735,6 +747,15 @@ function App() {
           <p>A safer path to official manga, manhwa, and manhua sources.</p>
         </div>
         <nav aria-label="Legal">
+          <a
+            className="feedback-link"
+            href={betaFeedbackUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Send Beta Feedback
+            <ExternalLink />
+          </a>
           <button onClick={() => navigate("/privacy")}>Privacy Policy</button>
           <button onClick={() => navigate("/terms")}>Terms of Use</button>
           <button onClick={() => navigate("/delete-account")}>
