@@ -933,8 +933,15 @@ export default {
           status: 503,
         });
       const state = crypto.randomUUID();
+      const requestedReturnTo = url.searchParams.get("returnTo") || "/";
+      const returnTo = ["/", "/library", "/delete-account"].includes(
+        requestedReturnTo,
+      )
+        ? requestedReturnTo
+        : "/";
       const stateValue = await signed(env.SESSION_SECRET, {
         state,
+        returnTo,
         exp: Math.floor(Date.now() / 1000) + 600,
       });
       const redirectUri =
@@ -1016,7 +1023,7 @@ export default {
       return new Response(null, {
         status: 302,
         headers: {
-          location: "/",
+          location: stateData.returnTo || "/",
           "set-cookie": cookie("toontrail_session", session, 60 * 60 * 24 * 30),
           "cache-control": "no-store",
         },
