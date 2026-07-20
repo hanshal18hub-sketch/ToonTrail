@@ -124,7 +124,9 @@ const betaFeedbackUrl =
 function App() {
   const [dark, setDark] = useState(false),
     [menu, setMenu] = useState(false),
-    [tab, setTab] = useState<"discover" | "library">("discover"),
+    [tab, setTab] = useState<"discover" | "library">(
+      location.pathname === "/library" ? "library" : "discover",
+    ),
     [legal, setLegal] = useState(location.pathname),
     [query, setQuery] = useState(""),
     [submitted, setSubmitted] = useState(""),
@@ -142,6 +144,7 @@ function App() {
     [notice, setNotice] = useState(""),
     [me, setMe] = useState<Me | null>(null),
     [library, setLibrary] = useState<Saved[]>([]),
+    [savingIds, setSavingIds] = useState<Set<number>>(new Set()),
     [ratings, setRatings] = useState<Record<number, Rating>>({});
   useEffect(() => {
     const v = localStorage.getItem("toontrail-theme");
@@ -190,7 +193,22 @@ function App() {
   }
   async function loadLibrary() {
     const r = await fetch("/api/library");
-    if (r.ok) setLibrary((await r.json()).items || []);
+    if (r.ok) {
+      const items: Saved[] = (await r.json()).items || [];
+      setLibrary(items);
+      const ids = items.map((item) => item.id).join(",");
+      if (ids) {
+        const result = await fetch(`/api/ratings?ids=${ids}`);
+        if (result.ok) {
+          const data = await result.json();
+          setRatings((current) => ({ ...current, ...data.ratings }));
+        }
+      }
+    } else if (r.status === 401) {
+      setMe((current) => current ? { ...current, signedIn: false } : current);
+      setLibrary([]);
+      setNotice("Your session expired. Sign in again to restore your synced library.");
+    }
   }
   const savedIds = useMemo(() => new Set(library.map((x) => x.id)), [library]);
   function requireSignIn() {
@@ -200,13 +218,19 @@ function App() {
         return false;
       }
       setNotice("Sign in to save titles, update progress, and rate stories.");
-      setTimeout(() => (location.href = me?.signInUrl || "/auth/google"), 700);
+      const returnTo = location.pathname === "/library" ? "/library" : "/";
+      const signInUrl = me?.signInUrl || "/auth/google";
+      setTimeout(() => {
+        const separator = signInUrl.includes("?") ? "&" : "?";
+        location.href = `${signInUrl}${separator}returnTo=${encodeURIComponent(returnTo)}`;
+      }, 700);
       return false;
     }
     return true;
   }
   async function saveMedia(m: Media, status = "PLANNING", progress = 0) {
     if (!requireSignIn()) return;
+    if (savingIds.has(m.id)) return;
     const body = {
       id: m.id,
       title: titleOf(m),
@@ -216,33 +240,72 @@ function App() {
       progress,
       chapters: m.chapters,
     };
-    const r = await fetch("/api/library", {
-      method: "POST",
-      headers: { "content-type": "application/json" },
-      body: JSON.stringify(body),
-    });
-    if (r.ok) {
-      await loadLibrary();
-      setNotice(
-        status === "PLANNING" ? "Added to your library" : "Progress updated",
-      );
-    } else setNotice((await r.json()).error);
+    const optimistic: Saved = { ...body, updatedAt: new Date().toISOString() };
+    const previous = library;
+    setSavingIds((current) => new Set(current).add(m.id));
+    setLibrary((current) => [optimistic, ...current.filter((item) => item.id !== m.id)]);
+    try {
+      const r = await fetch("/api/library", {
+        method: "POST",
+        headers: { "content-type": "application/json" },
+        body: JSON.stringify(body),
+      });
+      if (!r.ok) {
+        setLibrary(previous);
+        if (r.status === 401) {
+          setMe((current) => current ? { ...current, signedIn: false } : current);
+          setNotice("Your session expired. Please sign in again; your library was not changed.");
+        } else setNotice((await r.json()).error || "Could not save this title");
+        return;
+      }
+      setNotice(status === "PLANNING" ? "Added to your library" : "Progress updated");
+    } finally {
+      setSavingIds((current) => {
+        const next = new Set(current);
+        next.delete(m.id);
+        return next;
+      });
+    }
   }
   async function removeSaved(id: number) {
-    await fetch(`/api/library/${id}`, { method: "DELETE" });
-    await loadLibrary();
-    setNotice("Removed from library");
+    if (savingIds.has(id)) return;
+    const previous = library;
+    setSavingIds((current) => new Set(current).add(id));
+    setLibrary((current) => current.filter((item) => item.id !== id));
+    const r = await fetch(`/api/library/${id}`, { method: "DELETE" });
+    if (!r.ok) {
+      setLibrary(previous);
+      setNotice("Could not remove this title. Please try again.");
+    } else setNotice("Removed from library");
+    setSavingIds((current) => {
+      const next = new Set(current);
+      next.delete(id);
+      return next;
+    });
   }
   async function updateSaved(item: Saved, patch: Partial<Saved>) {
+    if (savingIds.has(item.id)) return;
+    const previous = library;
+    const updated = { ...item, ...patch };
+    setSavingIds((current) => new Set(current).add(item.id));
+    setLibrary((current) => current.map((entry) => entry.id === item.id ? updated : entry));
     const r = await fetch("/api/library", {
       method: "POST",
       headers: { "content-type": "application/json" },
       body: JSON.stringify({ ...item, ...patch }),
     });
-    if (r.ok) {
-      await loadLibrary();
-      setNotice("Library updated");
+    if (r.ok) setNotice("Library updated");
+    else {
+      setLibrary(previous);
+      setNotice(r.status === 401 ? "Your session expired. Please sign in again." : "Could not update your library.");
+      if (r.status === 401)
+        setMe((current) => current ? { ...current, signedIn: false } : current);
     }
+    setSavingIds((current) => {
+      const next = new Set(current);
+      next.delete(item.id);
+      return next;
+    });
   }
   async function rate(id: number, score: number) {
     if (!requireSignIn()) return;
@@ -263,6 +326,14 @@ function App() {
       const r = await fetch(`/api/catalog/${m.id}`);
       if (r.ok) setActive((await r.json()).media);
     } catch {}
+  }
+  async function openMediaById(id: number) {
+    const r = await fetch(`/api/catalog/${id}`);
+    if (!r.ok) {
+      setNotice("Could not load this title's reading options.");
+      return;
+    }
+    setActive((await r.json()).media);
   }
   const search = (e: React.FormEvent) => {
     e.preventDefault();
@@ -292,7 +363,11 @@ function App() {
     });
   }
   useEffect(() => {
-    const pop = () => setLegal(location.pathname);
+    const pop = () => {
+      setLegal(location.pathname);
+      setTab(location.pathname === "/library" ? "library" : "discover");
+      setActive(null);
+    };
     addEventListener("popstate", pop);
     return () => removeEventListener("popstate", pop);
   }, []);
@@ -325,7 +400,7 @@ function App() {
             aria-current={!legalPage && tab === "library" ? "page" : undefined}
             className={!legalPage && tab === "library" ? "active" : ""}
             onClick={() => {
-              navigate("/");
+              navigate("/library");
               setTab("library");
             }}
           >
@@ -358,19 +433,21 @@ function App() {
             {menu ? <X /> : <Menu />}
           </button>
           {me?.signedIn ? (
-            <button
-              className="account"
-              onClick={async () => {
-                await fetch(me.signOutUrl, { method: "POST" });
-                location.href = "/";
-              }}
-              aria-label={`Sign out ${me.name || me.email}`}
-              title="Sign out"
-            >
+            <div className="account" aria-label={`Signed in as ${me.name || me.email}`}>
               <User />
               <span>{me.name || "Signed in"}</span>
-              <LogOut />
-            </button>
+              <button
+                className="signout"
+                onClick={async () => {
+                  await fetch(me.signOutUrl, { method: "POST" });
+                  location.href = "/";
+                }}
+                aria-label={`Sign out ${me.name || me.email}`}
+                title="Sign out"
+              >
+                <LogOut />
+              </button>
+            </div>
           ) : (
             <button
               className="signin"
@@ -625,6 +702,7 @@ function App() {
                             </span>
                             <button
                               className="bookmark"
+                              disabled={savingIds.has(m.id)}
                               onClick={() =>
                                 saved ? removeSaved(m.id) : saveMedia(m)
                               }
@@ -714,6 +792,10 @@ function App() {
             onSignIn={requireSignIn}
             onUpdate={updateSaved}
             onRemove={removeSaved}
+            onOpen={openMediaById}
+            onRate={rate}
+            ratings={ratings}
+            savingIds={savingIds}
           />
         )}
         {!legalPage && <section className="how" id="how">
@@ -1067,12 +1149,20 @@ function LibraryView({
   onSignIn,
   onUpdate,
   onRemove,
+  onOpen,
+  onRate,
+  ratings,
+  savingIds,
 }: {
   me: Me | null;
   items: Saved[];
   onSignIn: () => boolean;
   onUpdate: (i: Saved, p: Partial<Saved>) => void;
   onRemove: (id: number) => void;
+  onOpen: (id: number) => void;
+  onRate: (id: number, score: number) => void;
+  ratings: Record<number, Rating>;
+  savingIds: Set<number>;
 }) {
   if (!me?.signedIn)
     return (
@@ -1127,71 +1217,122 @@ function LibraryView({
       ) : (
         <div className="library-list">
           {items.map((i) => (
-            <article key={i.id}>
-              {i.cover ? (
-                <img src={i.cover} alt={`${i.title} cover`} loading="lazy" />
-              ) : (
-                <div
-                  className="library-cover"
-                  aria-label={`${i.title} cover unavailable`}
-                >
-                  {i.title
-                    .split(" ")
-                    .slice(0, 2)
-                    .map((x) => x[0])
-                    .join("")}
-                </div>
-              )}
-              <div>
-                <span className="type">{i.kind}</span>
-                <h3>{i.title}</h3>
-                <label>
-                  Status
-                  <select
-                    aria-label={`Reading status for ${i.title}`}
-                    value={i.status}
-                    onChange={(e) => onUpdate(i, { status: e.target.value })}
-                  >
-                    <option value="PLANNING">Plan to read</option>
-                    <option value="READING">Reading</option>
-                    <option value="COMPLETED">Completed</option>
-                    <option value="PAUSED">Paused</option>
-                    <option value="DROPPED">Dropped</option>
-                  </select>
-                </label>
-              </div>
-              <label>
-                Current chapter
-                <input
-                  aria-label={`Current chapter for ${i.title}`}
-                  type="number"
-                  min="0"
-                  max={i.chapters || 99999}
-                  value={i.progress}
-                  onChange={(e) =>
-                    onUpdate(i, {
-                      progress: Number(e.target.value),
-                      status: Number(e.target.value) > 0 ? "READING" : i.status,
-                    })
-                  }
-                />
-                <small>
-                  {i.chapters ? `of ${i.chapters}` : "Enter your progress"}
-                </small>
-              </label>
-              <button
-                className="delete"
-                onClick={() => onRemove(i.id)}
-                aria-label={`Remove ${i.title} from your library`}
-              >
-                <Trash2 />
-                Remove
-              </button>
-            </article>
+            <LibraryItem
+              key={i.id}
+              item={i}
+              rating={ratings[i.id]}
+              saving={savingIds.has(i.id)}
+              onUpdate={onUpdate}
+              onRemove={onRemove}
+              onOpen={onOpen}
+              onRate={onRate}
+            />
           ))}
         </div>
       )}
     </section>
+  );
+}
+
+function LibraryItem({
+  item,
+  rating,
+  saving,
+  onUpdate,
+  onRemove,
+  onOpen,
+  onRate,
+}: {
+  item: Saved;
+  rating?: Rating;
+  saving: boolean;
+  onUpdate: (i: Saved, p: Partial<Saved>) => void;
+  onRemove: (id: number) => void;
+  onOpen: (id: number) => void;
+  onRate: (id: number, score: number) => void;
+}) {
+  const [progress, setProgress] = useState(String(item.progress));
+  useEffect(() => setProgress(String(item.progress)), [item.progress]);
+  function commitProgress() {
+    const next = Math.max(0, Math.min(item.chapters || 99999, Number(progress) || 0));
+    setProgress(String(next));
+    if (next !== item.progress)
+      onUpdate(item, {
+        progress: next,
+        status: next > 0 && item.status === "PLANNING" ? "READING" : item.status,
+      });
+  }
+  return (
+    <article className={saving ? "is-saving" : ""}>
+      <button className="library-poster" onClick={() => onOpen(item.id)} aria-label={`Open ${item.title} details and reading options`}>
+        {item.cover ? (
+          <img src={item.cover} alt={`${item.title} cover`} loading="lazy" />
+        ) : (
+          <span className="library-cover" aria-label={`${item.title} cover unavailable`}>
+            {item.title.split(" ").slice(0, 2).map((x) => x[0]).join("")}
+          </span>
+        )}
+      </button>
+      <div className="library-title">
+        <span className="type">{item.kind}</span>
+        <button className="library-title-link" onClick={() => onOpen(item.id)}>{item.title}</button>
+        <label>
+          Status
+          <select
+            aria-label={`Reading status for ${item.title}`}
+            value={item.status}
+            disabled={saving}
+            onChange={(e) => onUpdate(item, { status: e.target.value })}
+          >
+            <option value="PLANNING">Plan to read</option>
+            <option value="READING">Reading</option>
+            <option value="COMPLETED">Completed</option>
+            <option value="PAUSED">Paused</option>
+            <option value="DROPPED">Dropped</option>
+          </select>
+        </label>
+      </div>
+      <div className="library-progress">
+        <label>
+          Current chapter
+          <input
+            aria-label={`Current chapter for ${item.title}`}
+            type="number"
+            inputMode="numeric"
+            min="0"
+            max={item.chapters || 99999}
+            value={progress}
+            disabled={saving}
+            onChange={(e) => setProgress(e.target.value)}
+            onBlur={commitProgress}
+            onKeyDown={(e) => {
+              if (e.key === "Enter") e.currentTarget.blur();
+              if (e.key === "Escape") setProgress(String(item.progress));
+            }}
+          />
+          <small>{item.chapters ? `of ${item.chapters}` : "Press Enter or leave the field to save"}</small>
+        </label>
+      </div>
+      <div className="library-rating">
+        <span>Your rating</span>
+        <div className="stars" role="group" aria-label={`Rate ${item.title}`}>
+          {[1, 2, 3, 4, 5].map((score) => (
+            <button key={score} disabled={saving} onClick={() => onRate(item.id, score)} aria-label={`${score} star${score > 1 ? "s" : ""}`} aria-pressed={rating?.mine === score}>
+              <Star fill={(rating?.mine || 0) >= score ? "currentColor" : "none"} />
+            </button>
+          ))}
+        </div>
+        <small>{rating?.mine ? `${rating.mine} of 5` : "Not rated yet"}</small>
+      </div>
+      <div className="library-actions">
+        <button className="read-options" onClick={() => onOpen(item.id)}>
+          <BookOpen /> Read / view options
+        </button>
+        <button className="delete" disabled={saving} onClick={() => onRemove(item.id)} aria-label={`Remove ${item.title} from your library`}>
+          <Trash2 /> Remove
+        </button>
+      </div>
+    </article>
   );
 }
 
