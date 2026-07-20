@@ -169,6 +169,12 @@ async function init(db) {
     db.prepare(
       "CREATE TABLE IF NOT EXISTS app_meta (key TEXT PRIMARY KEY, value TEXT NOT NULL)",
     ),
+    db.prepare(
+      "CREATE TABLE IF NOT EXISTS beta_feedback (id INTEGER PRIMARY KEY AUTOINCREMENT, category TEXT NOT NULL, score INTEGER CHECK(score BETWEEN 0 AND 5), message TEXT NOT NULL, contact_email TEXT, page_path TEXT NOT NULL DEFAULT '/', created_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP)",
+    ),
+    db.prepare(
+      "CREATE INDEX IF NOT EXISTS beta_feedback_created_idx ON beta_feedback(created_at DESC)",
+    ),
   ]);
 }
 const CURATED_COVERS = {
@@ -1085,6 +1091,43 @@ export default {
           { error: "Too many changes. Please wait a minute and try again." },
           429,
         );
+      if (path === "/api/feedback" && request.method === "POST") {
+        const parsed = await readJson(request);
+        if (parsed.error) return parsed.error;
+        const body = parsed.value || {};
+        if (String(body.website || "").trim()) return json({ ok: true });
+        const categories = [
+          "GENERAL",
+          "BUG",
+          "CATALOG",
+          "READING_LINK",
+          "ACCESSIBILITY",
+          "IDEA",
+        ];
+        const category = categories.includes(body.category)
+            ? body.category
+            : "GENERAL",
+          message = String(body.message || "").trim(),
+          contact = String(body.contact || "").trim().toLowerCase(),
+          page = String(body.page || "/").slice(0, 300),
+          numericScore = Number(body.score),
+          score = Number.isInteger(numericScore) && numericScore >= 1 && numericScore <= 5
+            ? numericScore
+            : 0;
+        if (message.length < 10 || message.length > 2000)
+          return json({ error: "Feedback must be between 10 and 2000 characters" }, 400);
+        if (contact && (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(contact) || contact.length > 200))
+          return json({ error: "Please enter a valid contact email or leave it blank" }, 400);
+        await env.DB.batch([
+          env.DB.prepare(
+            "INSERT INTO beta_feedback(category,score,message,contact_email,page_path,created_at) VALUES(?,?,?,?,?,CURRENT_TIMESTAMP)",
+          ).bind(category, score, message, contact || null, page.startsWith("/") ? page : "/"),
+          env.DB.prepare(
+            "DELETE FROM beta_feedback WHERE created_at < datetime('now','-180 days')",
+          ),
+        ]);
+        return json({ ok: true }, 201);
+      }
       if (path === "/api/ratings" && request.method === "GET") {
         const ids = (url.searchParams.get("ids") || "")
           .split(",")
