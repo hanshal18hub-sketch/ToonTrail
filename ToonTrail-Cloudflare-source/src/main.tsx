@@ -372,7 +372,15 @@ function App() {
               <LogOut />
             </button>
           ) : (
-            <button className="signin" onClick={requireSignIn}>
+            <button
+              className="signin"
+              onClick={requireSignIn}
+              aria-label={
+                me?.authConfigured === false
+                  ? "Sign-in setup pending"
+                  : "Continue with Google"
+              }
+            >
               {me?.authConfigured === false
                 ? "Sign-in setup pending"
                 : (
