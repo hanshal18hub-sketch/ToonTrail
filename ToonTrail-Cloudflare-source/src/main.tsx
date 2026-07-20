@@ -20,6 +20,8 @@ import {
   LoaderCircle,
   ArrowLeft,
   TriangleAlert,
+  MessageSquare,
+  Send,
 } from "lucide-react";
 import "./styles.css";
 
@@ -113,14 +115,6 @@ const sourceInfo = (link: Link) => {
     return { verified: false, domain: "" };
   }
 };
-const betaFeedbackUrl =
-  "https://github.com/hanshal18hub-sketch/ToonTrail/issues/new?title=" +
-  encodeURIComponent("ToonTrail beta feedback") +
-  "&body=" +
-  encodeURIComponent(
-    "What were you trying to do?\n\nWhat happened?\n\nWhat would make ToonTrail better?\n\nDevice/browser (optional):\n",
-  );
-
 function App() {
   const [dark, setDark] = useState(false),
     [menu, setMenu] = useState(false),
@@ -142,6 +136,7 @@ function App() {
     [active, setActive] = useState<Media | null>(null),
     [loading, setLoading] = useState(true),
     [notice, setNotice] = useState(""),
+    [feedbackOpen, setFeedbackOpen] = useState(false),
     [me, setMe] = useState<Me | null>(null),
     [library, setLibrary] = useState<Saved[]>([]),
     [savingIds, setSavingIds] = useState<Set<number>>(new Set()),
@@ -837,15 +832,13 @@ function App() {
           <p>A safer path to official manga, manhwa, and manhua sources.</p>
         </div>
         <nav aria-label="Legal">
-          <a
+          <button
             className="feedback-link"
-            href={betaFeedbackUrl}
-            target="_blank"
-            rel="noopener noreferrer"
+            onClick={() => setFeedbackOpen(true)}
           >
+            <MessageSquare />
             Send Beta Feedback
-            <ExternalLink />
-          </a>
+          </button>
           <button onClick={() => navigate("/privacy")}>Privacy Policy</button>
           <button onClick={() => navigate("/terms")}>Terms of Use</button>
           <button onClick={() => navigate("/delete-account")}>
@@ -865,6 +858,122 @@ function App() {
           onRate={rate}
         />
       )}
+      {feedbackOpen && (
+        <FeedbackDialog
+          onClose={() => setFeedbackOpen(false)}
+          onSubmitted={() => {
+            setFeedbackOpen(false);
+            setNotice("Thank you — your beta feedback was received.");
+          }}
+        />
+      )}
+    </div>
+  );
+}
+
+function FeedbackDialog({
+  onClose,
+  onSubmitted,
+}: {
+  onClose: () => void;
+  onSubmitted: () => void;
+}) {
+  const [category, setCategory] = useState("GENERAL"),
+    [score, setScore] = useState(0),
+    [message, setMessage] = useState(""),
+    [contact, setContact] = useState(""),
+    [website, setWebsite] = useState(""),
+    [submitting, setSubmitting] = useState(false),
+    [error, setError] = useState("");
+  const close = useRef<HTMLButtonElement>(null);
+  useEffect(() => {
+    const previous = document.activeElement as HTMLElement;
+    close.current?.focus();
+    const key = (event: KeyboardEvent) => event.key === "Escape" && onClose();
+    addEventListener("keydown", key);
+    return () => {
+      removeEventListener("keydown", key);
+      previous?.focus();
+    };
+  }, [onClose]);
+  async function submit(event: React.FormEvent) {
+    event.preventDefault();
+    if (message.trim().length < 10) {
+      setError("Please add at least 10 characters so we can understand the feedback.");
+      return;
+    }
+    setSubmitting(true);
+    setError("");
+    try {
+      const response = await fetch("/api/feedback", {
+        method: "POST",
+        headers: { "content-type": "application/json" },
+        body: JSON.stringify({
+          category,
+          score,
+          message: message.trim(),
+          contact: contact.trim(),
+          website,
+          page: `${location.pathname}${location.search}`,
+        }),
+      });
+      const data = await response.json();
+      if (!response.ok) throw Error(data.error || "Feedback could not be submitted");
+      onSubmitted();
+    } catch (reason) {
+      setError(reason instanceof Error ? reason.message : "Feedback could not be submitted");
+    } finally {
+      setSubmitting(false);
+    }
+  }
+  return (
+    <div className="feedback-overlay" onMouseDown={(event) => event.target === event.currentTarget && onClose()}>
+      <section className="feedback-dialog" role="dialog" aria-modal="true" aria-labelledby="feedback-title">
+        <button ref={close} className="close" onClick={onClose} aria-label="Close beta feedback form"><X /></button>
+        <span className="kicker">Public beta</span>
+        <h2 id="feedback-title">Help shape ToonTrail.</h2>
+        <p>GitHub and Google accounts are not required. Your contact email is optional and is only used if you want a reply.</p>
+        <form onSubmit={submit}>
+          <label>
+            What is this about?
+            <select value={category} onChange={(event) => setCategory(event.target.value)}>
+              <option value="GENERAL">General experience</option>
+              <option value="BUG">Something did not work</option>
+              <option value="CATALOG">Missing or incorrect title</option>
+              <option value="READING_LINK">Reading link problem</option>
+              <option value="ACCESSIBILITY">Accessibility</option>
+              <option value="IDEA">Feature idea</option>
+            </select>
+          </label>
+          <fieldset>
+            <legend>Overall experience <small>(optional)</small></legend>
+            <div className="feedback-score">
+              {[1, 2, 3, 4, 5].map((value) => (
+                <button type="button" key={value} onClick={() => setScore(value)} aria-label={`${value} out of 5`} aria-pressed={score === value}>
+                  <Star fill={score >= value ? "currentColor" : "none"} />
+                </button>
+              ))}
+            </div>
+          </fieldset>
+          <label>
+            Your feedback
+            <textarea value={message} onChange={(event) => setMessage(event.target.value)} maxLength={2000} required placeholder="What happened, what were you trying to do, or what should improve?" />
+            <small>{message.length}/2000 characters</small>
+          </label>
+          <label>
+            Contact email <small>(optional)</small>
+            <input type="email" value={contact} onChange={(event) => setContact(event.target.value)} maxLength={200} autoComplete="email" placeholder="Only if you want a reply" />
+          </label>
+          <label className="feedback-honeypot" aria-hidden="true">
+            Website
+            <input value={website} onChange={(event) => setWebsite(event.target.value)} tabIndex={-1} autoComplete="off" />
+          </label>
+          {error && <p className="form-error" role="alert">{error}</p>}
+          <button className="feedback-submit" disabled={submitting || message.trim().length < 10}>
+            {submitting ? <><LoaderCircle /> Sending…</> : <><Send /> Submit feedback</>}
+          </button>
+        </form>
+      </section>
     </div>
   );
 }
@@ -922,6 +1031,12 @@ function LegalPage({
           <li>
             <b>Your ToonTrail activity:</b> saved titles, reading status,
             chapter progress, and ratings.
+          </li>
+          <li>
+            <b>Beta feedback:</b> category, optional experience score, message,
+            page path, submission time, and an optional contact email you choose
+            to provide. Feedback does not automatically include your Google
+            account identity and is retained for up to 180 days.
           </li>
           <li>
             <b>Basic service data:</b> Cloudflare may process request
