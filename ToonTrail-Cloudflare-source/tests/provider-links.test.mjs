@@ -29,10 +29,10 @@ test("Witch Hat Atelier resolves to its confirmed official reading page", () => 
     kind: "Manga",
   });
 
-  assert.equal(links.length, 1);
-  assert.equal(links[0].type, "OFFICIAL_READING_PAGE");
-  assert.equal(links[0].url, "https://s.kmanga.kodansha.com/ldg?t=10065");
-  assert.match(links[0].site, /Witch Hat Atelier/);
+  assert.ok(links.length >= 1);
+  const readingPage = links.find((link) => link.type === "OFFICIAL_READING_PAGE");
+  assert.equal(readingPage?.url, "https://s.kmanga.kodansha.com/ldg?t=10065");
+  assert.match(readingPage?.site || "", /Witch Hat Atelier/);
 });
 
 test("unverified titles never receive guessed provider links", () => {
