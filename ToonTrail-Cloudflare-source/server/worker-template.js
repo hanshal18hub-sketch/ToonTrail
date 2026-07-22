@@ -617,42 +617,7 @@ const knownOfficialLinks = new Map([
 ]);
 const providerDiscoveryLinks = (row) => {
   const known = knownOfficialLinks.get(Number(row.id));
-  if (known) return known;
-  const title = row.english_title || row.romaji_title;
-  const query = encodeURIComponent(title);
-  const shared = {
-    type: "OFFICIAL_CATALOG_SEARCH",
-    region: "Availability varies by region",
-    access: "Provider search; this title is not yet confirmed",
-  };
-  if (String(row.kind).toUpperCase() === "MANHWA")
-    return [
-      {
-        ...shared,
-        site: "WEBTOON — official catalogue search",
-        url: `https://www.webtoons.com/en/search?keyword=${query}`,
-      },
-      {
-        ...shared,
-        site: "Tapas — official catalogue search",
-        url: `https://tapas.io/search?q=${query}&t=COMICS`,
-      },
-    ];
-  if (String(row.kind).toUpperCase() === "MANHUA")
-    return [
-      {
-        ...shared,
-        site: "Tapas — official catalogue search",
-        url: `https://tapas.io/search?q=${query}&t=COMICS`,
-      },
-    ];
-  return [
-    {
-      ...shared,
-      site: "VIZ — official catalogue search",
-      url: `https://www.viz.com/search?search=${query}`,
-    },
-  ];
+  return known || [];
 };
 const mediaFromRow = (row) => ({
   id: row.id,
