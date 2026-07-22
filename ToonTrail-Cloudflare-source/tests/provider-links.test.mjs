@@ -14,7 +14,7 @@ assert.notEqual(end, -1, "provider link block must be extractable");
 
 const context = vm.createContext({ URL, encodeURIComponent });
 vm.runInContext(
-  `${worker.slice(start, end)}; globalThis.providerDiscoveryLinks = providerDiscoveryLinks;`,
+  `${worker.slice(start, end)}; globalThis.providerDiscoveryLinks = providerDiscoveryLinks; globalThis.knownOfficialLinks = knownOfficialLinks;`,
   context,
 );
 
@@ -32,7 +32,7 @@ test("Witch Hat Atelier resolves to its confirmed official reading page", () => 
   assert.match(links[0].site, /Witch Hat Atelier/);
 });
 
-test("generic discovery links always retain the requested title", () => {
+test("unverified titles never receive guessed provider links", () => {
   for (const kind of ["Manga", "Manhwa", "Manhua"]) {
     const links = context.providerDiscoveryLinks({
       id: 999999999,
@@ -41,11 +41,20 @@ test("generic discovery links always retain the requested title", () => {
       kind,
     });
 
-    assert.ok(links.length > 0);
+    assert.deepEqual(Array.from(links), []);
+  }
+});
+
+test("confirmed links are HTTPS title pages, not generic homepages or searches", () => {
+  for (const links of context.knownOfficialLinks.values()) {
     for (const link of links) {
-      const decoded = decodeURIComponent(link.url).toLowerCase();
-      assert.match(decoded, /a title with spaces/);
-      assert.match(link.type, /SEARCH/);
+      const url = new URL(link.url);
+      assert.equal(url.protocol, "https:");
+      assert.notEqual(url.pathname, "/");
+      assert.doesNotMatch(link.type, /SEARCH/);
+      assert.match(link.type, /^OFFICIAL_/);
+      assert.ok(link.region);
+      assert.ok(link.access);
     }
   }
 });
