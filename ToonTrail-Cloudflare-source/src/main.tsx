@@ -1640,6 +1640,7 @@ function Detail({
           links.map((link, i) => {
             const info = sourceInfo(link);
             const isSearch = link.type?.includes("SEARCH");
+            const isReading = link.type?.includes("READING");
             const provider = link.site.split("—")[0].trim();
             const statusLabel = isSearch
               ? "Official provider search"
@@ -1682,9 +1683,13 @@ function Detail({
                   href={link.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  aria-label={`${isSearch ? "Search for" : "Read"} ${titleOf(media)} on ${link.site} (opens in a new tab)`}
+                  aria-label={`${isSearch ? "Search for" : isReading ? "Read" : "View official options for"} ${titleOf(media)} on ${link.site} (opens in a new tab)`}
                 >
-                  {isSearch ? `Search ${provider}` : "Read officially"}
+                  {isSearch
+                    ? `Search ${provider}`
+                    : isReading
+                      ? "Read officially"
+                      : "View official options"}
                   <ExternalLink />
                 </a>
               </article>
