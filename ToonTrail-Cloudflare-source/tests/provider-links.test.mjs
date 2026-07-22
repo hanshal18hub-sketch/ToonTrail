@@ -7,6 +7,9 @@ const worker = await readFile(
   new URL("../server/worker-template.js", import.meta.url),
   "utf8",
 );
+const knownLinks = JSON.parse(
+  await readFile(new URL("../data/known-official-links.json", import.meta.url), "utf8"),
+);
 const start = worker.indexOf("const knownOfficialLinks");
 const end = worker.indexOf("const mediaFromRow", start);
 assert.notEqual(start, -1, "known official link definitions must exist");
@@ -14,7 +17,7 @@ assert.notEqual(end, -1, "provider link block must be extractable");
 
 const context = vm.createContext({ URL, encodeURIComponent });
 vm.runInContext(
-  `${worker.slice(start, end)}; globalThis.providerDiscoveryLinks = providerDiscoveryLinks; globalThis.knownOfficialLinks = knownOfficialLinks;`,
+  `${worker.slice(start, end).replace("__TOONTRAIL_KNOWN_OFFICIAL_LINKS__", JSON.stringify(knownLinks))}; globalThis.providerDiscoveryLinks = providerDiscoveryLinks; globalThis.knownOfficialLinks = knownOfficialLinks;`,
   context,
 );
 
