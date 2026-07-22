@@ -601,20 +601,12 @@ const parseJson = (value, fallback) => {
     return fallback;
   }
 };
-const knownOfficialLinks = new Map([
-  [
-    1038865,
-    [
-      {
-        type: "OFFICIAL_READING_PAGE",
-        site: "K MANGA — official Witch Hat Atelier page",
-        url: "https://s.kmanga.kodansha.com/ldg?t=10065",
-        region: "Availability varies by region",
-        access: "Official digital chapters; account, points, or regional restrictions may apply",
-      },
-    ],
-  ],
-]);
+const knownOfficialLinks = new Map(
+  Object.entries(__TOONTRAIL_KNOWN_OFFICIAL_LINKS__).map(([id, links]) => [
+    Number(id),
+    links,
+  ]),
+);
 const providerDiscoveryLinks = (row) => {
   const known = knownOfficialLinks.get(Number(row.id));
   return known || [];
