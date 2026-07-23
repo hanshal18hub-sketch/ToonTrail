@@ -1,149 +1,1507 @@
 {
-  "1000940": [{"type":"OFFICIAL_SERIES_PAGE","site":"Kodansha — official Mushishi page","url":"https://kodansha.us/series/mushishi/","region":"Availability varies by region","access":"Official editions and retailer options; purchase may be required"}],
-  "1001456": [{"type":"OFFICIAL_SERIES_PAGE","site":"Kodansha — official Vinland Saga page","url":"https://kodansha.us/series/vinland-saga/","region":"Availability varies by region","access":"Official editions and retailer options; purchase may be required"}],
-  "1001685": [{"type":"OFFICIAL_SERIES_PAGE","site":"Kodansha — official Battle Angel Alita page","url":"https://kodansha.us/series/battle-angel-alita/","region":"Availability varies by region","access":"Official editions and retailer options; purchase may be required"}],
-  "1001388": [{"type":"OFFICIAL_SERIES_PAGE","site":"VIZ — official Skip Beat! page","url":"https://www.viz.com/manga-books/manga/skip-beat/all","region":"Availability varies by region","access":"Official volumes and retailer options; purchase may be required"}],
-  "1001637": [{"type":"OFFICIAL_SERIES_PAGE","site":"VIZ — official Pluto page","url":"https://www.viz.com/manga-books/manga/pluto-urasawa-x-tezuka/all","region":"Availability varies by region","access":"Official volumes and retailer options; purchase may be required"}],
-  "1007176": [{"type":"OFFICIAL_READING_PAGE","site":"VIZ Shonen Jump — Tokyo Ghoul chapters","url":"https://www.viz.com/shonenjump/chapters/tokyo-ghoul","region":"Available in supported VIZ territories","access":"Selected chapters may be free; membership may be required for archive access"}],
-  "1007727": [{"type":"OFFICIAL_SERIES_PAGE","site":"Seven Seas — official Citrus page","url":"https://sevenseasentertainment.com/series/citrus/","region":"Availability varies by region","access":"Authorized editions and retailer options; purchase may be required"}],
-  "1011275": [{"type":"OFFICIAL_SERIES_PAGE","site":"Yen Press — official Blood Lad page","url":"https://yenpress.com/series/blood-lad","region":"Availability varies by region","access":"Authorized digital and print editions; purchase may be required"}],
-  "1013243": [{"type":"OFFICIAL_SERIES_PAGE","site":"Seven Seas — official orange page","url":"https://sevenseasentertainment.com/series/orange/","region":"Availability varies by region","access":"Authorized editions and retailer options; purchase may be required"}],
-  "1014916": [{"type":"OFFICIAL_SERIES_PAGE","site":"Kodansha — official Attack on Titan page","url":"https://kodansha.us/series/attack-on-titan/","region":"Availability varies by region","access":"Official editions and retailer options; purchase may be required"}],
-  "1016529": [{"type":"OFFICIAL_SERIES_PAGE","site":"Kodansha — official Your Lie in April page","url":"https://kodansha.us/series/your-lie-in-april/","region":"Availability varies by region","access":"Official editions and retailer options; purchase may be required"}],
-  "1016554": [{"type":"OFFICIAL_SERIES_PAGE","site":"Kodansha — official A Silent Voice page","url":"https://kodansha.us/series/a-silent-voice/","region":"Availability varies by region","access":"Official editions and retailer options; purchase may be required"}],
-  "1017204": [{"type":"OFFICIAL_SERIES_PAGE","site":"Kodansha — official Noragami page","url":"https://kodansha.us/series/noragami-stray-god/","region":"Availability varies by region","access":"Official editions and retailer options; purchase may be required"}],
-  "1018452": [{"type":"OFFICIAL_SERIES_PAGE","site":"Yen Press — official Prison School page","url":"https://yenpress.com/series/prison-school","region":"Availability varies by region","access":"Authorized digital and print editions; purchase may be required"}],
-  "1000068": [{"type":"OFFICIAL_READING_PAGE","site":"VIZ Shonen Jump — Hunter x Hunter chapters","url":"https://www.viz.com/shonenjump/chapters/hunter-x-hunter","region":"Available in supported VIZ territories","access":"Selected chapters may be free; membership may be required for archive access"}],
-  "1000037": [{"type":"OFFICIAL_READING_PAGE","site":"VIZ Shonen Jump — Bleach chapters","url":"https://www.viz.com/shonenjump/chapters/bleach","region":"Available in supported VIZ territories","access":"Selected chapters may be free; membership may be required for archive access"}],
-  "1001554": [{"type":"OFFICIAL_SERIES_PAGE","site":"VIZ — official Food Wars page","url":"https://www.viz.com/manga-books/manga/food-wars-shokugeki-no-soma/all","region":"Availability varies by region","access":"Official volumes and retailer options; purchase may be required"}],
-  "1024147": [{"type":"OFFICIAL_READING_PAGE","site":"VIZ Shonen Jump — One-Punch Man chapters","url":"https://www.viz.com/shonenjump/chapters/one-punch-man","region":"Available in supported VIZ territories","access":"Selected chapters may be free; membership may be required for archive access"}],
-  "1021871": [{"type":"OFFICIAL_SERIES_PAGE","site":"Kodansha — official Say I Love You page","url":"https://kodansha.us/series/say-i-love-you/","region":"Availability varies by region","access":"Official editions and retailer options; purchase may be required"}],
-  "1020282": [{"type":"OFFICIAL_SERIES_PAGE","site":"Seven Seas — official Lucifer and the Biscuit Hammer page","url":"https://sevenseasentertainment.com/series/lucifer-and-the-biscuit-hammer/","region":"Availability varies by region","access":"Authorized editions and retailer options; purchase may be required"}],
-  "1021550": [{"type":"OFFICIAL_SERIES_PAGE","site":"Yen Press — official A Bride's Story page","url":"https://yenpress.com/series/a-bride-s-story","region":"Availability varies by region","access":"Authorized digital and print editions; purchase may be required"}],
-  "1022352": [{"type":"OFFICIAL_SERIES_PAGE","site":"Yen Press — official Horimiya page","url":"https://yenpress.com/series/horimiya","region":"Availability varies by region","access":"Authorized digital and print editions; purchase may be required"}],
-  "1022926": [{"type":"OFFICIAL_SERIES_PAGE","site":"Yen Press — official Monthly Girls' Nozaki-kun page","url":"https://yenpress.com/series/monthly-girls-nozaki-kun","region":"Availability varies by region","access":"Authorized digital and print editions; purchase may be required"}],
-  "1024208": [{"type":"OFFICIAL_SERIES_PAGE","site":"Kodansha — official The Seven Deadly Sins page","url":"https://kodansha.us/series/the-seven-deadly-sins/","region":"Availability varies by region","access":"Official editions and retailer options; purchase may be required"}],
-  "1025356": [{"type":"OFFICIAL_SERIES_PAGE","site":"Seven Seas — official The Ancient Magus' Bride page","url":"https://sevenseasentertainment.com/series/the-ancient-magus-bride/","region":"Availability varies by region","access":"Authorized editions and retailer options; purchase may be required"}],
-  "1025449": [{"type":"OFFICIAL_SERIES_PAGE","site":"Kodansha — official Fairy Tail Zero page","url":"https://kodansha.us/series/fairy-tail-zero/","region":"Availability varies by region","access":"Official editions and retailer options; purchase may be required"}],
-  "1025496": [{"type":"OFFICIAL_SERIES_PAGE","site":"Yen Press — official Cheeky Brat page","url":"https://yenpress.com/series/cheeky-brat","region":"Availability varies by region","access":"Authorized digital and print editions; purchase may be required"}],
-  "1025541": [{"type":"OFFICIAL_SERIES_PAGE","site":"Seven Seas — official Mushoku Tensei page","url":"https://sevenseasentertainment.com/series/mushoku-tensei-jobless-reincarnation/","region":"Availability varies by region","access":"Authorized editions and retailer options; purchase may be required"}],
-  "1025931": [{"type":"OFFICIAL_SERIES_PAGE","site":"Yen Press — official Girls' Last Tour page","url":"https://yenpress.com/series/girls-last-tour","region":"Availability varies by region","access":"Authorized digital and print editions; purchase may be required"}],
-  "1026233": [{"type":"OFFICIAL_SERIES_PAGE","site":"Yen Press — official Kakegurui page","url":"https://yenpress.com/series/kakegurui-compulsive-gambler","region":"Availability varies by region","access":"Authorized digital and print editions; purchase may be required"}],
-  "1026362": [{"type":"OFFICIAL_SERIES_PAGE","site":"Yen Press — official Teasing Master Takagi-san page","url":"https://yenpress.com/series/teasing-master-takagi-san","region":"Availability varies by region","access":"Authorized digital and print editions; purchase may be required"}],
-  "1027539": [{"type":"OFFICIAL_SERIES_PAGE","site":"Yen Press — official Delicious in Dungeon page","url":"https://yenpress.com/series/delicious-in-dungeon","region":"Availability varies by region","access":"Authorized digital and print editions; purchase may be required"}],
-  "1026187": [{"type":"OFFICIAL_SERIES_PAGE","site":"Kodansha — official Domestic Girlfriend page","url":"https://kodansha.us/series/domestic-girlfriend/","region":"Availability varies by region","access":"Official editions and retailer options; purchase may be required"}],
-  "1026004": [{"type":"OFFICIAL_READING_PAGE","site":"VIZ Shonen Jump — My Hero Academia chapters","url":"https://www.viz.com/shonenjump/chapters/my-hero-academia","region":"Available in supported VIZ territories","access":"Selected chapters may be free; membership may be required for archive access"}],
-  "1026401": [{"type":"OFFICIAL_READING_PAGE","site":"VIZ Shonen Jump — Tokyo Ghoul:re chapters","url":"https://www.viz.com/shonenjump/chapters/tokyo-ghoul-re","region":"Available in supported VIZ territories","access":"Selected chapters may be free; membership may be required for archive access"}],
-  "1035896": [{"type":"OFFICIAL_READING_PAGE","site":"VIZ Shonen Jump — Kaguya-sama chapters","url":"https://www.viz.com/shonenjump/chapters/kaguya-sama-love-is-war","region":"Available in supported VIZ territories","access":"Selected chapters may be free; membership may be required for archive access"}],
-  "1036107": [{"type":"OFFICIAL_SERIES_PAGE","site":"Seven Seas — official Bloom Into You page","url":"https://sevenseasentertainment.com/series/bloom-into-you/","region":"Availability varies by region","access":"Authorized editions and retailer options; purchase may be required"}],
-  "1036095": [{"type":"OFFICIAL_SERIES_PAGE","site":"Kodansha — official Wotakoi page","url":"https://kodansha.us/series/wotakoi-love-is-hard-for-otaku/","region":"Availability varies by region","access":"Official editions and retailer options; purchase may be required"}],
-  "1036201": [{"type":"OFFICIAL_SERIES_PAGE","site":"Kodansha — official Fire Force page","url":"https://kodansha.us/series/fire-force/","region":"Availability varies by region","access":"Official editions and retailer options; purchase may be required"}],
-  "1036424": [{"type":"OFFICIAL_SERIES_PAGE","site":"Seven Seas — official Tomo-chan Is a Girl! page","url":"https://sevenseasentertainment.com/series/tomo-chan-is-a-girl/","region":"Availability varies by region","access":"Authorized editions and retailer options; purchase may be required"}],
-  "1037280": [{"type":"OFFICIAL_READING_PAGE","site":"VIZ Shonen Jump — Demon Slayer chapters","url":"https://www.viz.com/shonenjump/chapters/demon-slayer-kimetsu-no-yaiba","region":"Available in supported VIZ territories","access":"Selected chapters may be free; membership may be required for archive access"}],
-  "1037781": [{"type":"OFFICIAL_SERIES_PAGE","site":"Yen Press — official Goblin Slayer manga page","url":"https://yenpress.com/series/goblin-slayer-manga","region":"Availability varies by region","access":"Authorized digital and print editions; purchase may be required"}],
-  "1038072": [{"type":"OFFICIAL_SERIES_PAGE","site":"Seven Seas — official My Lesbian Experience with Loneliness page","url":"https://sevenseasentertainment.com/series/my-lesbian-experience-with-loneliness/","region":"Availability varies by region","access":"Authorized editions and retailer options; purchase may be required"}],
-  "1038047": [{"type":"OFFICIAL_READING_PAGE","site":"VIZ Shonen Jump — The Promised Neverland chapters","url":"https://www.viz.com/shonenjump/chapters/the-promised-neverland","region":"Available in supported VIZ territories","access":"Selected chapters may be free; membership may be required for archive access"}],
-  "1038622": [{"type":"OFFICIAL_SERIES_PAGE","site":"Kodansha — official To Your Eternity page","url":"https://kodansha.us/series/to-your-eternity/","region":"Availability varies by region","access":"Official editions and retailer options; purchase may be required"}],
-  "1038482": [{"type":"OFFICIAL_SERIES_PAGE","site":"Yen Press — official your name. manga page","url":"https://yenpress.com/series/your-name-manga","region":"Availability varies by region","access":"Authorized digital and print editions; purchase may be required"}],
-  "1038865": [{"type":"OFFICIAL_READING_PAGE","site":"K MANGA — official Witch Hat Atelier page","url":"https://s.kmanga.kodansha.com/ldg?t=10065","region":"Availability varies by region","access":"Official digital chapters; account, points, or regional restrictions may apply"},{"type":"OFFICIAL_SERIES_PAGE","site":"Kodansha — official Witch Hat Atelier page","url":"https://kodansha.us/series/witch-hat-atelier/","region":"Availability varies by region","access":"Official editions and retailer options; purchase may be required"}],
-  "1039242": [{"type":"OFFICIAL_SERIES_PAGE","site":"VIZ — official Beastars page","url":"https://www.viz.com/manga-books/manga/beastars/all","region":"Availability varies by region","access":"Official volumes and retailer options; purchase may be required"}],
-  "1040815": [{"type":"OFFICIAL_READING_PAGE","site":"VIZ Shonen Jump — Jujutsu Kaisen chapters","url":"https://www.viz.com/shonenjump/chapters/jujutsu-kaisen","region":"Available in supported VIZ territories","access":"Selected chapters may be free; membership may be required for archive access"}],
-  "1040278": [{"type":"OFFICIAL_SERIES_PAGE","site":"Kodansha — official Tokyo Revengers page","url":"https://kodansha.us/series/tokyo-revengers/","region":"Availability varies by region","access":"Official editions and retailer options; purchase may be required"}],
-  "1040121": [{"type":"OFFICIAL_SERIES_PAGE","site":"Yen Press — official Toilet-bound Hanako-kun page","url":"https://yenpress.com/series/toilet-bound-hanako-kun","region":"Availability varies by region","access":"Authorized digital and print editions; purchase may be required"}],
-  "1049863": [{"type":"OFFICIAL_SERIES_PAGE","site":"Kodansha — official Blue Period page","url":"https://kodansha.us/series/blue-period/","region":"Availability varies by region","access":"Official editions and retailer options; purchase may be required"}],
-  "1054665": [{"type":"OFFICIAL_SERIES_PAGE","site":"Seven Seas — official Who Made Me a Princess page","url":"https://sevenseasentertainment.com/series/who-made-me-a-princess/","region":"Availability varies by region","access":"Authorized editions and retailer options; purchase may be required"}],
-  "1012619": [{"type":"OFFICIAL_READING_PAGE","site":"VIZ Shonen Jump — Haikyu!! chapters","url":"https://www.viz.com/shonenjump/chapters/haikyu","region":"Available in supported VIZ territories","access":"Selected chapters may be free; membership may be required for archive access"}],
-  "1000134": [{"type":"OFFICIAL_READING_PAGE","site":"WEBTOON — The Sound of Magic: Annarasumanara","url":"https://www.webtoons.com/en/drama/the-sound-of-magic-annarasumanara/list?title_no=77","region":"Availability varies by region","access":"Official episodes; some episodes may require the WEBTOON app or account"}],
-  "1000576": [{"type":"OFFICIAL_READING_PAGE","site":"WEBTOON — Girls of the Wild's","url":"https://www.webtoons.com/en/action/girls-of-the-wilds/list?title_no=93","region":"Availability varies by region","access":"Official episodes; some episodes may require the WEBTOON app or account"}],
-  "1023815": [{"type":"OFFICIAL_READING_PAGE","site":"WEBTOON — Noblesse","url":"https://www.webtoons.com/en/action/noblesse/list?title_no=87","region":"Availability varies by region","access":"Official episodes; some episodes may require the WEBTOON app or account"}],
-  "1026193": [{"type":"OFFICIAL_READING_PAGE","site":"WEBTOON — The Gamer","url":"https://www.webtoons.com/en/action/the-gamer/list?title_no=88","region":"Availability varies by region","access":"Official episodes; some episodes may require the WEBTOON app or account"}],
-  "1035880": [{"type":"OFFICIAL_READING_PAGE","site":"WEBTOON — The God of High School","url":"https://www.webtoons.com/en/action/the-god-of-high-school/list?title_no=66","region":"Availability varies by region","access":"Official episodes; some episodes may require the WEBTOON app or account"}],
-  "1037696": [{"type":"OFFICIAL_READING_PAGE","site":"WEBTOON — Bastard","url":"https://www.webtoons.com/en/thriller/bastard/list?title_no=485","region":"Availability varies by region","access":"Official episodes; some episodes may require the WEBTOON app or account"}],
-  "1039293": [{"type":"OFFICIAL_READING_PAGE","site":"WEBTOON — Lookism","url":"https://www.webtoons.com/en/drama/lookism/list?title_no=1049","region":"Availability varies by region","access":"Official episodes; some episodes may require the WEBTOON app or account"}],
-  "1040731": [{"type":"OFFICIAL_READING_PAGE","site":"WEBTOON — Sweet Home","url":"https://www.webtoons.com/en/thriller/sweethome/list?title_no=1285","region":"Availability varies by region","access":"Official episodes; some episodes may require the WEBTOON app or account"}],
-  "1056452": [{"type":"OFFICIAL_READING_PAGE","site":"WEBTOON — Omniscient Reader","url":"https://www.webtoons.com/en/action/omniscient-reader/list?title_no=2154","region":"Availability varies by region","access":"Official episodes; some episodes may require the WEBTOON app or account"}],
-  "1058010": [{"type":"OFFICIAL_READING_PAGE","site":"WEBTOON — Teenage Mercenary (Mercenary Enrollment)","url":"https://www.webtoons.com/en/action/teenage-mercenary/list?title_no=2677","region":"Availability varies by region","access":"Official episodes; some episodes may require the WEBTOON app or account"}],
-  "1060854": [{"type":"OFFICIAL_READING_PAGE","site":"WEBTOON — The Greatest Estate Developer","url":"https://www.webtoons.com/en/fantasy/the-greatest-estate-developer/list?title_no=3596","region":"Availability varies by region","access":"Official episodes; some episodes may require the WEBTOON app or account"}],
-  "1037141": [{"type":"OFFICIAL_READING_PAGE","site":"Lezhin Comics — Something About Us","url":"https://www.lezhinus.com/en/comic/something_about_us","region":"Availability varies by region and age","access":"Authorized episodes; account or coins may be required","rank":100,"sourceClass":"AUTHORIZED_PLATFORM"}],
-  "1040961": [{"type":"OFFICIAL_READING_PAGE","site":"Lezhin Comics — Love is an Illusion!","url":"https://www.lezhinus.com/en/comic/loveillusion","region":"Availability varies by region and age","access":"Authorized mature-audience episodes; account or coins may be required","rank":100,"sourceClass":"AUTHORIZED_PLATFORM"}],
-  "1039752": [{"type":"OFFICIAL_READING_PAGE","site":"Lezhin Comics — Perfect Half","url":"https://www.lezhinus.com/en/comic/perfecthalf","region":"Availability varies by region and age","access":"Authorized mature-audience episodes; account or coins may be required","rank":100,"sourceClass":"AUTHORIZED_PLATFORM"}],
-  "1038926": [{"type":"OFFICIAL_READING_PAGE","site":"Lezhin Comics — Killing Stalking","url":"https://www.lezhinus.com/en/comic/killingstalking","region":"Availability varies by region and age","access":"Authorized mature-audience episodes; account or coins may be required","rank":100,"sourceClass":"AUTHORIZED_PLATFORM"}],
-  "1000057": [{"type":"OFFICIAL_READING_PAGE","site":"VIZ Shonen Jump — Death Note chapters","url":"https://www.viz.com/shonenjump/chapters/death-note","region":"Available in supported VIZ territories","access":"Selected chapters are free; membership may be required for archive access","rank":100,"sourceClass":"AUTHORIZED_PLATFORM"}],
-  "1019682": [{"type":"OFFICIAL_READING_PAGE","site":"VIZ Shonen Jump — Assassination Classroom chapters","url":"https://www.viz.com/shonenjump/chapters/assassination-classroom","region":"Available in supported VIZ territories","access":"Selected chapters are free; membership may be required for archive access","rank":100,"sourceClass":"AUTHORIZED_PLATFORM"}],
-  "1000035": [{"type":"OFFICIAL_READING_PAGE","site":"VIZ Shonen Jump — Naruto chapters","url":"https://www.viz.com/shonenjump/chapters/naruto","region":"Available in supported VIZ territories","access":"Selected chapters are free; membership may be required for archive access","rank":100,"sourceClass":"AUTHORIZED_PLATFORM"}],
-  "1000111": [{"type":"OFFICIAL_READING_PAGE","site":"VIZ Shonen Jump — Dragon Ball chapters","url":"https://www.viz.com/shonenjump/chapters/dragon-ball","region":"Available in supported VIZ territories","access":"Selected chapters are free; membership may be required for archive access","rank":100,"sourceClass":"AUTHORIZED_PLATFORM"}],
-  "1024155": [{"type":"OFFICIAL_READING_PAGE","site":"VIZ Shonen Jump — Blue Exorcist chapters","url":"https://www.viz.com/shonenjump/chapters/blue-exorcist","region":"Available in supported VIZ territories","access":"Selected chapters are free; membership may be required for archive access","rank":100,"sourceClass":"AUTHORIZED_PLATFORM"}],
-  "1038860": [{"type":"OFFICIAL_READING_PAGE","site":"VIZ Shonen Jump — Dr. STONE chapters","url":"https://www.viz.com/shonenjump/chapters/dr-stone","region":"Available in supported VIZ territories","access":"Selected chapters are free; membership may be required for archive access","rank":100,"sourceClass":"AUTHORIZED_PLATFORM"}],
-  "1027527": [{"type":"OFFICIAL_READING_PAGE","site":"VIZ Shonen Jump — Black Clover chapters","url":"https://www.viz.com/shonenjump/chapters/black-clover","region":"Available in supported VIZ territories","access":"Selected chapters are free; membership may be required for archive access","rank":100,"sourceClass":"AUTHORIZED_PLATFORM"}],
-  "1001329": [{"type":"OFFICIAL_READING_PAGE","site":"VIZ Shonen Jump — Claymore chapters","url":"https://www.viz.com/shonenjump/chapters/claymore","region":"Available in supported VIZ territories","access":"Selected chapters are free; membership may be required for archive access","rank":100,"sourceClass":"AUTHORIZED_PLATFORM"}],
-  "1002811": [{"type":"OFFICIAL_READING_PAGE","site":"VIZ Shonen Jump — Nisekoi chapters","url":"https://www.viz.com/shonenjump/chapters/nisekoi","region":"Available in supported VIZ territories","access":"Selected chapters are free; membership may be required for archive access","rank":100,"sourceClass":"AUTHORIZED_PLATFORM"}],
-  "1019217": [{"type":"OFFICIAL_READING_PAGE","site":"VIZ Shonen Jump — Bakuman chapters","url":"https://www.viz.com/shonenjump/chapters/bakuman","region":"Available in supported VIZ territories","access":"Selected chapters are free; membership may be required for archive access","rank":100,"sourceClass":"AUTHORIZED_PLATFORM"}],
-  "1000064": [{"type":"OFFICIAL_READING_PAGE","site":"VIZ Shonen Jump — D.Gray-man chapters","url":"https://www.viz.com/shonenjump/chapters/d-gray-man","region":"Available in supported VIZ territories","access":"Selected chapters are free; membership may be required for archive access","rank":100,"sourceClass":"AUTHORIZED_PLATFORM"}],
-  "1009964": [{"type":"OFFICIAL_SERIES_PAGE","site":"VIZ — Goodnight Punpun editions","url":"https://www.viz.com/manga-books/manga/goodnight-punpun/all","region":"Availability varies by region","access":"Official previews, editions, and retailer options; purchase may be required","rank":300,"sourceClass":"PUBLISHER"}],
-  "1016640": [{"type":"OFFICIAL_SERIES_PAGE","site":"VIZ — Kamisama Kiss editions","url":"https://www.viz.com/manga-books/manga/kamisama-kiss/all","region":"Availability varies by region","access":"Official previews, editions, and retailer options; purchase may be required","rank":300,"sourceClass":"PUBLISHER"}],
-  "1016550": [{"type":"OFFICIAL_SERIES_PAGE","site":"VIZ — Ao Haru Ride editions","url":"https://www.viz.com/manga-books/manga/ao-haru-ride/all","region":"Availability varies by region","access":"Official previews, editions, and retailer options; purchase may be required","rank":300,"sourceClass":"PUBLISHER"}],
-  "1000078": [{"type":"OFFICIAL_SERIES_PAGE","site":"VIZ — Ouran High School Host Club editions","url":"https://www.viz.com/manga-books/manga/ouran-high-school-host-club/all","region":"Availability varies by region","access":"Official previews, editions, and retailer options; purchase may be required","rank":300,"sourceClass":"PUBLISHER"}],
-  "1000004": [{"type":"OFFICIAL_SERIES_PAGE","site":"VIZ — Monster editions","url":"https://www.viz.com/manga-books/manga/monster/all","region":"Availability varies by region","access":"Official previews, editions, and retailer options; purchase may be required","rank":300,"sourceClass":"PUBLISHER"}],
-  "1011152": [{"type":"OFFICIAL_SERIES_PAGE","site":"VIZ — Yona of the Dawn editions","url":"https://www.viz.com/manga-books/manga/yona-of-the-dawn/all","region":"Availability varies by region","access":"Official previews, editions, and retailer options; purchase may be required","rank":300,"sourceClass":"PUBLISHER"}],
-  "1007375": [{"type":"OFFICIAL_SERIES_PAGE","site":"VIZ — Kimi ni Todoke editions","url":"https://www.viz.com/manga-books/manga/kimi-ni-todoke-from-me-to-you/all","region":"Availability varies by region","access":"Official previews, editions, and retailer options; purchase may be required","rank":300,"sourceClass":"PUBLISHER"}],
-  "1002435": [{"type":"OFFICIAL_SERIES_PAGE","site":"VIZ — Dorohedoro editions","url":"https://www.viz.com/manga-books/manga/dorohedoro/all","region":"Availability varies by region","access":"Official previews, editions, and retailer options; purchase may be required","rank":300,"sourceClass":"PUBLISHER"}],
-  "1000133": [{"type":"OFFICIAL_SERIES_PAGE","site":"VIZ — Slam Dunk editions","url":"https://www.viz.com/manga-books/manga/slam-dunk/all","region":"Availability varies by region","access":"Official previews, editions, and retailer options; purchase may be required","rank":300,"sourceClass":"PUBLISHER"}],
-  "1008287": [{"type":"OFFICIAL_SERIES_PAGE","site":"VIZ — solanin editions","url":"https://www.viz.com/manga-books/manga/solanin/all","region":"Availability varies by region","access":"Official previews, editions, and retailer options; purchase may be required","rank":300,"sourceClass":"PUBLISHER"}],
-  "1001484": [{"type":"OFFICIAL_SERIES_PAGE","site":"VIZ — Real editions","url":"https://www.viz.com/manga-books/manga/real/all","region":"Availability varies by region","access":"Official previews, editions, and retailer options; purchase may be required","rank":300,"sourceClass":"PUBLISHER"}],
-  "1001482": [{"type":"OFFICIAL_SERIES_PAGE","site":"VIZ — Vagabond VIZBIG editions","url":"https://www.viz.com/manga-books/manga/vagabond-vizbig-edition/all","region":"Availability varies by region","access":"Official previews, editions, and retailer options; purchase may be required","rank":300,"sourceClass":"PUBLISHER"}],
-  "1000012": [{"type":"OFFICIAL_SERIES_PAGE","site":"VIZ — 20th Century Boys: The Perfect Edition","url":"https://www.viz.com/manga-books/manga/20th-century-boys-the-perfect-edition/all","region":"Availability varies by region","access":"Official previews, editions, and retailer options; purchase may be required","rank":300,"sourceClass":"PUBLISHER"}],
-  "1001531": [{"type":"OFFICIAL_SERIES_PAGE","site":"VIZ — Inuyasha VIZBIG editions","url":"https://www.viz.com/manga-books/manga/inuyasha-vizbig-edition/all","region":"Availability varies by region","access":"Official previews, editions, and retailer options; purchase may be required","rank":300,"sourceClass":"PUBLISHER"}],
-  "1000074": [{"type":"OFFICIAL_SERIES_PAGE","site":"VIZ — Nana editions","url":"https://www.viz.com/manga-books/manga/nana/all","region":"Availability varies by region","access":"Official previews, editions, and retailer options; purchase may be required","rank":300,"sourceClass":"PUBLISHER"}],
-  "1034444": [{"type":"OFFICIAL_SERIES_PAGE","site":"VIZ — Golden Kamuy editions","url":"https://www.viz.com/manga-books/manga/golden-kamuy/all","region":"Availability varies by region","access":"Official previews, editions, and retailer options; purchase may be required","rank":300,"sourceClass":"PUBLISHER"}],
-  "1001654": [{"type":"OFFICIAL_SERIES_PAGE","site":"VIZ — Banana Fish editions","url":"https://www.viz.com/manga-books/manga/banana-fish/all","region":"Availability varies by region","access":"Official previews, editions, and retailer options; purchase may be required","rank":300,"sourceClass":"PUBLISHER"}],
-  "1055099": [{"type":"OFFICIAL_SERIES_PAGE","site":"VIZ — Call of the Night editions","url":"https://www.viz.com/manga-books/manga/call-of-the-night/all","region":"Availability varies by region","access":"Official previews, editions, and retailer options; purchase may be required","rank":300,"sourceClass":"PUBLISHER"}],
-  "1002299": [{"type":"OFFICIAL_SERIES_PAGE","site":"VIZ — Case Closed (Detective Conan) editions","url":"https://www.viz.com/manga-books/manga/case-closed/all","region":"Availability varies by region","access":"Official English editions and retailer options; purchase may be required","rank":300,"sourceClass":"PUBLISHER"}],
-  "1001947": [{"type":"OFFICIAL_SERIES_PAGE","site":"VIZ — Rosario+Vampire editions","url":"https://www.viz.com/manga-books/manga/rosario-vampire/all","region":"Availability varies by region","access":"Official previews, editions, and retailer options; purchase may be required","rank":300,"sourceClass":"PUBLISHER"}],
-  "1036543": [{"type":"OFFICIAL_SERIES_PAGE","site":"VIZ — Platinum End editions","url":"https://www.viz.com/manga-books/manga/platinum-end/all","region":"Availability varies by region","access":"Official previews, editions, and retailer options; purchase may be required","rank":300,"sourceClass":"PUBLISHER"}],
-  "1000066": [{"type":"OFFICIAL_READING_PAGE","site":"WEBTOON — Fullmetal Alchemist","url":"https://www.webtoons.com/en/graphic-novel/fullmetal-alchemist/list?title_no=7862","region":"Availability varies by region","access":"Official episodes; full access may require the WEBTOON app or account","rank":100,"sourceClass":"AUTHORIZED_PLATFORM"}],
-  "1041153": [{"type":"OFFICIAL_READING_PAGE","site":"WEBTOON — Here U Are","url":"https://www.webtoons.com/en/romance/here-u-are/list?title_no=5834","region":"Availability varies by region","access":"Official episodes; some episodes may require the WEBTOON app or account","rank":100,"sourceClass":"AUTHORIZED_PLATFORM"}],
-  "1057618": [{"type":"OFFICIAL_READING_PAGE","site":"WEBTOON — Nano Machine","url":"https://www.webtoons.com/en/action/nano-machine/list?title_no=4344","region":"Availability varies by region","access":"Official episodes; some episodes may require the WEBTOON app or account","rank":100,"sourceClass":"AUTHORIZED_PLATFORM"}],
-  "1000008": [{"type":"OFFICIAL_SERIES_PAGE","site":"Dark Horse Digital — Berserk","url":"https://digital.darkhorse.com/series/826/berserk","region":"Availability and purchase options vary by region","access":"Official digital editions and previews; purchase may be required","rank":300,"sourceClass":"PUBLISHER"}],
-  "1000618": [{"type":"OFFICIAL_SERIES_PAGE","site":"Dark Horse Digital — Hellsing","url":"https://digital.darkhorse.com/series/115/hellsing","region":"Availability and purchase options vary by region","access":"Official digital series page; some editions may be temporarily unavailable","rank":300,"sourceClass":"PUBLISHER"}],
-  "1025358": [{"type":"OFFICIAL_SERIES_PAGE","site":"Dark Horse Digital — Mob Psycho 100","url":"https://digital.darkhorse.com/series/1005/mob-psycho-100","region":"Availability and purchase options vary by region","access":"Official digital editions and previews; purchase may be required","rank":300,"sourceClass":"PUBLISHER"}],
-  "1001487": [{"type":"OFFICIAL_SERIES_PAGE","site":"Dark Horse Digital — Blade of the Immortal","url":"https://digital.darkhorse.com/series/373/blade-of-the-immortal","region":"Availability and purchase options vary by region","access":"Official digital series page; some editions may be temporarily unavailable","rank":300,"sourceClass":"PUBLISHER"}],
-  "1001973": [{"type":"OFFICIAL_SERIES_PAGE","site":"Dark Horse Digital — Lone Wolf and Cub","url":"https://digital.darkhorse.com/series/28/lone-wolf-and-cub","region":"Availability and purchase options vary by region","access":"Official digital series page; some editions may be temporarily unavailable","rank":300,"sourceClass":"PUBLISHER"}],
-  "1001984": [{"type":"OFFICIAL_SERIES_PAGE","site":"Square Enix — Soul Eater: The Perfect Edition","url":"https://squareenixmangaandbooks.square-enix-games.com/en-us/series/soul-eater","region":"Availability varies by region","access":"Official preview, volumes, and retailer options; purchase may be required","rank":300,"sourceClass":"PUBLISHER"}],
-  "1041006": [{"type":"OFFICIAL_READING_PAGE","site":"Square Enix — My Dress-Up Darling, Volume 1","url":"https://squareenixmangaandbooks.square-enix-games.com/en-us/product/9781646090327","region":"Availability varies by region and age","access":"Official mature-audience volume preview and retailer options; the preview is free, while the full volume requires purchase","rank":200,"sourceClass":"PUBLISHER"}],
-  "1008549": [{"type":"OFFICIAL_SERIES_PAGE","site":"Yen Press — Black Butler","url":"https://yenpress.com/series/black-butler","region":"Availability varies by region","access":"Authorized digital and print editions; purchase may be required","rank":300,"sourceClass":"PUBLISHER"}],
-  "1006490": [{"type":"OFFICIAL_SERIES_PAGE","site":"Yen Press — PandoraHearts","url":"https://yenpress.com/series/pandorahearts","region":"Availability varies by region","access":"Authorized digital and print editions; purchase may be required","rank":300,"sourceClass":"PUBLISHER"}],
-  "1018123": [{"type":"OFFICIAL_SERIES_PAGE","site":"Yen Press — Akame ga KILL!","url":"https://yenpress.com/series/akame-ga-kill","region":"Availability varies by region and age","access":"Authorized digital and print editions; purchase may be required","rank":300,"sourceClass":"PUBLISHER"}],
-  "1016084": [{"type":"OFFICIAL_SERIES_PAGE","site":"Yen Press — Bungo Stray Dogs","url":"https://yenpress.com/series/bungo-stray-dogs","region":"Availability varies by region","access":"Authorized digital and print editions; purchase may be required","rank":300,"sourceClass":"PUBLISHER"}],
-  "1019100": [{"type":"OFFICIAL_SERIES_PAGE","site":"Yen Press — Erased","url":"https://yenpress.com/series/erased","region":"Availability varies by region","access":"Authorized digital and print editions; purchase may be required","rank":300,"sourceClass":"PUBLISHER"}],
-  "1001361": [{"type":"OFFICIAL_SERIES_PAGE","site":"Kodansha — FAIRY TAIL","url":"https://kodansha.us/series/fairy-tail/","region":"Availability varies by region","access":"Official editions and retailer options; purchase may be required","rank":300,"sourceClass":"PUBLISHER"}],
-  "1035483": [{"type":"OFFICIAL_SERIES_PAGE","site":"Kodansha — That Time I Got Reincarnated as a Slime","url":"https://kodansha.us/series/that-time-i-got-reincarnated-as-a-slime/","region":"Availability varies by region","access":"Official manga editions and retailer options; purchase may be required","rank":300,"sourceClass":"PUBLISHER"}],
-  "1024407": [{"type":"OFFICIAL_SERIES_PAGE","site":"Kodansha — My Little Monster","url":"https://kodansha.us/series/my-little-monster/","region":"Availability varies by region","access":"Official editions and retailer options; purchase may be required","rank":300,"sourceClass":"PUBLISHER"}],
-  "1000906": [{"type":"OFFICIAL_SERIES_PAGE","site":"Kodansha — Parasyte","url":"https://kodansha.us/series/parasyte/","region":"Availability varies by region","access":"Official editions and retailer options; purchase may be required","rank":300,"sourceClass":"PUBLISHER"}],
-  "1011777": [{"type":"OFFICIAL_SERIES_PAGE","site":"Kodansha — Yamada-kun and the Seven Witches","url":"https://kodansha.us/series/yamada-kun-and-the-seven-witches/","region":"Availability varies by region","access":"Official editions and retailer options; purchase may be required","rank":300,"sourceClass":"PUBLISHER"}],
-  "1030463": [{"type":"OFFICIAL_SERIES_PAGE","site":"Kodansha — Grand Blue Dreaming","url":"https://kodansha.us/series/grand-blue-dreaming/","region":"Availability varies by region and age","access":"Official mature-audience editions and retailer options; purchase may be required","rank":300,"sourceClass":"PUBLISHER"}],
-  "1040324": [{"type":"OFFICIAL_SERIES_PAGE","site":"Kodansha — Don't Toy with Me, Miss Nagatoro","url":"https://kodansha.us/series/dont-toy-with-me-miss-nagatoro/","region":"Availability varies by region","access":"Official editions and retailer options; purchase may be required","rank":300,"sourceClass":"PUBLISHER"}],
-  "1053928": [{"type":"OFFICIAL_SERIES_PAGE","site":"Kodansha — Blue Lock","url":"https://kodansha.us/series/blue-lock/","region":"Availability varies by region","access":"Official editions and retailer options; purchase may be required","rank":300,"sourceClass":"PUBLISHER"}],
-  "1017216": [{"type":"OFFICIAL_SERIES_PAGE","site":"Kodansha — The Flowers of Evil","url":"https://kodansha.us/series/the-flowers-of-evil/","region":"Availability varies by region and age","access":"Official mature-audience editions and retailer options; purchase may be required","rank":300,"sourceClass":"PUBLISHER"}],
-  "1000362": [{"type":"OFFICIAL_SERIES_PAGE","site":"Kodansha — BLAME!","url":"https://kodansha.us/series/blame/","region":"Availability varies by region","access":"Official editions and retailer options; purchase may be required","rank":300,"sourceClass":"PUBLISHER"}],
-  "1007393": [{"type":"OFFICIAL_SERIES_PAGE","site":"Kodansha — Ajin: Demi-Human","url":"https://kodansha.us/series/ajin-demi-human/","region":"Availability varies by region and age","access":"Official mature-audience editions and retailer options; purchase may be required","rank":300,"sourceClass":"PUBLISHER"}],
-  "1039018": [{"type":"OFFICIAL_SERIES_PAGE","site":"Kodansha — The Quintessential Quintuplets","url":"https://kodansha.us/series/the-quintessential-quintuplets/","region":"Availability varies by region","access":"Official editions and retailer options; purchase may be required","rank":300,"sourceClass":"PUBLISHER"}],
-  "1024211": [{"type":"OFFICIAL_SERIES_PAGE","site":"Kodansha — Land of the Lustrous","url":"https://kodansha.us/series/land-of-the-lustrous/","region":"Availability varies by region","access":"Official editions and retailer options; purchase may be required","rank":300,"sourceClass":"PUBLISHER"}],
-  "1001500": [{"type":"OFFICIAL_SERIES_PAGE","site":"Kodansha — AKIRA","url":"https://kodansha.us/series/akira/","region":"Availability varies by region and age","access":"Official mature-audience editions and retailer options; purchase may be required","rank":300,"sourceClass":"PUBLISHER"}],
-  "1040005": [{"type":"OFFICIAL_SERIES_PAGE","site":"Kodansha — Rent-A-Girlfriend","url":"https://kodansha.us/series/rent-a-girlfriend/","region":"Availability varies by region","access":"Official editions and retailer options; purchase may be required","rank":300,"sourceClass":"PUBLISHER"}],
-  "1006514": [{"type":"OFFICIAL_SERIES_PAGE","site":"Kodansha — Sankarea","url":"https://kodansha.us/series/sankarea/","region":"Availability varies by region and age","access":"Official editions and retailer options; purchase may be required","rank":300,"sourceClass":"PUBLISHER"}],
-  "1000189": [{"type":"OFFICIAL_SERIES_PAGE","site":"Kodansha — Air Gear","url":"https://kodansha.us/series/air-gear/","region":"Availability varies by region and age","access":"Official editions and retailer options; purchase may be required","rank":300,"sourceClass":"PUBLISHER"}],
-  "1000044": [{"type":"OFFICIAL_SERIES_PAGE","site":"Kodansha — Negima!","url":"https://kodansha.us/series/negima/","region":"Availability varies by region","access":"Official editions and retailer options; purchase may be required","rank":300,"sourceClass":"PUBLISHER"}],
-  "1027182": [{"type":"OFFICIAL_SERIES_PAGE","site":"Kodansha — Happiness","url":"https://kodansha.us/series/happiness/","region":"Availability varies by region and age","access":"Official mature-audience editions and retailer options; purchase may be required","rank":300,"sourceClass":"PUBLISHER"}],
-  "1016579": [{"type":"OFFICIAL_SERIES_PAGE","site":"Kodansha — No. 6","url":"https://kodansha.us/series/no-6/","region":"Availability varies by region","access":"Official editions and retailer options; purchase may be required","rank":300,"sourceClass":"PUBLISHER"}],
-  "1037643": [{"type":"OFFICIAL_READING_PAGE","site":"VIZ Shonen Jump — Fire Punch chapters","url":"https://www.viz.com/shonenjump/chapters/fire-punch","region":"Available in supported VIZ territories","access":"Selected chapters can be read free without payment; membership may be required for the full archive","rank":100,"sourceClass":"AUTHORIZED_PLATFORM"}],
-  "1040546": [{"type":"OFFICIAL_READING_PAGE","site":"VIZ Shonen Jump — Hell's Paradise: Jigokuraku chapters","url":"https://www.viz.com/shonenjump/chapters/hells-paradise-jigokuraku","region":"Available in supported VIZ territories","access":"Selected chapters can be read free without payment; membership may be required for the full archive","rank":100,"sourceClass":"AUTHORIZED_PLATFORM"}],
-  "1058159": [{"type":"OFFICIAL_READING_PAGE","site":"VIZ Shonen Jump — Sakamoto Days chapters","url":"https://www.viz.com/shonenjump/chapters/sakamoto-days","region":"Available in supported VIZ territories","access":"Selected chapters can be read free without payment; membership may be required for the full archive","rank":100,"sourceClass":"AUTHORIZED_PLATFORM"}],
-  "1038867": [{"type":"OFFICIAL_READING_PAGE","site":"VIZ Shonen Jump — We Never Learn chapters","url":"https://www.viz.com/shonenjump/chapters/we-never-learn","region":"Available in supported VIZ territories","access":"Selected chapters can be read free without payment; membership may be required for the full archive","rank":100,"sourceClass":"AUTHORIZED_PLATFORM"}],
-  "1058313": [{"type":"OFFICIAL_READING_PAGE","site":"VIZ Shonen Jump — Chainsaw Man Part 2 chapters","url":"https://www.viz.com/shonenjump/chapters/chainsaw-man","region":"Available in supported VIZ territories","access":"Part 2 is included in the series archive; selected chapters can be read free, while membership may be required for older chapters","rank":100,"sourceClass":"AUTHORIZED_PLATFORM"}],
-  "1035985": [{"type":"OFFICIAL_READING_PAGE","site":"VIZ Shonen Jump — Dragon Ball Super chapters","url":"https://www.viz.com/shonenjump/chapters/dragon-ball-super","region":"Available in supported VIZ territories","access":"Selected chapters can be read free without payment; membership may be required for the full archive","rank":100,"sourceClass":"AUTHORIZED_PLATFORM"}],
-  "1000060": [{"type":"OFFICIAL_READING_PAGE","site":"VIZ Shonen Jump — Rurouni Kenshin chapters","url":"https://www.viz.com/shonenjump/chapters/rurouni-kenshin","region":"Available in supported VIZ territories","access":"Selected chapters can be read free without payment; membership may be required for the full archive","rank":100,"sourceClass":"AUTHORIZED_PLATFORM"}],
-  "1055857": [{"type":"OFFICIAL_READING_PAGE","site":"VIZ Shonen Jump — Mashle: Magic and Muscles chapters","url":"https://www.viz.com/shonenjump/chapters/mashle","region":"Available in supported VIZ territories","access":"Selected chapters can be read free without payment; membership may be required for the full archive","rank":100,"sourceClass":"AUTHORIZED_PLATFORM"}],
-  "1021730": [{"type":"OFFICIAL_READING_PAGE","site":"VIZ Shonen Jump — Kuroko's Basketball chapters","url":"https://www.viz.com/shonenjump/chapters/kurokos-basketball","region":"Available in supported VIZ territories","access":"Selected chapters can be read free without payment; membership may be required for the full archive","rank":100,"sourceClass":"AUTHORIZED_PLATFORM"}],
-  "1023702": [{"type":"OFFICIAL_READING_PAGE","site":"VIZ Shonen Jump — Seraph of the End chapters","url":"https://www.viz.com/shonenjump/chapters/seraph-of-the-end","region":"Available in supported VIZ territories","access":"Selected chapters can be read free without payment; membership may be required for the full archive","rank":100,"sourceClass":"AUTHORIZED_PLATFORM"}],
-  "1007534": [{"type":"OFFICIAL_READING_PAGE","site":"VIZ Shonen Jump — Psyren chapters","url":"https://www.viz.com/shonenjump/chapters/psyren","region":"Available in supported VIZ territories","access":"Selected chapters can be read free without payment; membership may be required for the full archive","rank":100,"sourceClass":"AUTHORIZED_PLATFORM"}]
+  "1000004": [
+    {
+      "type": "OFFICIAL_SERIES_PAGE",
+      "site": "VIZ — Monster editions",
+      "url": "https://www.viz.com/manga-books/manga/monster/all",
+      "region": "Availability varies by region",
+      "access": "Official previews, editions, and retailer options; purchase may be required",
+      "rank": 300,
+      "sourceClass": "PUBLISHER"
+    }
+  ],
+  "1000008": [
+    {
+      "type": "OFFICIAL_SERIES_PAGE",
+      "site": "Dark Horse Digital — Berserk",
+      "url": "https://digital.darkhorse.com/series/826/berserk",
+      "region": "Availability and purchase options vary by region",
+      "access": "Official digital editions and previews; purchase may be required",
+      "rank": 300,
+      "sourceClass": "PUBLISHER"
+    }
+  ],
+  "1000012": [
+    {
+      "type": "OFFICIAL_SERIES_PAGE",
+      "site": "VIZ — 20th Century Boys: The Perfect Edition",
+      "url": "https://www.viz.com/manga-books/manga/20th-century-boys-the-perfect-edition/all",
+      "region": "Availability varies by region",
+      "access": "Official previews, editions, and retailer options; purchase may be required",
+      "rank": 300,
+      "sourceClass": "PUBLISHER"
+    }
+  ],
+  "1000035": [
+    {
+      "type": "OFFICIAL_READING_PAGE",
+      "site": "VIZ Shonen Jump — Naruto chapters",
+      "url": "https://www.viz.com/shonenjump/chapters/naruto",
+      "region": "Available in supported VIZ territories",
+      "access": "Selected chapters are free; membership may be required for archive access",
+      "rank": 100,
+      "sourceClass": "AUTHORIZED_PLATFORM"
+    }
+  ],
+  "1000037": [
+    {
+      "type": "OFFICIAL_READING_PAGE",
+      "site": "VIZ Shonen Jump — Bleach chapters",
+      "url": "https://www.viz.com/shonenjump/chapters/bleach",
+      "region": "Available in supported VIZ territories",
+      "access": "Selected chapters may be free; membership may be required for archive access"
+    }
+  ],
+  "1000044": [
+    {
+      "type": "OFFICIAL_SERIES_PAGE",
+      "site": "Kodansha — Negima!",
+      "url": "https://kodansha.us/series/negima/",
+      "region": "Availability varies by region",
+      "access": "Official editions and retailer options; purchase may be required",
+      "rank": 300,
+      "sourceClass": "PUBLISHER"
+    }
+  ],
+  "1000057": [
+    {
+      "type": "OFFICIAL_READING_PAGE",
+      "site": "VIZ Shonen Jump — Death Note chapters",
+      "url": "https://www.viz.com/shonenjump/chapters/death-note",
+      "region": "Available in supported VIZ territories",
+      "access": "Selected chapters are free; membership may be required for archive access",
+      "rank": 100,
+      "sourceClass": "AUTHORIZED_PLATFORM"
+    }
+  ],
+  "1000060": [
+    {
+      "type": "OFFICIAL_READING_PAGE",
+      "site": "VIZ Shonen Jump — Rurouni Kenshin chapters",
+      "url": "https://www.viz.com/shonenjump/chapters/rurouni-kenshin",
+      "region": "Available in supported VIZ territories",
+      "access": "Selected chapters can be read free without payment; membership may be required for the full archive",
+      "rank": 100,
+      "sourceClass": "AUTHORIZED_PLATFORM"
+    }
+  ],
+  "1000064": [
+    {
+      "type": "OFFICIAL_READING_PAGE",
+      "site": "VIZ Shonen Jump — D.Gray-man chapters",
+      "url": "https://www.viz.com/shonenjump/chapters/d-gray-man",
+      "region": "Available in supported VIZ territories",
+      "access": "Selected chapters are free; membership may be required for archive access",
+      "rank": 100,
+      "sourceClass": "AUTHORIZED_PLATFORM"
+    }
+  ],
+  "1000066": [
+    {
+      "type": "OFFICIAL_READING_PAGE",
+      "site": "WEBTOON — Fullmetal Alchemist",
+      "url": "https://www.webtoons.com/en/graphic-novel/fullmetal-alchemist/list?title_no=7862",
+      "region": "Availability varies by region",
+      "access": "Official episodes; full access may require the WEBTOON app or account",
+      "rank": 100,
+      "sourceClass": "AUTHORIZED_PLATFORM"
+    }
+  ],
+  "1000068": [
+    {
+      "type": "OFFICIAL_READING_PAGE",
+      "site": "VIZ Shonen Jump — Hunter x Hunter chapters",
+      "url": "https://www.viz.com/shonenjump/chapters/hunter-x-hunter",
+      "region": "Available in supported VIZ territories",
+      "access": "Selected chapters may be free; membership may be required for archive access"
+    }
+  ],
+  "1000074": [
+    {
+      "type": "OFFICIAL_SERIES_PAGE",
+      "site": "VIZ — Nana editions",
+      "url": "https://www.viz.com/manga-books/manga/nana/all",
+      "region": "Availability varies by region",
+      "access": "Official previews, editions, and retailer options; purchase may be required",
+      "rank": 300,
+      "sourceClass": "PUBLISHER"
+    }
+  ],
+  "1000078": [
+    {
+      "type": "OFFICIAL_SERIES_PAGE",
+      "site": "VIZ — Ouran High School Host Club editions",
+      "url": "https://www.viz.com/manga-books/manga/ouran-high-school-host-club/all",
+      "region": "Availability varies by region",
+      "access": "Official previews, editions, and retailer options; purchase may be required",
+      "rank": 300,
+      "sourceClass": "PUBLISHER"
+    }
+  ],
+  "1000111": [
+    {
+      "type": "OFFICIAL_READING_PAGE",
+      "site": "VIZ Shonen Jump — Dragon Ball chapters",
+      "url": "https://www.viz.com/shonenjump/chapters/dragon-ball",
+      "region": "Available in supported VIZ territories",
+      "access": "Selected chapters are free; membership may be required for archive access",
+      "rank": 100,
+      "sourceClass": "AUTHORIZED_PLATFORM"
+    }
+  ],
+  "1000133": [
+    {
+      "type": "OFFICIAL_SERIES_PAGE",
+      "site": "VIZ — Slam Dunk editions",
+      "url": "https://www.viz.com/manga-books/manga/slam-dunk/all",
+      "region": "Availability varies by region",
+      "access": "Official previews, editions, and retailer options; purchase may be required",
+      "rank": 300,
+      "sourceClass": "PUBLISHER"
+    }
+  ],
+  "1000134": [
+    {
+      "type": "OFFICIAL_READING_PAGE",
+      "site": "WEBTOON — The Sound of Magic: Annarasumanara",
+      "url": "https://www.webtoons.com/en/drama/the-sound-of-magic-annarasumanara/list?title_no=77",
+      "region": "Availability varies by region",
+      "access": "Official episodes; some episodes may require the WEBTOON app or account"
+    }
+  ],
+  "1000189": [
+    {
+      "type": "OFFICIAL_SERIES_PAGE",
+      "site": "Kodansha — Air Gear",
+      "url": "https://kodansha.us/series/air-gear/",
+      "region": "Availability varies by region and age",
+      "access": "Official editions and retailer options; purchase may be required",
+      "rank": 300,
+      "sourceClass": "PUBLISHER"
+    }
+  ],
+  "1000362": [
+    {
+      "type": "OFFICIAL_SERIES_PAGE",
+      "site": "Kodansha — BLAME!",
+      "url": "https://kodansha.us/series/blame/",
+      "region": "Availability varies by region",
+      "access": "Official editions and retailer options; purchase may be required",
+      "rank": 300,
+      "sourceClass": "PUBLISHER"
+    }
+  ],
+  "1000576": [
+    {
+      "type": "OFFICIAL_READING_PAGE",
+      "site": "WEBTOON — Girls of the Wild's",
+      "url": "https://www.webtoons.com/en/action/girls-of-the-wilds/list?title_no=93",
+      "region": "Availability varies by region",
+      "access": "Official episodes; some episodes may require the WEBTOON app or account"
+    }
+  ],
+  "1000618": [
+    {
+      "type": "OFFICIAL_SERIES_PAGE",
+      "site": "Dark Horse Digital — Hellsing",
+      "url": "https://digital.darkhorse.com/series/115/hellsing",
+      "region": "Availability and purchase options vary by region",
+      "access": "Official digital series page; some editions may be temporarily unavailable",
+      "rank": 300,
+      "sourceClass": "PUBLISHER"
+    }
+  ],
+  "1000906": [
+    {
+      "type": "OFFICIAL_SERIES_PAGE",
+      "site": "Kodansha — Parasyte",
+      "url": "https://kodansha.us/series/parasyte/",
+      "region": "Availability varies by region",
+      "access": "Official editions and retailer options; purchase may be required",
+      "rank": 300,
+      "sourceClass": "PUBLISHER"
+    }
+  ],
+  "1000940": [
+    {
+      "type": "OFFICIAL_SERIES_PAGE",
+      "site": "Kodansha — official Mushishi page",
+      "url": "https://kodansha.us/series/mushishi/",
+      "region": "Availability varies by region",
+      "access": "Official editions and retailer options; purchase may be required"
+    }
+  ],
+  "1001329": [
+    {
+      "type": "OFFICIAL_READING_PAGE",
+      "site": "VIZ Shonen Jump — Claymore chapters",
+      "url": "https://www.viz.com/shonenjump/chapters/claymore",
+      "region": "Available in supported VIZ territories",
+      "access": "Selected chapters are free; membership may be required for archive access",
+      "rank": 100,
+      "sourceClass": "AUTHORIZED_PLATFORM"
+    }
+  ],
+  "1001361": [
+    {
+      "type": "OFFICIAL_SERIES_PAGE",
+      "site": "Kodansha — FAIRY TAIL",
+      "url": "https://kodansha.us/series/fairy-tail/",
+      "region": "Availability varies by region",
+      "access": "Official editions and retailer options; purchase may be required",
+      "rank": 300,
+      "sourceClass": "PUBLISHER"
+    }
+  ],
+  "1001388": [
+    {
+      "type": "OFFICIAL_SERIES_PAGE",
+      "site": "VIZ — official Skip Beat! page",
+      "url": "https://www.viz.com/manga-books/manga/skip-beat/all",
+      "region": "Availability varies by region",
+      "access": "Official volumes and retailer options; purchase may be required"
+    }
+  ],
+  "1001456": [
+    {
+      "type": "OFFICIAL_SERIES_PAGE",
+      "site": "Kodansha — official Vinland Saga page",
+      "url": "https://kodansha.us/series/vinland-saga/",
+      "region": "Availability varies by region",
+      "access": "Official editions and retailer options; purchase may be required"
+    }
+  ],
+  "1001482": [
+    {
+      "type": "OFFICIAL_SERIES_PAGE",
+      "site": "VIZ — Vagabond VIZBIG editions",
+      "url": "https://www.viz.com/manga-books/manga/vagabond-vizbig-edition/all",
+      "region": "Availability varies by region",
+      "access": "Official previews, editions, and retailer options; purchase may be required",
+      "rank": 300,
+      "sourceClass": "PUBLISHER"
+    }
+  ],
+  "1001484": [
+    {
+      "type": "OFFICIAL_SERIES_PAGE",
+      "site": "VIZ — Real editions",
+      "url": "https://www.viz.com/manga-books/manga/real/all",
+      "region": "Availability varies by region",
+      "access": "Official previews, editions, and retailer options; purchase may be required",
+      "rank": 300,
+      "sourceClass": "PUBLISHER"
+    }
+  ],
+  "1001487": [
+    {
+      "type": "OFFICIAL_SERIES_PAGE",
+      "site": "Dark Horse Digital — Blade of the Immortal",
+      "url": "https://digital.darkhorse.com/series/373/blade-of-the-immortal",
+      "region": "Availability and purchase options vary by region",
+      "access": "Official digital series page; some editions may be temporarily unavailable",
+      "rank": 300,
+      "sourceClass": "PUBLISHER"
+    }
+  ],
+  "1001500": [
+    {
+      "type": "OFFICIAL_SERIES_PAGE",
+      "site": "Kodansha — AKIRA",
+      "url": "https://kodansha.us/series/akira/",
+      "region": "Availability varies by region and age",
+      "access": "Official mature-audience editions and retailer options; purchase may be required",
+      "rank": 300,
+      "sourceClass": "PUBLISHER"
+    }
+  ],
+  "1001531": [
+    {
+      "type": "OFFICIAL_SERIES_PAGE",
+      "site": "VIZ — Inuyasha VIZBIG editions",
+      "url": "https://www.viz.com/manga-books/manga/inuyasha-vizbig-edition/all",
+      "region": "Availability varies by region",
+      "access": "Official previews, editions, and retailer options; purchase may be required",
+      "rank": 300,
+      "sourceClass": "PUBLISHER"
+    }
+  ],
+  "1001554": [
+    {
+      "type": "OFFICIAL_SERIES_PAGE",
+      "site": "VIZ — official Food Wars page",
+      "url": "https://www.viz.com/manga-books/manga/food-wars-shokugeki-no-soma/all",
+      "region": "Availability varies by region",
+      "access": "Official volumes and retailer options; purchase may be required"
+    }
+  ],
+  "1001637": [
+    {
+      "type": "OFFICIAL_SERIES_PAGE",
+      "site": "VIZ — official Pluto page",
+      "url": "https://www.viz.com/manga-books/manga/pluto-urasawa-x-tezuka/all",
+      "region": "Availability varies by region",
+      "access": "Official volumes and retailer options; purchase may be required"
+    }
+  ],
+  "1001654": [
+    {
+      "type": "OFFICIAL_SERIES_PAGE",
+      "site": "VIZ — Banana Fish editions",
+      "url": "https://www.viz.com/manga-books/manga/banana-fish/all",
+      "region": "Availability varies by region",
+      "access": "Official previews, editions, and retailer options; purchase may be required",
+      "rank": 300,
+      "sourceClass": "PUBLISHER"
+    }
+  ],
+  "1001685": [
+    {
+      "type": "OFFICIAL_SERIES_PAGE",
+      "site": "Kodansha — official Battle Angel Alita page",
+      "url": "https://kodansha.us/series/battle-angel-alita/",
+      "region": "Availability varies by region",
+      "access": "Official editions and retailer options; purchase may be required"
+    }
+  ],
+  "1001947": [
+    {
+      "type": "OFFICIAL_SERIES_PAGE",
+      "site": "VIZ — Rosario+Vampire editions",
+      "url": "https://www.viz.com/manga-books/manga/rosario-vampire/all",
+      "region": "Availability varies by region",
+      "access": "Official previews, editions, and retailer options; purchase may be required",
+      "rank": 300,
+      "sourceClass": "PUBLISHER"
+    }
+  ],
+  "1001973": [
+    {
+      "type": "OFFICIAL_SERIES_PAGE",
+      "site": "Dark Horse Digital — Lone Wolf and Cub",
+      "url": "https://digital.darkhorse.com/series/28/lone-wolf-and-cub",
+      "region": "Availability and purchase options vary by region",
+      "access": "Official digital series page; some editions may be temporarily unavailable",
+      "rank": 300,
+      "sourceClass": "PUBLISHER"
+    }
+  ],
+  "1001984": [
+    {
+      "type": "OFFICIAL_SERIES_PAGE",
+      "site": "Square Enix — Soul Eater: The Perfect Edition",
+      "url": "https://squareenixmangaandbooks.square-enix-games.com/en-us/series/soul-eater",
+      "region": "Availability varies by region",
+      "access": "Official preview, volumes, and retailer options; purchase may be required",
+      "rank": 300,
+      "sourceClass": "PUBLISHER"
+    }
+  ],
+  "1002299": [
+    {
+      "type": "OFFICIAL_SERIES_PAGE",
+      "site": "VIZ — Case Closed (Detective Conan) editions",
+      "url": "https://www.viz.com/manga-books/manga/case-closed/all",
+      "region": "Availability varies by region",
+      "access": "Official English editions and retailer options; purchase may be required",
+      "rank": 300,
+      "sourceClass": "PUBLISHER"
+    }
+  ],
+  "1002435": [
+    {
+      "type": "OFFICIAL_SERIES_PAGE",
+      "site": "VIZ — Dorohedoro editions",
+      "url": "https://www.viz.com/manga-books/manga/dorohedoro/all",
+      "region": "Availability varies by region",
+      "access": "Official previews, editions, and retailer options; purchase may be required",
+      "rank": 300,
+      "sourceClass": "PUBLISHER"
+    }
+  ],
+  "1002811": [
+    {
+      "type": "OFFICIAL_READING_PAGE",
+      "site": "VIZ Shonen Jump — Nisekoi chapters",
+      "url": "https://www.viz.com/shonenjump/chapters/nisekoi",
+      "region": "Available in supported VIZ territories",
+      "access": "Selected chapters are free; membership may be required for archive access",
+      "rank": 100,
+      "sourceClass": "AUTHORIZED_PLATFORM"
+    }
+  ],
+  "1006490": [
+    {
+      "type": "OFFICIAL_SERIES_PAGE",
+      "site": "Yen Press — PandoraHearts",
+      "url": "https://yenpress.com/series/pandorahearts",
+      "region": "Availability varies by region",
+      "access": "Authorized digital and print editions; purchase may be required",
+      "rank": 300,
+      "sourceClass": "PUBLISHER"
+    }
+  ],
+  "1006514": [
+    {
+      "type": "OFFICIAL_SERIES_PAGE",
+      "site": "Kodansha — Sankarea",
+      "url": "https://kodansha.us/series/sankarea/",
+      "region": "Availability varies by region and age",
+      "access": "Official editions and retailer options; purchase may be required",
+      "rank": 300,
+      "sourceClass": "PUBLISHER"
+    }
+  ],
+  "1007176": [
+    {
+      "type": "OFFICIAL_READING_PAGE",
+      "site": "VIZ Shonen Jump — Tokyo Ghoul chapters",
+      "url": "https://www.viz.com/shonenjump/chapters/tokyo-ghoul",
+      "region": "Available in supported VIZ territories",
+      "access": "Selected chapters may be free; membership may be required for archive access"
+    }
+  ],
+  "1007375": [
+    {
+      "type": "OFFICIAL_SERIES_PAGE",
+      "site": "VIZ — Kimi ni Todoke editions",
+      "url": "https://www.viz.com/manga-books/manga/kimi-ni-todoke-from-me-to-you/all",
+      "region": "Availability varies by region",
+      "access": "Official previews, editions, and retailer options; purchase may be required",
+      "rank": 300,
+      "sourceClass": "PUBLISHER"
+    }
+  ],
+  "1007393": [
+    {
+      "type": "OFFICIAL_SERIES_PAGE",
+      "site": "Kodansha — Ajin: Demi-Human",
+      "url": "https://kodansha.us/series/ajin-demi-human/",
+      "region": "Availability varies by region and age",
+      "access": "Official mature-audience editions and retailer options; purchase may be required",
+      "rank": 300,
+      "sourceClass": "PUBLISHER"
+    }
+  ],
+  "1007534": [
+    {
+      "type": "OFFICIAL_READING_PAGE",
+      "site": "VIZ Shonen Jump — Psyren chapters",
+      "url": "https://www.viz.com/shonenjump/chapters/psyren",
+      "region": "Available in supported VIZ territories",
+      "access": "Selected chapters can be read free without payment; membership may be required for the full archive",
+      "rank": 100,
+      "sourceClass": "AUTHORIZED_PLATFORM"
+    }
+  ],
+  "1007727": [
+    {
+      "type": "OFFICIAL_SERIES_PAGE",
+      "site": "Seven Seas — official Citrus page",
+      "url": "https://sevenseasentertainment.com/series/citrus/",
+      "region": "Availability varies by region",
+      "access": "Authorized editions and retailer options; purchase may be required"
+    }
+  ],
+  "1008287": [
+    {
+      "type": "OFFICIAL_SERIES_PAGE",
+      "site": "VIZ — solanin editions",
+      "url": "https://www.viz.com/manga-books/manga/solanin/all",
+      "region": "Availability varies by region",
+      "access": "Official previews, editions, and retailer options; purchase may be required",
+      "rank": 300,
+      "sourceClass": "PUBLISHER"
+    }
+  ],
+  "1008549": [
+    {
+      "type": "OFFICIAL_SERIES_PAGE",
+      "site": "Yen Press — Black Butler",
+      "url": "https://yenpress.com/series/black-butler",
+      "region": "Availability varies by region",
+      "access": "Authorized digital and print editions; purchase may be required",
+      "rank": 300,
+      "sourceClass": "PUBLISHER"
+    }
+  ],
+  "1009964": [
+    {
+      "type": "OFFICIAL_SERIES_PAGE",
+      "site": "VIZ — Goodnight Punpun editions",
+      "url": "https://www.viz.com/manga-books/manga/goodnight-punpun/all",
+      "region": "Availability varies by region",
+      "access": "Official previews, editions, and retailer options; purchase may be required",
+      "rank": 300,
+      "sourceClass": "PUBLISHER"
+    }
+  ],
+  "1011152": [
+    {
+      "type": "OFFICIAL_SERIES_PAGE",
+      "site": "VIZ — Yona of the Dawn editions",
+      "url": "https://www.viz.com/manga-books/manga/yona-of-the-dawn/all",
+      "region": "Availability varies by region",
+      "access": "Official previews, editions, and retailer options; purchase may be required",
+      "rank": 300,
+      "sourceClass": "PUBLISHER"
+    }
+  ],
+  "1011275": [
+    {
+      "type": "OFFICIAL_SERIES_PAGE",
+      "site": "Yen Press — official Blood Lad page",
+      "url": "https://yenpress.com/series/blood-lad",
+      "region": "Availability varies by region",
+      "access": "Authorized digital and print editions; purchase may be required"
+    }
+  ],
+  "1011777": [
+    {
+      "type": "OFFICIAL_SERIES_PAGE",
+      "site": "Kodansha — Yamada-kun and the Seven Witches",
+      "url": "https://kodansha.us/series/yamada-kun-and-the-seven-witches/",
+      "region": "Availability varies by region",
+      "access": "Official editions and retailer options; purchase may be required",
+      "rank": 300,
+      "sourceClass": "PUBLISHER"
+    }
+  ],
+  "1012619": [
+    {
+      "type": "OFFICIAL_READING_PAGE",
+      "site": "VIZ Shonen Jump — Haikyu!! chapters",
+      "url": "https://www.viz.com/shonenjump/chapters/haikyu",
+      "region": "Available in supported VIZ territories",
+      "access": "Selected chapters may be free; membership may be required for archive access"
+    }
+  ],
+  "1013243": [
+    {
+      "type": "OFFICIAL_SERIES_PAGE",
+      "site": "Seven Seas — official orange page",
+      "url": "https://sevenseasentertainment.com/series/orange/",
+      "region": "Availability varies by region",
+      "access": "Authorized editions and retailer options; purchase may be required"
+    }
+  ],
+  "1014916": [
+    {
+      "type": "OFFICIAL_SERIES_PAGE",
+      "site": "Kodansha — official Attack on Titan page",
+      "url": "https://kodansha.us/series/attack-on-titan/",
+      "region": "Availability varies by region",
+      "access": "Official editions and retailer options; purchase may be required"
+    }
+  ],
+  "1016084": [
+    {
+      "type": "OFFICIAL_SERIES_PAGE",
+      "site": "Yen Press — Bungo Stray Dogs",
+      "url": "https://yenpress.com/series/bungo-stray-dogs",
+      "region": "Availability varies by region",
+      "access": "Authorized digital and print editions; purchase may be required",
+      "rank": 300,
+      "sourceClass": "PUBLISHER"
+    }
+  ],
+  "1016529": [
+    {
+      "type": "OFFICIAL_SERIES_PAGE",
+      "site": "Kodansha — official Your Lie in April page",
+      "url": "https://kodansha.us/series/your-lie-in-april/",
+      "region": "Availability varies by region",
+      "access": "Official editions and retailer options; purchase may be required"
+    }
+  ],
+  "1016550": [
+    {
+      "type": "OFFICIAL_SERIES_PAGE",
+      "site": "VIZ — Ao Haru Ride editions",
+      "url": "https://www.viz.com/manga-books/manga/ao-haru-ride/all",
+      "region": "Availability varies by region",
+      "access": "Official previews, editions, and retailer options; purchase may be required",
+      "rank": 300,
+      "sourceClass": "PUBLISHER"
+    }
+  ],
+  "1016554": [
+    {
+      "type": "OFFICIAL_SERIES_PAGE",
+      "site": "Kodansha — official A Silent Voice page",
+      "url": "https://kodansha.us/series/a-silent-voice/",
+      "region": "Availability varies by region",
+      "access": "Official editions and retailer options; purchase may be required"
+    }
+  ],
+  "1016579": [
+    {
+      "type": "OFFICIAL_SERIES_PAGE",
+      "site": "Kodansha — No. 6",
+      "url": "https://kodansha.us/series/no-6/",
+      "region": "Availability varies by region",
+      "access": "Official editions and retailer options; purchase may be required",
+      "rank": 300,
+      "sourceClass": "PUBLISHER"
+    }
+  ],
+  "1016640": [
+    {
+      "type": "OFFICIAL_SERIES_PAGE",
+      "site": "VIZ — Kamisama Kiss editions",
+      "url": "https://www.viz.com/manga-books/manga/kamisama-kiss/all",
+      "region": "Availability varies by region",
+      "access": "Official previews, editions, and retailer options; purchase may be required",
+      "rank": 300,
+      "sourceClass": "PUBLISHER"
+    }
+  ],
+  "1017204": [
+    {
+      "type": "OFFICIAL_SERIES_PAGE",
+      "site": "Kodansha — official Noragami page",
+      "url": "https://kodansha.us/series/noragami-stray-god/",
+      "region": "Availability varies by region",
+      "access": "Official editions and retailer options; purchase may be required"
+    }
+  ],
+  "1017216": [
+    {
+      "type": "OFFICIAL_SERIES_PAGE",
+      "site": "Kodansha — The Flowers of Evil",
+      "url": "https://kodansha.us/series/the-flowers-of-evil/",
+      "region": "Availability varies by region and age",
+      "access": "Official mature-audience editions and retailer options; purchase may be required",
+      "rank": 300,
+      "sourceClass": "PUBLISHER"
+    }
+  ],
+  "1018123": [
+    {
+      "type": "OFFICIAL_SERIES_PAGE",
+      "site": "Yen Press — Akame ga KILL!",
+      "url": "https://yenpress.com/series/akame-ga-kill",
+      "region": "Availability varies by region and age",
+      "access": "Authorized digital and print editions; purchase may be required",
+      "rank": 300,
+      "sourceClass": "PUBLISHER"
+    }
+  ],
+  "1018452": [
+    {
+      "type": "OFFICIAL_SERIES_PAGE",
+      "site": "Yen Press — official Prison School page",
+      "url": "https://yenpress.com/series/prison-school",
+      "region": "Availability varies by region",
+      "access": "Authorized digital and print editions; purchase may be required"
+    }
+  ],
+  "1019100": [
+    {
+      "type": "OFFICIAL_SERIES_PAGE",
+      "site": "Yen Press — Erased",
+      "url": "https://yenpress.com/series/erased",
+      "region": "Availability varies by region",
+      "access": "Authorized digital and print editions; purchase may be required",
+      "rank": 300,
+      "sourceClass": "PUBLISHER"
+    }
+  ],
+  "1019217": [
+    {
+      "type": "OFFICIAL_READING_PAGE",
+      "site": "VIZ Shonen Jump — Bakuman chapters",
+      "url": "https://www.viz.com/shonenjump/chapters/bakuman",
+      "region": "Available in supported VIZ territories",
+      "access": "Selected chapters are free; membership may be required for archive access",
+      "rank": 100,
+      "sourceClass": "AUTHORIZED_PLATFORM"
+    }
+  ],
+  "1019682": [
+    {
+      "type": "OFFICIAL_READING_PAGE",
+      "site": "VIZ Shonen Jump — Assassination Classroom chapters",
+      "url": "https://www.viz.com/shonenjump/chapters/assassination-classroom",
+      "region": "Available in supported VIZ territories",
+      "access": "Selected chapters are free; membership may be required for archive access",
+      "rank": 100,
+      "sourceClass": "AUTHORIZED_PLATFORM"
+    }
+  ],
+  "1020282": [
+    {
+      "type": "OFFICIAL_SERIES_PAGE",
+      "site": "Seven Seas — official Lucifer and the Biscuit Hammer page",
+      "url": "https://sevenseasentertainment.com/series/lucifer-and-the-biscuit-hammer/",
+      "region": "Availability varies by region",
+      "access": "Authorized editions and retailer options; purchase may be required"
+    }
+  ],
+  "1021550": [
+    {
+      "type": "OFFICIAL_SERIES_PAGE",
+      "site": "Yen Press — official A Bride's Story page",
+      "url": "https://yenpress.com/series/a-bride-s-story",
+      "region": "Availability varies by region",
+      "access": "Authorized digital and print editions; purchase may be required"
+    }
+  ],
+  "1021730": [
+    {
+      "type": "OFFICIAL_READING_PAGE",
+      "site": "VIZ Shonen Jump — Kuroko's Basketball chapters",
+      "url": "https://www.viz.com/shonenjump/chapters/kurokos-basketball",
+      "region": "Available in supported VIZ territories",
+      "access": "Selected chapters can be read free without payment; membership may be required for the full archive",
+      "rank": 100,
+      "sourceClass": "AUTHORIZED_PLATFORM"
+    }
+  ],
+  "1021871": [
+    {
+      "type": "OFFICIAL_SERIES_PAGE",
+      "site": "Kodansha — official Say I Love You page",
+      "url": "https://kodansha.us/series/say-i-love-you/",
+      "region": "Availability varies by region",
+      "access": "Official editions and retailer options; purchase may be required"
+    }
+  ],
+  "1022352": [
+    {
+      "type": "OFFICIAL_SERIES_PAGE",
+      "site": "Yen Press — official Horimiya page",
+      "url": "https://yenpress.com/series/horimiya",
+      "region": "Availability varies by region",
+      "access": "Authorized digital and print editions; purchase may be required"
+    }
+  ],
+  "1022926": [
+    {
+      "type": "OFFICIAL_SERIES_PAGE",
+      "site": "Yen Press — official Monthly Girls' Nozaki-kun page",
+      "url": "https://yenpress.com/series/monthly-girls-nozaki-kun",
+      "region": "Availability varies by region",
+      "access": "Authorized digital and print editions; purchase may be required"
+    }
+  ],
+  "1023702": [
+    {
+      "type": "OFFICIAL_READING_PAGE",
+      "site": "VIZ Shonen Jump — Seraph of the End chapters",
+      "url": "https://www.viz.com/shonenjump/chapters/seraph-of-the-end",
+      "region": "Available in supported VIZ territories",
+      "access": "Selected chapters can be read free without payment; membership may be required for the full archive",
+      "rank": 100,
+      "sourceClass": "AUTHORIZED_PLATFORM"
+    }
+  ],
+  "1023815": [
+    {
+      "type": "OFFICIAL_READING_PAGE",
+      "site": "WEBTOON — Noblesse",
+      "url": "https://www.webtoons.com/en/action/noblesse/list?title_no=87",
+      "region": "Availability varies by region",
+      "access": "Official episodes; some episodes may require the WEBTOON app or account"
+    }
+  ],
+  "1024147": [
+    {
+      "type": "OFFICIAL_READING_PAGE",
+      "site": "VIZ Shonen Jump — One-Punch Man chapters",
+      "url": "https://www.viz.com/shonenjump/chapters/one-punch-man",
+      "region": "Available in supported VIZ territories",
+      "access": "Selected chapters may be free; membership may be required for archive access"
+    }
+  ],
+  "1024155": [
+    {
+      "type": "OFFICIAL_READING_PAGE",
+      "site": "VIZ Shonen Jump — Blue Exorcist chapters",
+      "url": "https://www.viz.com/shonenjump/chapters/blue-exorcist",
+      "region": "Available in supported VIZ territories",
+      "access": "Selected chapters are free; membership may be required for archive access",
+      "rank": 100,
+      "sourceClass": "AUTHORIZED_PLATFORM"
+    }
+  ],
+  "1024208": [
+    {
+      "type": "OFFICIAL_SERIES_PAGE",
+      "site": "Kodansha — official The Seven Deadly Sins page",
+      "url": "https://kodansha.us/series/the-seven-deadly-sins/",
+      "region": "Availability varies by region",
+      "access": "Official editions and retailer options; purchase may be required"
+    }
+  ],
+  "1024211": [
+    {
+      "type": "OFFICIAL_SERIES_PAGE",
+      "site": "Kodansha — Land of the Lustrous",
+      "url": "https://kodansha.us/series/land-of-the-lustrous/",
+      "region": "Availability varies by region",
+      "access": "Official editions and retailer options; purchase may be required",
+      "rank": 300,
+      "sourceClass": "PUBLISHER"
+    }
+  ],
+  "1024407": [
+    {
+      "type": "OFFICIAL_SERIES_PAGE",
+      "site": "Kodansha — My Little Monster",
+      "url": "https://kodansha.us/series/my-little-monster/",
+      "region": "Availability varies by region",
+      "access": "Official editions and retailer options; purchase may be required",
+      "rank": 300,
+      "sourceClass": "PUBLISHER"
+    }
+  ],
+  "1025356": [
+    {
+      "type": "OFFICIAL_SERIES_PAGE",
+      "site": "Seven Seas — official The Ancient Magus' Bride page",
+      "url": "https://sevenseasentertainment.com/series/the-ancient-magus-bride/",
+      "region": "Availability varies by region",
+      "access": "Authorized editions and retailer options; purchase may be required"
+    }
+  ],
+  "1025358": [
+    {
+      "type": "OFFICIAL_SERIES_PAGE",
+      "site": "Dark Horse Digital — Mob Psycho 100",
+      "url": "https://digital.darkhorse.com/series/1005/mob-psycho-100",
+      "region": "Availability and purchase options vary by region",
+      "access": "Official digital editions and previews; purchase may be required",
+      "rank": 300,
+      "sourceClass": "PUBLISHER"
+    }
+  ],
+  "1025449": [
+    {
+      "type": "OFFICIAL_SERIES_PAGE",
+      "site": "Kodansha — official Fairy Tail Zero page",
+      "url": "https://kodansha.us/series/fairy-tail-zero/",
+      "region": "Availability varies by region",
+      "access": "Official editions and retailer options; purchase may be required"
+    }
+  ],
+  "1025496": [
+    {
+      "type": "OFFICIAL_SERIES_PAGE",
+      "site": "Yen Press — official Cheeky Brat page",
+      "url": "https://yenpress.com/series/cheeky-brat",
+      "region": "Availability varies by region",
+      "access": "Authorized digital and print editions; purchase may be required"
+    }
+  ],
+  "1025541": [
+    {
+      "type": "OFFICIAL_SERIES_PAGE",
+      "site": "Seven Seas — official Mushoku Tensei page",
+      "url": "https://sevenseasentertainment.com/series/mushoku-tensei-jobless-reincarnation/",
+      "region": "Availability varies by region",
+      "access": "Authorized editions and retailer options; purchase may be required"
+    }
+  ],
+  "1025931": [
+    {
+      "type": "OFFICIAL_SERIES_PAGE",
+      "site": "Yen Press — official Girls' Last Tour page",
+      "url": "https://yenpress.com/series/girls-last-tour",
+      "region": "Availability varies by region",
+      "access": "Authorized digital and print editions; purchase may be required"
+    }
+  ],
+  "1026004": [
+    {
+      "type": "OFFICIAL_READING_PAGE",
+      "site": "VIZ Shonen Jump — My Hero Academia chapters",
+      "url": "https://www.viz.com/shonenjump/chapters/my-hero-academia",
+      "region": "Available in supported VIZ territories",
+      "access": "Selected chapters may be free; membership may be required for archive access"
+    }
+  ],
+  "1026187": [
+    {
+      "type": "OFFICIAL_SERIES_PAGE",
+      "site": "Kodansha — official Domestic Girlfriend page",
+      "url": "https://kodansha.us/series/domestic-girlfriend/",
+      "region": "Availability varies by region",
+      "access": "Official editions and retailer options; purchase may be required"
+    }
+  ],
+  "1026193": [
+    {
+      "type": "OFFICIAL_READING_PAGE",
+      "site": "WEBTOON — The Gamer",
+      "url": "https://www.webtoons.com/en/action/the-gamer/list?title_no=88",
+      "region": "Availability varies by region",
+      "access": "Official episodes; some episodes may require the WEBTOON app or account"
+    }
+  ],
+  "1026233": [
+    {
+      "type": "OFFICIAL_SERIES_PAGE",
+      "site": "Yen Press — official Kakegurui page",
+      "url": "https://yenpress.com/series/kakegurui-compulsive-gambler",
+      "region": "Availability varies by region",
+      "access": "Authorized digital and print editions; purchase may be required"
+    }
+  ],
+  "1026362": [
+    {
+      "type": "OFFICIAL_SERIES_PAGE",
+      "site": "Yen Press — official Teasing Master Takagi-san page",
+      "url": "https://yenpress.com/series/teasing-master-takagi-san",
+      "region": "Availability varies by region",
+      "access": "Authorized digital and print editions; purchase may be required"
+    }
+  ],
+  "1026401": [
+    {
+      "type": "OFFICIAL_READING_PAGE",
+      "site": "VIZ Shonen Jump — Tokyo Ghoul:re chapters",
+      "url": "https://www.viz.com/shonenjump/chapters/tokyo-ghoul-re",
+      "region": "Available in supported VIZ territories",
+      "access": "Selected chapters may be free; membership may be required for archive access"
+    }
+  ],
+  "1027182": [
+    {
+      "type": "OFFICIAL_SERIES_PAGE",
+      "site": "Kodansha — Happiness",
+      "url": "https://kodansha.us/series/happiness/",
+      "region": "Availability varies by region and age",
+      "access": "Official mature-audience editions and retailer options; purchase may be required",
+      "rank": 300,
+      "sourceClass": "PUBLISHER"
+    }
+  ],
+  "1027527": [
+    {
+      "type": "OFFICIAL_READING_PAGE",
+      "site": "VIZ Shonen Jump — Black Clover chapters",
+      "url": "https://www.viz.com/shonenjump/chapters/black-clover",
+      "region": "Available in supported VIZ territories",
+      "access": "Selected chapters are free; membership may be required for archive access",
+      "rank": 100,
+      "sourceClass": "AUTHORIZED_PLATFORM"
+    }
+  ],
+  "1027539": [
+    {
+      "type": "OFFICIAL_SERIES_PAGE",
+      "site": "Yen Press — official Delicious in Dungeon page",
+      "url": "https://yenpress.com/series/delicious-in-dungeon",
+      "region": "Availability varies by region",
+      "access": "Authorized digital and print editions; purchase may be required"
+    }
+  ],
+  "1030463": [
+    {
+      "type": "OFFICIAL_SERIES_PAGE",
+      "site": "Kodansha — Grand Blue Dreaming",
+      "url": "https://kodansha.us/series/grand-blue-dreaming/",
+      "region": "Availability varies by region and age",
+      "access": "Official mature-audience editions and retailer options; purchase may be required",
+      "rank": 300,
+      "sourceClass": "PUBLISHER"
+    }
+  ],
+  "1034444": [
+    {
+      "type": "OFFICIAL_SERIES_PAGE",
+      "site": "VIZ — Golden Kamuy editions",
+      "url": "https://www.viz.com/manga-books/manga/golden-kamuy/all",
+      "region": "Availability varies by region",
+      "access": "Official previews, editions, and retailer options; purchase may be required",
+      "rank": 300,
+      "sourceClass": "PUBLISHER"
+    }
+  ],
+  "1035483": [
+    {
+      "type": "OFFICIAL_SERIES_PAGE",
+      "site": "Kodansha — That Time I Got Reincarnated as a Slime",
+      "url": "https://kodansha.us/series/that-time-i-got-reincarnated-as-a-slime/",
+      "region": "Availability varies by region",
+      "access": "Official manga editions and retailer options; purchase may be required",
+      "rank": 300,
+      "sourceClass": "PUBLISHER"
+    }
+  ],
+  "1035880": [
+    {
+      "type": "OFFICIAL_READING_PAGE",
+      "site": "WEBTOON — The God of High School",
+      "url": "https://www.webtoons.com/en/action/the-god-of-high-school/list?title_no=66",
+      "region": "Availability varies by region",
+      "access": "Official episodes; some episodes may require the WEBTOON app or account"
+    }
+  ],
+  "1035896": [
+    {
+      "type": "OFFICIAL_READING_PAGE",
+      "site": "VIZ Shonen Jump — Kaguya-sama chapters",
+      "url": "https://www.viz.com/shonenjump/chapters/kaguya-sama-love-is-war",
+      "region": "Available in supported VIZ territories",
+      "access": "Selected chapters may be free; membership may be required for archive access"
+    }
+  ],
+  "1035985": [
+    {
+      "type": "OFFICIAL_READING_PAGE",
+      "site": "VIZ Shonen Jump — Dragon Ball Super chapters",
+      "url": "https://www.viz.com/shonenjump/chapters/dragon-ball-super",
+      "region": "Available in supported VIZ territories",
+      "access": "Selected chapters can be read free without payment; membership may be required for the full archive",
+      "rank": 100,
+      "sourceClass": "AUTHORIZED_PLATFORM"
+    }
+  ],
+  "1036095": [
+    {
+      "type": "OFFICIAL_SERIES_PAGE",
+      "site": "Kodansha — official Wotakoi page",
+      "url": "https://kodansha.us/series/wotakoi-love-is-hard-for-otaku/",
+      "region": "Availability varies by region",
+      "access": "Official editions and retailer options; purchase may be required"
+    }
+  ],
+  "1036107": [
+    {
+      "type": "OFFICIAL_SERIES_PAGE",
+      "site": "Seven Seas — official Bloom Into You page",
+      "url": "https://sevenseasentertainment.com/series/bloom-into-you/",
+      "region": "Availability varies by region",
+      "access": "Authorized editions and retailer options; purchase may be required"
+    }
+  ],
+  "1036201": [
+    {
+      "type": "OFFICIAL_SERIES_PAGE",
+      "site": "Kodansha — official Fire Force page",
+      "url": "https://kodansha.us/series/fire-force/",
+      "region": "Availability varies by region",
+      "access": "Official editions and retailer options; purchase may be required"
+    }
+  ],
+  "1036424": [
+    {
+      "type": "OFFICIAL_SERIES_PAGE",
+      "site": "Seven Seas — official Tomo-chan Is a Girl! page",
+      "url": "https://sevenseasentertainment.com/series/tomo-chan-is-a-girl/",
+      "region": "Availability varies by region",
+      "access": "Authorized editions and retailer options; purchase may be required"
+    }
+  ],
+  "1036446": [
+    {
+      "type": "CREATOR_READING_PAGE",
+      "site": "19 Days — ad-free English archive",
+      "url": "https://19days.neocities.org/19.html?pg=1",
+      "region": "Worldwide web access; English fan translation",
+      "access": "Complete available archive is free to read without payment or login; the archive documents the creator's permission for translation and non-commercial reposting",
+      "rank": 50,
+      "sourceClass": "CREATOR"
+    }
+  ],
+  "1036543": [
+    {
+      "type": "OFFICIAL_SERIES_PAGE",
+      "site": "VIZ — Platinum End editions",
+      "url": "https://www.viz.com/manga-books/manga/platinum-end/all",
+      "region": "Availability varies by region",
+      "access": "Official previews, editions, and retailer options; purchase may be required",
+      "rank": 300,
+      "sourceClass": "PUBLISHER"
+    }
+  ],
+  "1037141": [
+    {
+      "type": "OFFICIAL_READING_PAGE",
+      "site": "Lezhin Comics — Something About Us",
+      "url": "https://www.lezhinus.com/en/comic/something_about_us",
+      "region": "Availability varies by region and age",
+      "access": "Authorized episodes; account or coins may be required",
+      "rank": 100,
+      "sourceClass": "AUTHORIZED_PLATFORM"
+    }
+  ],
+  "1037280": [
+    {
+      "type": "OFFICIAL_READING_PAGE",
+      "site": "VIZ Shonen Jump — Demon Slayer chapters",
+      "url": "https://www.viz.com/shonenjump/chapters/demon-slayer-kimetsu-no-yaiba",
+      "region": "Available in supported VIZ territories",
+      "access": "Selected chapters may be free; membership may be required for archive access"
+    }
+  ],
+  "1037643": [
+    {
+      "type": "OFFICIAL_READING_PAGE",
+      "site": "VIZ Shonen Jump — Fire Punch chapters",
+      "url": "https://www.viz.com/shonenjump/chapters/fire-punch",
+      "region": "Available in supported VIZ territories",
+      "access": "Selected chapters can be read free without payment; membership may be required for the full archive",
+      "rank": 100,
+      "sourceClass": "AUTHORIZED_PLATFORM"
+    }
+  ],
+  "1037696": [
+    {
+      "type": "OFFICIAL_READING_PAGE",
+      "site": "WEBTOON — Bastard",
+      "url": "https://www.webtoons.com/en/thriller/bastard/list?title_no=485",
+      "region": "Availability varies by region",
+      "access": "Official episodes; some episodes may require the WEBTOON app or account"
+    }
+  ],
+  "1037781": [
+    {
+      "type": "OFFICIAL_SERIES_PAGE",
+      "site": "Yen Press — official Goblin Slayer manga page",
+      "url": "https://yenpress.com/series/goblin-slayer-manga",
+      "region": "Availability varies by region",
+      "access": "Authorized digital and print editions; purchase may be required"
+    }
+  ],
+  "1038047": [
+    {
+      "type": "OFFICIAL_READING_PAGE",
+      "site": "VIZ Shonen Jump — The Promised Neverland chapters",
+      "url": "https://www.viz.com/shonenjump/chapters/the-promised-neverland",
+      "region": "Available in supported VIZ territories",
+      "access": "Selected chapters may be free; membership may be required for archive access"
+    }
+  ],
+  "1038072": [
+    {
+      "type": "OFFICIAL_SERIES_PAGE",
+      "site": "Seven Seas — official My Lesbian Experience with Loneliness page",
+      "url": "https://sevenseasentertainment.com/series/my-lesbian-experience-with-loneliness/",
+      "region": "Availability varies by region",
+      "access": "Authorized editions and retailer options; purchase may be required"
+    }
+  ],
+  "1038482": [
+    {
+      "type": "OFFICIAL_SERIES_PAGE",
+      "site": "Yen Press — official your name. manga page",
+      "url": "https://yenpress.com/series/your-name-manga",
+      "region": "Availability varies by region",
+      "access": "Authorized digital and print editions; purchase may be required"
+    }
+  ],
+  "1038622": [
+    {
+      "type": "OFFICIAL_SERIES_PAGE",
+      "site": "Kodansha — official To Your Eternity page",
+      "url": "https://kodansha.us/series/to-your-eternity/",
+      "region": "Availability varies by region",
+      "access": "Official editions and retailer options; purchase may be required"
+    }
+  ],
+  "1038860": [
+    {
+      "type": "OFFICIAL_READING_PAGE",
+      "site": "VIZ Shonen Jump — Dr. STONE chapters",
+      "url": "https://www.viz.com/shonenjump/chapters/dr-stone",
+      "region": "Available in supported VIZ territories",
+      "access": "Selected chapters are free; membership may be required for archive access",
+      "rank": 100,
+      "sourceClass": "AUTHORIZED_PLATFORM"
+    }
+  ],
+  "1038865": [
+    {
+      "type": "OFFICIAL_READING_PAGE",
+      "site": "K MANGA — official Witch Hat Atelier page",
+      "url": "https://s.kmanga.kodansha.com/ldg?t=10065",
+      "region": "Availability varies by region",
+      "access": "Official digital chapters; account, points, or regional restrictions may apply"
+    },
+    {
+      "type": "OFFICIAL_SERIES_PAGE",
+      "site": "Kodansha — official Witch Hat Atelier page",
+      "url": "https://kodansha.us/series/witch-hat-atelier/",
+      "region": "Availability varies by region",
+      "access": "Official editions and retailer options; purchase may be required"
+    }
+  ],
+  "1038867": [
+    {
+      "type": "OFFICIAL_READING_PAGE",
+      "site": "VIZ Shonen Jump — We Never Learn chapters",
+      "url": "https://www.viz.com/shonenjump/chapters/we-never-learn",
+      "region": "Available in supported VIZ territories",
+      "access": "Selected chapters can be read free without payment; membership may be required for the full archive",
+      "rank": 100,
+      "sourceClass": "AUTHORIZED_PLATFORM"
+    }
+  ],
+  "1038926": [
+    {
+      "type": "OFFICIAL_READING_PAGE",
+      "site": "Lezhin Comics — Killing Stalking",
+      "url": "https://www.lezhinus.com/en/comic/killingstalking",
+      "region": "Availability varies by region and age",
+      "access": "Authorized mature-audience episodes; account or coins may be required",
+      "rank": 100,
+      "sourceClass": "AUTHORIZED_PLATFORM"
+    }
+  ],
+  "1039018": [
+    {
+      "type": "OFFICIAL_SERIES_PAGE",
+      "site": "Kodansha — The Quintessential Quintuplets",
+      "url": "https://kodansha.us/series/the-quintessential-quintuplets/",
+      "region": "Availability varies by region",
+      "access": "Official editions and retailer options; purchase may be required",
+      "rank": 300,
+      "sourceClass": "PUBLISHER"
+    }
+  ],
+  "1039242": [
+    {
+      "type": "OFFICIAL_SERIES_PAGE",
+      "site": "VIZ — official Beastars page",
+      "url": "https://www.viz.com/manga-books/manga/beastars/all",
+      "region": "Availability varies by region",
+      "access": "Official volumes and retailer options; purchase may be required"
+    }
+  ],
+  "1039293": [
+    {
+      "type": "OFFICIAL_READING_PAGE",
+      "site": "WEBTOON — Lookism",
+      "url": "https://www.webtoons.com/en/drama/lookism/list?title_no=1049",
+      "region": "Availability varies by region",
+      "access": "Official episodes; some episodes may require the WEBTOON app or account"
+    }
+  ],
+  "1039752": [
+    {
+      "type": "OFFICIAL_READING_PAGE",
+      "site": "Lezhin Comics — Perfect Half",
+      "url": "https://www.lezhinus.com/en/comic/perfecthalf",
+      "region": "Availability varies by region and age",
+      "access": "Authorized mature-audience episodes; account or coins may be required",
+      "rank": 100,
+      "sourceClass": "AUTHORIZED_PLATFORM"
+    }
+  ],
+  "1040005": [
+    {
+      "type": "OFFICIAL_SERIES_PAGE",
+      "site": "Kodansha — Rent-A-Girlfriend",
+      "url": "https://kodansha.us/series/rent-a-girlfriend/",
+      "region": "Availability varies by region",
+      "access": "Official editions and retailer options; purchase may be required",
+      "rank": 300,
+      "sourceClass": "PUBLISHER"
+    }
+  ],
+  "1040121": [
+    {
+      "type": "OFFICIAL_SERIES_PAGE",
+      "site": "Yen Press — official Toilet-bound Hanako-kun page",
+      "url": "https://yenpress.com/series/toilet-bound-hanako-kun",
+      "region": "Availability varies by region",
+      "access": "Authorized digital and print editions; purchase may be required"
+    }
+  ],
+  "1040278": [
+    {
+      "type": "OFFICIAL_SERIES_PAGE",
+      "site": "Kodansha — official Tokyo Revengers page",
+      "url": "https://kodansha.us/series/tokyo-revengers/",
+      "region": "Availability varies by region",
+      "access": "Official editions and retailer options; purchase may be required"
+    }
+  ],
+  "1040324": [
+    {
+      "type": "OFFICIAL_SERIES_PAGE",
+      "site": "Kodansha — Don't Toy with Me, Miss Nagatoro",
+      "url": "https://kodansha.us/series/dont-toy-with-me-miss-nagatoro/",
+      "region": "Availability varies by region",
+      "access": "Official editions and retailer options; purchase may be required",
+      "rank": 300,
+      "sourceClass": "PUBLISHER"
+    }
+  ],
+  "1040546": [
+    {
+      "type": "OFFICIAL_READING_PAGE",
+      "site": "VIZ Shonen Jump — Hell's Paradise: Jigokuraku chapters",
+      "url": "https://www.viz.com/shonenjump/chapters/hells-paradise-jigokuraku",
+      "region": "Available in supported VIZ territories",
+      "access": "Selected chapters can be read free without payment; membership may be required for the full archive",
+      "rank": 100,
+      "sourceClass": "AUTHORIZED_PLATFORM"
+    }
+  ],
+  "1040731": [
+    {
+      "type": "OFFICIAL_READING_PAGE",
+      "site": "WEBTOON — Sweet Home",
+      "url": "https://www.webtoons.com/en/thriller/sweethome/list?title_no=1285",
+      "region": "Availability varies by region",
+      "access": "Official episodes; some episodes may require the WEBTOON app or account"
+    }
+  ],
+  "1040815": [
+    {
+      "type": "OFFICIAL_READING_PAGE",
+      "site": "VIZ Shonen Jump — Jujutsu Kaisen chapters",
+      "url": "https://www.viz.com/shonenjump/chapters/jujutsu-kaisen",
+      "region": "Available in supported VIZ territories",
+      "access": "Selected chapters may be free; membership may be required for archive access"
+    }
+  ],
+  "1040961": [
+    {
+      "type": "OFFICIAL_READING_PAGE",
+      "site": "Lezhin Comics — Love is an Illusion!",
+      "url": "https://www.lezhinus.com/en/comic/loveillusion",
+      "region": "Availability varies by region and age",
+      "access": "Authorized mature-audience episodes; account or coins may be required",
+      "rank": 100,
+      "sourceClass": "AUTHORIZED_PLATFORM"
+    }
+  ],
+  "1041006": [
+    {
+      "type": "OFFICIAL_READING_PAGE",
+      "site": "Square Enix — My Dress-Up Darling, Volume 1",
+      "url": "https://squareenixmangaandbooks.square-enix-games.com/en-us/product/9781646090327",
+      "region": "Availability varies by region and age",
+      "access": "Official mature-audience volume preview and retailer options; the preview is free, while the full volume requires purchase",
+      "rank": 200,
+      "sourceClass": "PUBLISHER"
+    }
+  ],
+  "1041153": [
+    {
+      "type": "OFFICIAL_READING_PAGE",
+      "site": "WEBTOON — Here U Are",
+      "url": "https://www.webtoons.com/en/romance/here-u-are/list?title_no=5834",
+      "region": "Availability varies by region",
+      "access": "Official episodes; some episodes may require the WEBTOON app or account",
+      "rank": 100,
+      "sourceClass": "AUTHORIZED_PLATFORM"
+    }
+  ],
+  "1049863": [
+    {
+      "type": "OFFICIAL_SERIES_PAGE",
+      "site": "Kodansha — official Blue Period page",
+      "url": "https://kodansha.us/series/blue-period/",
+      "region": "Availability varies by region",
+      "access": "Official editions and retailer options; purchase may be required"
+    }
+  ],
+  "1053928": [
+    {
+      "type": "OFFICIAL_SERIES_PAGE",
+      "site": "Kodansha — Blue Lock",
+      "url": "https://kodansha.us/series/blue-lock/",
+      "region": "Availability varies by region",
+      "access": "Official editions and retailer options; purchase may be required",
+      "rank": 300,
+      "sourceClass": "PUBLISHER"
+    }
+  ],
+  "1054665": [
+    {
+      "type": "OFFICIAL_SERIES_PAGE",
+      "site": "Seven Seas — official Who Made Me a Princess page",
+      "url": "https://sevenseasentertainment.com/series/who-made-me-a-princess/",
+      "region": "Availability varies by region",
+      "access": "Authorized editions and retailer options; purchase may be required"
+    }
+  ],
+  "1055099": [
+    {
+      "type": "OFFICIAL_SERIES_PAGE",
+      "site": "VIZ — Call of the Night editions",
+      "url": "https://www.viz.com/manga-books/manga/call-of-the-night/all",
+      "region": "Availability varies by region",
+      "access": "Official previews, editions, and retailer options; purchase may be required",
+      "rank": 300,
+      "sourceClass": "PUBLISHER"
+    }
+  ],
+  "1055857": [
+    {
+      "type": "OFFICIAL_READING_PAGE",
+      "site": "VIZ Shonen Jump — Mashle: Magic and Muscles chapters",
+      "url": "https://www.viz.com/shonenjump/chapters/mashle",
+      "region": "Available in supported VIZ territories",
+      "access": "Selected chapters can be read free without payment; membership may be required for the full archive",
+      "rank": 100,
+      "sourceClass": "AUTHORIZED_PLATFORM"
+    }
+  ],
+  "1056452": [
+    {
+      "type": "OFFICIAL_READING_PAGE",
+      "site": "WEBTOON — Omniscient Reader",
+      "url": "https://www.webtoons.com/en/action/omniscient-reader/list?title_no=2154",
+      "region": "Availability varies by region",
+      "access": "Official episodes; some episodes may require the WEBTOON app or account"
+    }
+  ],
+  "1057618": [
+    {
+      "type": "OFFICIAL_READING_PAGE",
+      "site": "WEBTOON — Nano Machine",
+      "url": "https://www.webtoons.com/en/action/nano-machine/list?title_no=4344",
+      "region": "Availability varies by region",
+      "access": "Official episodes; some episodes may require the WEBTOON app or account",
+      "rank": 100,
+      "sourceClass": "AUTHORIZED_PLATFORM"
+    }
+  ],
+  "1058010": [
+    {
+      "type": "OFFICIAL_READING_PAGE",
+      "site": "WEBTOON — Teenage Mercenary (Mercenary Enrollment)",
+      "url": "https://www.webtoons.com/en/action/teenage-mercenary/list?title_no=2677",
+      "region": "Availability varies by region",
+      "access": "Official episodes; some episodes may require the WEBTOON app or account"
+    }
+  ],
+  "1058159": [
+    {
+      "type": "OFFICIAL_READING_PAGE",
+      "site": "VIZ Shonen Jump — Sakamoto Days chapters",
+      "url": "https://www.viz.com/shonenjump/chapters/sakamoto-days",
+      "region": "Available in supported VIZ territories",
+      "access": "Selected chapters can be read free without payment; membership may be required for the full archive",
+      "rank": 100,
+      "sourceClass": "AUTHORIZED_PLATFORM"
+    }
+  ],
+  "1058313": [
+    {
+      "type": "OFFICIAL_READING_PAGE",
+      "site": "VIZ Shonen Jump — Chainsaw Man Part 2 chapters",
+      "url": "https://www.viz.com/shonenjump/chapters/chainsaw-man",
+      "region": "Available in supported VIZ territories",
+      "access": "Part 2 is included in the series archive; selected chapters can be read free, while membership may be required for older chapters",
+      "rank": 100,
+      "sourceClass": "AUTHORIZED_PLATFORM"
+    }
+  ],
+  "1060854": [
+    {
+      "type": "OFFICIAL_READING_PAGE",
+      "site": "WEBTOON — The Greatest Estate Developer",
+      "url": "https://www.webtoons.com/en/fantasy/the-greatest-estate-developer/list?title_no=3596",
+      "region": "Availability varies by region",
+      "access": "Official episodes; some episodes may require the WEBTOON app or account"
+    }
+  ]
 }
