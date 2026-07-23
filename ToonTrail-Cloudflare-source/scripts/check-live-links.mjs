@@ -29,7 +29,8 @@ for (const link of links.values()) {
       signal: AbortSignal.timeout(timeoutMs),
       headers: { "user-agent": "ToonTrail-LinkAudit/1.0" },
     });
-    if ([403, 405].includes(response.status)) {
+    // Some valid sites do not implement HEAD correctly and return a false 404.
+    if ([403, 404, 405].includes(response.status)) {
       response = await fetch(link.url, {
         method: "GET",
         redirect: "follow",
@@ -66,6 +67,12 @@ const broken = results.filter(
   ({ status }) => status === 0 || status === 404 || status === 410 || status >= 500,
 );
 const warnings = results.filter(({ warning }) => warning);
+if (broken.length) {
+  console.error("Broken destinations:");
+  for (const link of broken) {
+    console.error(`- ${link.id} ${link.title}: ${link.url} (${link.status || link.error})`);
+  }
+}
 console.log(
   `Checked ${results.length} confirmed links: ${broken.length} broken, ${warnings.length} need manual review.`,
 );
