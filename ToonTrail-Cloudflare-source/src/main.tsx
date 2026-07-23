@@ -124,6 +124,25 @@ const linkRank = (link: Link) => {
   if (link.type?.includes("SERIES")) return 300;
   return 400;
 };
+const accessBadge = (link: Link) => {
+  const access = (link.access || "").toLowerCase();
+  if (
+    /complete available archive/.test(access) &&
+    /without (payment or )?login/.test(access)
+  )
+    return { label: "Complete free", tone: "free" };
+  if (/selected chapters|some episodes|free preview|preview is free/.test(access))
+    return { label: "Partial free", tone: "partial" };
+  if (link.sourceClass === "LIBRARY")
+    return { label: "Library", tone: "library" };
+  if (/membership|subscription|account|points/.test(access))
+    return { label: "Account / subscription", tone: "account" };
+  if (/purchase|buy|retailer/.test(access))
+    return { label: "Purchase", tone: "purchase" };
+  if (link.type?.includes("READING"))
+    return { label: "Read online", tone: "reading" };
+  return { label: "Title information", tone: "info" };
+};
 function App() {
   const [dark, setDark] = useState(false),
     [menu, setMenu] = useState(false),
@@ -1500,6 +1519,18 @@ function Detail({
   const links = [...(media.externalLinks || [])].sort(
       (a, b) => linkRank(a) - linkRank(b),
     ),
+    linkGroups = [
+      {
+        label: "Read now",
+        description: "Direct chapter or full-work destinations",
+        links: links.filter((link) => link.type?.includes("READING")),
+      },
+      {
+        label: "More verified options",
+        description: "Publisher, library, discovery, and purchase pages",
+        links: links.filter((link) => !link.type?.includes("READING")),
+      },
+    ].filter((group) => group.links.length),
     dialog = useRef<HTMLElement>(null),
     close = useRef<HTMLButtonElement>(null);
   const [fullDescription, setFullDescription] = useState(false);
@@ -1648,36 +1679,82 @@ function Detail({
           <small>{links.length} option{links.length === 1 ? "" : "s"}</small>
         </div>
         {links.length ? (
-          links.map((link, i) => {
-            const info = sourceInfo(link);
-            const isSearch = link.type?.includes("SEARCH");
-            const isReading = link.type?.includes("READING");
-            const provider = link.site.split("—")[0].trim();
-            const statusLabel = isSearch
-              ? "Verified provider search"
-              : info.verified
-                ? isReading
-                  ? "Verified reading source"
-                  : "Verified title page"
-                : "External resource";
-            return (
-              <article
-                className={`source ${isSearch ? "source-search" : "source-direct"}`}
-                key={link.url}
-              >
-                <div className="rank" aria-hidden="true">
-                  {i + 1}
+          linkGroups.map((group) => (
+            <section className="source-group" key={group.label}>
+              <div className="source-group-heading">
+                <div>
+                  <b>{group.label}</b>
+                  <small>{group.description}</small>
                 </div>
-                <div className="source-copy">
-                  <div className="provider-heading">
-                    <b>{provider}</b>
-                    <span
-                      className={info.verified ? "verified" : "unverified"}
+                <span>{group.links.length}</span>
+              </div>
+              {group.links.map((link) => {
+                const info = sourceInfo(link);
+                const badge = accessBadge(link);
+                const isSearch = link.type?.includes("SEARCH");
+                const isReading = link.type?.includes("READING");
+                const provider = link.site.split("—")[0].trim();
+                const trusted =
+                  info.verified || link.sourceClass === "CREATOR";
+                const statusLabel = isSearch
+                  ? "Verified provider search"
+                  : trusted
+                    ? isReading
+                      ? link.sourceClass === "CREATOR"
+                        ? "Creator-authorized source"
+                        : "Verified reading source"
+                      : "Verified title page"
+                    : "External resource";
+                return (
+                  <article
+                    className={`source ${isSearch ? "source-search" : "source-direct"}`}
+                    key={link.url}
+                  >
+                    <div className="rank" aria-hidden="true">
+                      {links.indexOf(link) + 1}
+                    </div>
+                    <div className="source-copy">
+                      <div className="provider-heading">
+                        <b>{provider}</b>
+                        <span className={trusted ? "verified" : "unverified"}>
+                          {trusted ? (
+                            isSearch ? <Search /> : <ShieldCheck />
+                          ) : null}
+                          {statusLabel}
+                        </span>
+                      </div>
+                      <small className="provider-domain">{info.domain}</small>
+                      <div className="access-summary">
+                        <span className={`access-badge access-${badge.tone}`}>
+                          {badge.label}
+                        </span>
+                        <span>
+                          {link.region || "Availability varies by region"}
+                        </span>
+                      </div>
+                      <small className="access-detail">
+                        {link.access || "Chapter access may vary"}
+                      </small>
+                    </div>
+                    <a
+                      href={link.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label={`${isSearch ? "Search for" : isReading ? "Read" : "View verified options for"} ${titleOf(media)} on ${link.site} (opens in a new tab)`}
                     >
-                      {info.verified ? (
-                        isSearch ? (
-                          <Search />
-                        ) : (
+                      {isSearch
+                        ? `Search ${provider}`
+                        : isReading
+                          ? "Read here"
+                          : "View options"}
+                      <ExternalLink />
+                    </a>
+                  </article>
+                );
+              })}
+            </section>
+          ))
+        ) : (
                           <ShieldCheck />
                         )
                       ) : null}
