@@ -623,7 +623,542 @@ function App() {
                   >
                     <option value="ALL">Any status</option>
                     <option value="RELEASING">Ongoing</option>
-                    <option value="…5350 tokens truncated…le use</h2>
+                    <option value="FINISHED">Completed</option>
+                    <option value="HIATUS">On hiatus</option>
+                  </select>
+                </label>
+                {(kind !== "ALL" || genre !== "ALL" || status !== "ALL") && (
+                  <button
+                    onClick={() => {
+                      setKind("ALL");
+                      setGenre("ALL");
+                      setStatus("ALL");
+                      setPage(1);
+                    }}
+                  >
+                    <X />
+                    Reset filters
+                  </button>
+                )}
+                <span>
+                  {pageInfo.total
+                    ? `${pageInfo.total.toLocaleString()} titles`
+                    : ""}
+                </span>
+              </div>
+              <div aria-live="polite" className="sr-only">
+                {loading
+                  ? "Loading catalogue"
+                  : `${media.length} titles shown on page ${page}`}
+              </div>
+              {loading ? (
+                <div className="loading" role="status">
+                  <LoaderCircle />
+                  Finding stories…
+                </div>
+              ) : media.length === 0 ? (
+                <div className="no-items">
+                  <Search />
+                  <h3>No matching titles</h3>
+                  <p>Try another spelling or reset one of the filters.</p>
+                </div>
+              ) : (
+                <div className="catalog-grid" aria-label="Catalogue results">
+                  {media.map((m) => {
+                    const saved = savedIds.has(m.id);
+                    const cardTitle = `title-${m.id}`;
+                    return (
+                      <article
+                        className="media-card"
+                        key={m.id}
+                        aria-labelledby={cardTitle}
+                      >
+                        <button
+                          className="poster"
+                          onClick={() => openMedia(m)}
+                          aria-label={`View details for ${titleOf(m)}`}
+                        >
+                          {m.coverImage.large ? (
+                            <>
+                              <img
+                                className="poster-backdrop"
+                                src={m.coverImage.large}
+                                alt=""
+                                aria-hidden="true"
+                                loading="lazy"
+                              />
+                              <img
+                                className="poster-image"
+                                src={m.coverImage.large}
+                                alt={`${titleOf(m)} cover`}
+                                loading="lazy"
+                                decoding="async"
+                              />
+                            </>
+                          ) : (
+                            <span className="cover-art">
+                              <b>
+                                {titleOf(m)
+                                  .split(" ")
+                                  .slice(0, 2)
+                                  .map((x) => x[0])
+                                  .join("")}
+                              </b>
+                            </span>
+                          )}
+                          <span>{m.kind}</span>
+                        </button>
+                        <div className="media-copy">
+                          <div>
+                            <span className="type">
+                              {m.format?.replaceAll("_", " ")}
+                            </span>
+                            <button
+                              className="bookmark"
+                              disabled={savingIds.has(m.id)}
+                              onClick={() =>
+                                saved ? removeSaved(m.id) : saveMedia(m)
+                              }
+                              aria-label={`${saved ? "Remove" : "Save"} ${titleOf(m)} ${saved ? "from" : "to"} your library`}
+                              aria-pressed={saved}
+                              title={
+                                saved
+                                  ? "Remove from library"
+                                  : "Save to library"
+                              }
+                            >
+                              <Bookmark
+                                fill={saved ? "currentColor" : "none"}
+                              />
+                            </button>
+                          </div>
+                          <button
+                            id={cardTitle}
+                            className="title-link"
+                            onClick={() => openMedia(m)}
+                          >
+                            {titleOf(m)}
+                          </button>
+                          <p title={m.title.native || m.title.romaji}>
+                            {m.title.native || m.title.romaji}
+                          </p>
+                          <div
+                            className="score"
+                            aria-label={
+                              ratings[m.id]?.count
+                                ? `${ratings[m.id].average} out of 5 from ${ratings[m.id].count} readers`
+                                : "Not yet rated"
+                            }
+                          >
+                            <Star fill="currentColor" aria-hidden="true" />{" "}
+                            {ratings[m.id]?.average || "—"}{" "}
+                            <small>
+                              {ratings[m.id]?.count
+                                ? `(${ratings[m.id].count} readers)`
+                                : "Not yet rated"}
+                            </small>
+                          </div>
+                          <button
+                            className="card-details"
+                            onClick={() => openMedia(m)}
+                          >
+                            View details <ChevronRight />
+                          </button>
+                        </div>
+                      </article>
+                    );
+                  })}
+                </div>
+              )}
+              <nav className="pagination" aria-label="Catalogue pages">
+                <button
+                  disabled={page === 1}
+                  onClick={() => {
+                    setPage((p) => p - 1);
+                    scrollTo(0, 500);
+                  }}
+                >
+                  <ChevronLeft />
+                  Previous
+                </button>
+                <span aria-current="page">
+                  Page {page}
+                  {pageInfo.lastPage ? ` of ${pageInfo.lastPage}` : ""}
+                </span>
+                <button
+                  disabled={!pageInfo.hasNextPage}
+                  onClick={() => {
+                    setPage((p) => p + 1);
+                    scrollTo(0, 500);
+                  }}
+                >
+                  Next
+                  <ChevronRight />
+                </button>
+              </nav>
+            </section>
+          </>
+        ) : (
+          <LibraryView
+            me={me}
+            items={library}
+            onSignIn={requireSignIn}
+            onUpdate={updateSaved}
+            onRemove={removeSaved}
+            onOpen={openMediaById}
+            onRate={rate}
+            ratings={ratings}
+            savingIds={savingIds}
+          />
+        )}
+        {!legalPage && <section className="how" id="how">
+          <span className="kicker">Built for a proper beta</span>
+          <h2>Discovery, decisions, and progress in one place.</h2>
+          <div className="steps">
+            <div>
+              <b>01</b>
+              <h3>Search real titles</h3>
+              <p>
+                Find works by English, romanised, or native names across manga,
+                manhwa, and manhua.
+              </p>
+            </div>
+            <div>
+              <b>02</b>
+              <h3>Choose transparently</h3>
+              <p>
+              Direct title pages and provider searches are clearly separated so
+              users always know what will open.
+              </p>
+            </div>
+            <div>
+              <b>03</b>
+              <h3>Build your library</h3>
+              <p>
+                Sign in to bookmark, organise, rate, and continue from the
+                chapter you last recorded.
+              </p>
+            </div>
+          </div>
+        </section>}
+      </main>
+      <footer>
+        <div>
+          <button className="brand footer-brand" onClick={goHome}>
+            <span>TT</span>ToonTrail
+          </button>
+          <p>A safer path to official manga, manhwa, and manhua sources.</p>
+        </div>
+        <nav aria-label="Legal">
+          <button
+            className="feedback-link"
+            onClick={() => {
+              setFeedbackDraft({ category: "GENERAL", message: "" });
+              setFeedbackOpen(true);
+            }}
+          >
+            <MessageSquare />
+            Send Beta Feedback
+          </button>
+          <button onClick={() => navigate("/privacy")}>Privacy Policy</button>
+          <button onClick={() => navigate("/terms")}>Terms of Use</button>
+          <button onClick={() => navigate("/delete-account")}>
+            Delete My Account/Data
+          </button>
+        </nav>
+        <small>© 2026 ToonTrail. ToonTrail does not host comic pages.</small>
+      </footer>
+      {active && (
+        <Detail
+          media={active}
+          saved={savedIds.has(active.id)}
+          rating={ratings[active.id]}
+          onClose={() => setActive(null)}
+          onSave={saveMedia}
+          onRemove={removeSaved}
+          onRate={rate}
+          onFeedback={() => {
+            setFeedbackDraft({
+              category: "READING_LINK",
+              message: `Title: ${titleOf(active)}\nToonTrail ID: ${active.id}\n\nWhat is wrong with the link or availability label?\n`,
+            });
+            setActive(null);
+            setFeedbackOpen(true);
+          }}
+        />
+      )}
+      {feedbackOpen && (
+        <FeedbackDialog
+          initialCategory={feedbackDraft.category}
+          initialMessage={feedbackDraft.message}
+          onClose={() => setFeedbackOpen(false)}
+          onSubmitted={() => {
+            setFeedbackOpen(false);
+            setNotice("Thank you — your beta feedback was received.");
+          }}
+        />
+      )}
+    </div>
+  );
+}
+
+function FeedbackDialog({
+  onClose,
+  onSubmitted,
+  initialCategory = "GENERAL",
+  initialMessage = "",
+}: {
+  onClose: () => void;
+  onSubmitted: () => void;
+  initialCategory?: string;
+  initialMessage?: string;
+}) {
+  const [category, setCategory] = useState(initialCategory),
+    [score, setScore] = useState(0),
+    [message, setMessage] = useState(initialMessage),
+    [contact, setContact] = useState(""),
+    [website, setWebsite] = useState(""),
+    [submitting, setSubmitting] = useState(false),
+    [error, setError] = useState("");
+  const close = useRef<HTMLButtonElement>(null);
+  useEffect(() => {
+    const previous = document.activeElement as HTMLElement;
+    close.current?.focus();
+    const key = (event: KeyboardEvent) => event.key === "Escape" && onClose();
+    addEventListener("keydown", key);
+    return () => {
+      removeEventListener("keydown", key);
+      previous?.focus();
+    };
+  }, [onClose]);
+  async function submit(event: React.FormEvent) {
+    event.preventDefault();
+    if (message.trim().length < 10) {
+      setError("Please add at least 10 characters so we can understand the feedback.");
+      return;
+    }
+    setSubmitting(true);
+    setError("");
+    try {
+      const response = await fetch("/api/feedback", {
+        method: "POST",
+        headers: { "content-type": "application/json" },
+        body: JSON.stringify({
+          category,
+          score,
+          message: message.trim(),
+          contact: contact.trim(),
+          website,
+          page: `${location.pathname}${location.search}`,
+        }),
+      });
+      const data = await response.json();
+      if (!response.ok) throw Error(data.error || "Feedback could not be submitted");
+      onSubmitted();
+    } catch (reason) {
+      setError(reason instanceof Error ? reason.message : "Feedback could not be submitted");
+    } finally {
+      setSubmitting(false);
+    }
+  }
+  return (
+    <div className="feedback-overlay" onMouseDown={(event) => event.target === event.currentTarget && onClose()}>
+      <section className="feedback-dialog" role="dialog" aria-modal="true" aria-labelledby="feedback-title">
+        <button ref={close} className="close" onClick={onClose} aria-label="Close beta feedback form"><X /></button>
+        <span className="kicker">Public beta</span>
+        <h2 id="feedback-title">Help shape ToonTrail.</h2>
+        <p>GitHub and Google accounts are not required. Your contact email is optional and is only used if you want a reply.</p>
+        <form onSubmit={submit}>
+          <label>
+            What is this about?
+            <select value={category} onChange={(event) => setCategory(event.target.value)}>
+              <option value="GENERAL">General experience</option>
+              <option value="BUG">Something did not work</option>
+              <option value="CATALOG">Missing or incorrect title</option>
+              <option value="READING_LINK">Reading link problem</option>
+              <option value="ACCESSIBILITY">Accessibility</option>
+              <option value="IDEA">Feature idea</option>
+            </select>
+          </label>
+          <fieldset>
+            <legend>Overall experience <small>(optional)</small></legend>
+            <div className="feedback-score">
+              {[1, 2, 3, 4, 5].map((value) => (
+                <button type="button" key={value} onClick={() => setScore(value)} aria-label={`${value} out of 5`} aria-pressed={score === value}>
+                  <Star fill={score >= value ? "currentColor" : "none"} />
+                </button>
+              ))}
+            </div>
+          </fieldset>
+          <label>
+            Your feedback
+            <textarea value={message} onChange={(event) => setMessage(event.target.value)} maxLength={2000} required placeholder="What happened, what were you trying to do, or what should improve?" />
+            <small>{message.length}/2000 characters</small>
+          </label>
+          <label>
+            Contact email <small>(optional)</small>
+            <input type="email" value={contact} onChange={(event) => setContact(event.target.value)} maxLength={200} autoComplete="email" placeholder="Only if you want a reply" />
+          </label>
+          <label className="feedback-honeypot" aria-hidden="true">
+            Website
+            <input value={website} onChange={(event) => setWebsite(event.target.value)} tabIndex={-1} autoComplete="off" />
+          </label>
+          {error && <p className="form-error" role="alert">{error}</p>}
+          <button className="feedback-submit" disabled={submitting || message.trim().length < 10}>
+            {submitting ? <><LoaderCircle /> Sending…</> : <><Send /> Submit feedback</>}
+          </button>
+        </form>
+      </section>
+    </div>
+  );
+}
+
+function LegalPage({
+  path,
+  me,
+  onNavigate,
+  onFeedback,
+}: {
+  path: string;
+  me: Me | null;
+  onNavigate: (p: string) => void;
+  onFeedback: () => void;
+}) {
+  const [confirm, setConfirm] = useState(""),
+    [deleting, setDeleting] = useState(false),
+    [error, setError] = useState("");
+  async function deleteAccount() {
+    if (confirm !== "DELETE" || !me?.signedIn) return;
+    setDeleting(true);
+    setError("");
+    try {
+      const r = await fetch("/api/account", { method: "DELETE" });
+      const d = await r.json();
+      if (!r.ok) throw Error(d.error || "Deletion failed");
+      location.href = "/";
+    } catch (e) {
+      setError(e instanceof Error ? e.message : "Deletion failed");
+      setDeleting(false);
+    }
+  }
+  if (path === "/privacy")
+    return (
+      <article className="legal-page">
+        <button className="back-link" onClick={() => onNavigate("/")}>
+          <ArrowLeft />
+          Back to ToonTrail
+        </button>
+        <span className="kicker">Legal</span>
+        <h1>Privacy Policy</h1>
+        <p className="effective">Effective 20 July 2026</p>
+        <p>
+          This policy explains how ToonTrail handles information when you browse
+          the catalogue or sign in.
+        </p>
+        <h2>Information we collect</h2>
+        <ul>
+          <li>
+            <b>Google account identity:</b> after you choose to sign in, Google
+            provides a unique account identifier, verified email address, and
+            display name. ToonTrail stores these details with your account
+            creation date, most recent login date, most recent meaningful
+            account activity, and total login count. ToonTrail does not receive
+            or store your Google password.
+          </li>
+          <li>
+            <b>Your ToonTrail activity:</b> saved titles, reading status,
+            chapter progress, and ratings.
+          </li>
+          <li>
+            <b>Beta feedback:</b> category, optional experience score, message,
+            page path, submission time, and an optional contact email you choose
+            to provide. Feedback does not automatically include your Google
+            account identity and is retained for up to 180 days.
+          </li>
+          <li>
+            <b>Basic service data:</b> Cloudflare may process request
+            information such as IP address, browser details, timestamps, and
+            security events to deliver and protect the service. ToonTrail does
+            not build permanent IP, device, location, search-history, or
+            external-reading histories for individual users.
+          </li>
+        </ul>
+        <h2>How we use information</h2>
+        <p>
+          We use it to authenticate you, sync your library and progress,
+          understand account adoption through limited aggregate statistics,
+          calculate reader ratings, prevent abuse, and operate and improve
+          ToonTrail. We do not sell personal information, use it for targeted
+          advertising, or track what you read after leaving ToonTrail.
+        </p>
+        <h2>Google data and tokens</h2>
+        <p>
+          ToonTrail requests only the <code>openid</code>, <code>email</code>,
+          and <code>profile</code> scopes. Google access tokens are used only to
+          verify your identity during sign-in and are not retained in the
+          ToonTrail database.
+        </p>
+        <h2>Sharing and storage</h2>
+        <p>
+          Information is processed using Google for sign-in and Cloudflare for
+          hosting, security, and database services. We disclose information only
+          to operate the service, comply with law, or protect users and the
+          service.
+        </p>
+        <h2>Retention and your choices</h2>
+        <p>
+          Your saved account data remains until you delete it or the service
+          removes it under these Terms. You may browse without signing in, sign
+          out at any time, remove individual library entries, or permanently
+          delete your account record, library, ratings, and associated
+          ToonTrail data from the deletion page.
+        </p>
+        <h2>Children</h2>
+        <p>
+          ToonTrail is not directed to children under 13, or the minimum
+          digital-consent age required where they live. Do not create an account
+          if you do not meet that requirement.
+        </p>
+        <h2>Changes and contact</h2>
+        <p>
+          Material changes will be posted here with a revised effective date.
+          Privacy questions and requests can be submitted through the account-free{" "}
+          <button className="inline-feedback" onClick={onFeedback}>
+            ToonTrail feedback form
+          </button>
+          . Do not include passwords or other sensitive information.
+        </p>
+      </article>
+    );
+  if (path === "/terms")
+    return (
+      <article className="legal-page">
+        <button className="back-link" onClick={() => onNavigate("/")}>
+          <ArrowLeft />
+          Back to ToonTrail
+        </button>
+        <span className="kicker">Legal</span>
+        <h1>Terms of Use</h1>
+        <p className="effective">Effective 19 July 2026</p>
+        <p>
+          By using ToonTrail, you agree to these Terms. If you do not agree, do
+          not use the service.
+        </p>
+        <h2>What ToonTrail provides</h2>
+        <p>
+          ToonTrail is a discovery, organisation, and link-directory service. It
+          does not host manga, manhwa, manhua, or comic pages. External reading
+          links lead to third-party services that have their own availability,
+          prices, licences, privacy practices, and terms.
+        </p>
+        <h2>Your account</h2>
+        <p>
+          You may browse without an account. Google sign-in is required for
+          personalised features such as bookmarks, library status, progress, and
+          ratings. You are responsible for protecting your Google account and
+          for activity performed through it.
+        </p>
+        <h2>Acceptable use</h2>
         <ul>
           <li>
             Do not misuse, disrupt, scrape at unreasonable volume, probe, or
@@ -1213,4 +1748,3 @@ function Detail({
 }
 
 createRoot(document.getElementById("root")!).render(<App />);
-
