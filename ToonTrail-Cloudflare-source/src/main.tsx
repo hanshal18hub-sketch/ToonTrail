@@ -125,6 +125,7 @@ const linkRank = (link: Link) => {
   return 400;
 };
 const accessBadge = (link: Link) => {
+  // Keep source-choice labels derived from the audited access description.
   const access = (link.access || "").toLowerCase();
   if (
     /complete available archive/.test(access) &&
