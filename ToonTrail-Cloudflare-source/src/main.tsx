@@ -1756,37 +1756,6 @@ function Detail({
             </section>
           ))
         ) : (
-                          <ShieldCheck />
-                        )
-                      ) : null}
-                      {statusLabel}
-                    </span>
-                  </div>
-                  <small className="provider-domain">{info.domain}</small>
-                  <div className="availability">
-                    <span>
-                      {link.region || "Availability varies by region"}
-                    </span>
-                    <span>{link.access || "Chapter access may vary"}</span>
-                  </div>
-                </div>
-                <a
-                  href={link.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label={`${isSearch ? "Search for" : isReading ? "Read" : "View verified options for"} ${titleOf(media)} on ${link.site} (opens in a new tab)`}
-                >
-                  {isSearch
-                    ? `Search ${provider}`
-                    : isReading
-                      ? "Read here"
-                      : "View verified options"}
-                  <ExternalLink />
-                </a>
-              </article>
-            );
-          })
-        ) : (
           <div className="source-empty">
             <ShieldCheck />
             <div>
