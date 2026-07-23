@@ -48,14 +48,17 @@ test("unverified titles never receive guessed provider links", () => {
   }
 });
 
-test("confirmed links are HTTPS title pages, not generic homepages or searches", () => {
+test("confirmed links are HTTPS title pages from official or creator-authorized sources", () => {
   for (const links of context.knownOfficialLinks.values()) {
     for (const link of links) {
       const url = new URL(link.url);
       assert.equal(url.protocol, "https:");
       assert.notEqual(url.pathname, "/");
       assert.doesNotMatch(link.type, /SEARCH/);
-      assert.match(link.type, /^OFFICIAL_/);
+      assert.ok(
+        /^OFFICIAL_/.test(link.type) ||
+          (link.type === "CREATOR_READING_PAGE" && link.sourceClass === "CREATOR"),
+      );
       assert.ok(link.region);
       assert.ok(link.access);
       if (link.rank !== undefined) {
