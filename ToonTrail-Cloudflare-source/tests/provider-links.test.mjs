@@ -58,6 +58,25 @@ test("confirmed links are HTTPS title pages, not generic homepages or searches",
       assert.match(link.type, /^OFFICIAL_/);
       assert.ok(link.region);
       assert.ok(link.access);
+      if (link.rank !== undefined) {
+        assert.ok(Number.isFinite(link.rank));
+        assert.ok(link.rank > 0);
+      }
+    }
+  }
+});
+
+test("ranked alternatives prefer direct reading destinations", () => {
+  for (const links of context.knownOfficialLinks.values()) {
+    const ranked = [...links].sort(
+      (a, b) =>
+        (a.rank ?? (a.type.includes("READING") ? 100 : 300)) -
+        (b.rank ?? (b.type.includes("READING") ? 100 : 300)),
+    );
+    const readingIndex = ranked.findIndex((link) => link.type.includes("READING"));
+    const seriesIndex = ranked.findIndex((link) => link.type.includes("SERIES"));
+    if (readingIndex >= 0 && seriesIndex >= 0) {
+      assert.ok(readingIndex < seriesIndex);
     }
   }
 });
