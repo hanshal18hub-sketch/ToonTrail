@@ -235,6 +235,17 @@
       "sourceClass": "PUBLISHER"
     }
   ],
+  "1000276": [
+    {
+      "type": "OFFICIAL_SERIES_PAGE",
+      "site": "Kodansha — Cardcaptor Sakura Collector's Edition",
+      "url": "https://kodansha.us/series/cardcaptor-sakura-collectors-edition/",
+      "region": "Availability and retailer options vary by region",
+      "access": "Free chapter preview is available; the complete nine-volume print and digital edition requires purchase",
+      "rank": 200,
+      "sourceClass": "PUBLISHER"
+    }
+  ],
   "1000362": [
     {
       "type": "OFFICIAL_SERIES_PAGE",
@@ -361,6 +372,17 @@
       "access": "Official volumes and retailer options; purchase may be required"
     }
   ],
+  "1001404": [
+    {
+      "type": "OFFICIAL_SERIES_PAGE",
+      "site": "VIZ — Vampire Knight",
+      "url": "https://www.viz.com/vampire-knight",
+      "region": "Availability varies by VIZ territory",
+      "access": "Official complete-series catalog with free volume previews; full volumes require purchase",
+      "rank": 200,
+      "sourceClass": "PUBLISHER"
+    }
+  ],
   "1001456": [
     {
       "type": "OFFICIAL_SERIES_PAGE",
@@ -411,6 +433,17 @@
       "region": "Availability varies by region and age",
       "access": "Official mature-audience editions and retailer options; purchase may be required",
       "rank": 300,
+      "sourceClass": "PUBLISHER"
+    }
+  ],
+  "1001513": [
+    {
+      "type": "OFFICIAL_SERIES_PAGE",
+      "site": "Yen Press — Highschool of the Dead",
+      "url": "https://yenpress.com/series/highschool-of-the-dead",
+      "region": "Availability and retailer options vary by region and age",
+      "access": "Official seven-volume catalog with look-inside previews; full volumes require purchase",
+      "rank": 200,
       "sourceClass": "PUBLISHER"
     }
   ],
@@ -551,6 +584,17 @@
       "sourceClass": "PUBLISHER"
     }
   ],
+  "1002704": [
+    {
+      "type": "OFFICIAL_SERIES_PAGE",
+      "site": "DENPA — March Comes in Like a Lion, Volume 1",
+      "url": "https://denpa.pub/book/march-comes-in-like-a-lion-volume-1",
+      "region": "Availability and retailer options vary by region",
+      "access": "Official English edition page with purchase and digital-reading options where available",
+      "rank": 200,
+      "sourceClass": "PUBLISHER"
+    }
+  ],
   "1002811": [
     {
       "type": "OFFICIAL_READING_PAGE",
@@ -560,6 +604,17 @@
       "access": "Selected chapters are free; membership may be required for archive access",
       "rank": 100,
       "sourceClass": "AUTHORIZED_PLATFORM"
+    }
+  ],
+  "1003180": [
+    {
+      "type": "OFFICIAL_SERIES_PAGE",
+      "site": "Seven Seas — Masamune-kun's Revenge",
+      "url": "https://sevenseasentertainment.com/series/masamune-kuns-revenge/",
+      "region": "Availability and retailer options vary by region",
+      "access": "Official English volume catalog with print and digital retailer links; purchase is required",
+      "rank": 200,
+      "sourceClass": "PUBLISHER"
     }
   ],
   "1003229": [
@@ -767,6 +822,17 @@
       "sourceClass": "PUBLISHER"
     }
   ],
+  "1009590": [
+    {
+      "type": "OFFICIAL_SERIES_PAGE",
+      "site": "Yen Press — BTOOOM!",
+      "url": "https://yenpress.com/series/btooom",
+      "region": "Availability and retailer options vary by region; adults 18 and older",
+      "access": "Official complete-series volume catalog with previews; full volumes require purchase",
+      "rank": 200,
+      "sourceClass": "PUBLISHER"
+    }
+  ],
   "1009855": [
     {
       "type": "OFFICIAL_SERIES_PAGE",
@@ -796,6 +862,17 @@
       "url": "https://www.viz.com/dengeki-daisy",
       "region": "Availability varies by VIZ territory",
       "access": "Official complete-series page with free volume previews; full volumes require purchase",
+      "rank": 200,
+      "sourceClass": "PUBLISHER"
+    }
+  ],
+  "1011058": [
+    {
+      "type": "OFFICIAL_SERIES_PAGE",
+      "site": "Yen Press — DOUBT",
+      "url": "https://yenpress.com/series/doubt",
+      "region": "Availability and retailer options vary by region and age",
+      "access": "Official complete two-volume catalog with look-inside previews; full volumes require purchase",
       "rank": 200,
       "sourceClass": "PUBLISHER"
     }
@@ -1091,6 +1168,17 @@
       "url": "https://yenpress.com/series/monthly-girls-nozaki-kun",
       "region": "Availability varies by region",
       "access": "Authorized digital and print editions; purchase may be required"
+    }
+  ],
+  "1022939": [
+    {
+      "type": "OFFICIAL_SERIES_PAGE",
+      "site": "Kodansha — Cage of Eden",
+      "url": "https://kodansha.us/series/cage-of-eden/",
+      "region": "Availability and streaming options vary by region and age",
+      "access": "Free chapter preview and Azuki streaming option are listed; full volumes or subscription access may be required",
+      "rank": 200,
+      "sourceClass": "PUBLISHER"
     }
   ],
   "1023702": [
@@ -1620,6 +1708,17 @@
       "access": "Official editions and retailer options; purchase may be required"
     }
   ],
+  "1038859": [
+    {
+      "type": "OFFICIAL_SERIES_PAGE",
+      "site": "Kodansha — Blood on the Tracks",
+      "url": "https://kodansha.us/series/blood-on-the-tracks/",
+      "region": "Availability and retailer options vary by region and age",
+      "access": "Official complete 17-volume catalog with retailer links; purchase is required",
+      "rank": 200,
+      "sourceClass": "PUBLISHER"
+    }
+  ],
   "1038860": [
     {
       "type": "OFFICIAL_READING_PAGE",
@@ -1883,6 +1982,17 @@
       "region": "Availability varies by region",
       "access": "Official editions and retailer options; purchase may be required",
       "rank": 300,
+      "sourceClass": "PUBLISHER"
+    }
+  ],
+  "1054156": [
+    {
+      "type": "OFFICIAL_SERIES_PAGE",
+      "site": "Yen Press — Mieruko-chan",
+      "url": "https://yenpress.com/series/mieruko-chan",
+      "region": "Availability and retailer options vary by region",
+      "access": "Official English volume catalog with look-inside previews; full volumes require purchase",
+      "rank": 200,
       "sourceClass": "PUBLISHER"
     }
   ],
