@@ -1135,6 +1135,28 @@
       "sourceClass": "AUTHORIZED_PLATFORM"
     }
   ],
+  "1013782": [
+    {
+      "type": "OFFICIAL_RETAILER_PAGE",
+      "site": "Kinokuniya — Velvet Kiss, Volume 1",
+      "url": "https://www.kinokuniya.co.jp/f/dsg-01-9784812472705",
+      "region": "Japanese-language edition; availability varies by region; adults only",
+      "access": "Authorized retailer listing for the Japanese print and digital edition; purchase and age restrictions apply",
+      "rank": 400,
+      "sourceClass": "AUTHORIZED_RETAILER"
+    }
+  ],
+  "1013806": [
+    {
+      "type": "OFFICIAL_RETAILER_PAGE",
+      "site": "Google Books — The Breaker: New Waves Omnibus, Volume 1",
+      "url": "https://books.google.com/books?vid=ISBN9781684973934",
+      "region": "English-language edition; retailer availability varies by region; mature readers only",
+      "access": "Verified bibliographic and retailer page for ABLAZE's official English omnibus; preview availability varies and the full edition requires purchase",
+      "rank": 400,
+      "sourceClass": "AUTHORIZED_RETAILER"
+    }
+  ],
   "1014180": [
     {
       "type": "OFFICIAL_SERIES_PAGE",
@@ -1292,6 +1314,17 @@
       "sourceClass": "PUBLISHER"
     }
   ],
+  "1017413": [
+    {
+      "type": "OFFICIAL_RETAILER_PAGE",
+      "site": "Google Books — The Breaker Omnibus, Volume 1",
+      "url": "https://books.google.com/books?vid=ISBN9781950912247",
+      "region": "English-language edition; retailer availability varies by region",
+      "access": "Verified bibliographic and retailer page for ABLAZE's official English omnibus; preview availability varies and the full edition requires purchase",
+      "rank": 400,
+      "sourceClass": "AUTHORIZED_RETAILER"
+    }
+  ],
   "1017631": [
     {
       "type": "OFFICIAL_SERIES_PAGE",
@@ -1300,6 +1333,17 @@
       "region": "Availability varies by VIZ territory and age",
       "access": "Official English volume catalog; preview requires login and full volumes require purchase",
       "rank": 200,
+      "sourceClass": "PUBLISHER"
+    }
+  ],
+  "1017950": [
+    {
+      "type": "OFFICIAL_SERIES_PAGE",
+      "site": "Shonen Gahosha — Sun-Ken Rock, Volume 1",
+      "url": "https://www.shonengahosha.co.jp/book_Info.php?id=6026",
+      "region": "Japanese-language edition; purchasing availability varies by region and age",
+      "access": "Official publisher page for volume 1 of the complete 25-volume series; purchase is required",
+      "rank": 300,
       "sourceClass": "PUBLISHER"
     }
   ],
