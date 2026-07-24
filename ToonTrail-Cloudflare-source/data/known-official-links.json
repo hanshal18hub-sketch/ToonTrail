@@ -253,6 +253,28 @@
       "access": "Official editions and retailer options; purchase may be required"
     }
   ],
+  "1000983": [
+    {
+      "type": "OFFICIAL_READING_PAGE",
+      "site": "VIZ Manga — Uzumaki chapters",
+      "url": "https://www.viz.com/vizmanga/chapters/uzumaki",
+      "region": "Available in supported VIZ Manga territories and subject to age restrictions",
+      "access": "Chapters 1–3 are free; chapters 4–19 require VIZ Manga membership or volume purchase",
+      "rank": 100,
+      "sourceClass": "AUTHORIZED_PLATFORM"
+    }
+  ],
+  "1001282": [
+    {
+      "type": "OFFICIAL_SERIES_PAGE",
+      "site": "Dark Horse Digital — Gantz",
+      "url": "https://digital.darkhorse.com/series/1553/gantz",
+      "region": "Digital availability varies by region and age; the series may be temporarily unavailable for purchase",
+      "access": "Official Dark Horse series page and edition information; purchase is normally required",
+      "rank": 300,
+      "sourceClass": "PUBLISHER"
+    }
+  ],
   "1001329": [
     {
       "type": "OFFICIAL_READING_PAGE",
@@ -485,6 +507,17 @@
       "sourceClass": "PUBLISHER"
     }
   ],
+  "1006423": [
+    {
+      "type": "OFFICIAL_READING_PAGE",
+      "site": "VIZ Shonen Jump — Stone Ocean chapters",
+      "url": "https://www.viz.com/shonenjump/chapters/jojos-bizarre-adventure-part-6",
+      "region": "Available in supported VIZ territories",
+      "access": "Chapters 1–3 are free; the remaining chapters require Shonen Jump membership or volume purchase",
+      "rank": 100,
+      "sourceClass": "AUTHORIZED_PLATFORM"
+    }
+  ],
   "1006490": [
     {
       "type": "OFFICIAL_SERIES_PAGE",
@@ -580,6 +613,28 @@
       "sourceClass": "PUBLISHER"
     }
   ],
+  "1008777": [
+    {
+      "type": "OFFICIAL_SERIES_PAGE",
+      "site": "VIZ — Deadman Wonderland",
+      "url": "https://www.viz.com/deadman-wonderland",
+      "region": "Availability varies by VIZ territory and age",
+      "access": "Official complete-series page with free volume previews; full volumes require purchase",
+      "rank": 200,
+      "sourceClass": "PUBLISHER"
+    }
+  ],
+  "1009855": [
+    {
+      "type": "OFFICIAL_SERIES_PAGE",
+      "site": "VIZ — Snow White with the Red Hair",
+      "url": "https://www.viz.com/snow-white-with-the-red-hair",
+      "region": "Availability varies by VIZ territory",
+      "access": "Official series page with free volume previews; full volumes require purchase",
+      "rank": 200,
+      "sourceClass": "PUBLISHER"
+    }
+  ],
   "1009964": [
     {
       "type": "OFFICIAL_SERIES_PAGE",
@@ -588,6 +643,17 @@
       "region": "Availability varies by region",
       "access": "Official previews, editions, and retailer options; purchase may be required",
       "rank": 300,
+      "sourceClass": "PUBLISHER"
+    }
+  ],
+  "1010979": [
+    {
+      "type": "OFFICIAL_SERIES_PAGE",
+      "site": "VIZ — Dengeki Daisy",
+      "url": "https://www.viz.com/dengeki-daisy",
+      "region": "Availability varies by VIZ territory",
+      "access": "Official complete-series page with free volume previews; full volumes require purchase",
+      "rank": 200,
       "sourceClass": "PUBLISHER"
     }
   ],
@@ -791,6 +857,17 @@
       "url": "https://sevenseasentertainment.com/series/lucifer-and-the-biscuit-hammer/",
       "region": "Availability varies by region",
       "access": "Authorized editions and retailer options; purchase may be required"
+    }
+  ],
+  "1020582": [
+    {
+      "type": "OFFICIAL_SERIES_PAGE",
+      "site": "Yen Press — Wolf Children: Ame & Yuki",
+      "url": "https://yenpress.com/titles/9780316401654-wolf-children-ame-yuki",
+      "region": "Availability and retailer options vary by region",
+      "access": "Official complete manga edition page with a look-inside preview; purchase is required",
+      "rank": 200,
+      "sourceClass": "PUBLISHER"
     }
   ],
   "1021550": [
@@ -1261,6 +1338,17 @@
       "access": "Authorized editions and retailer options; purchase may be required"
     }
   ],
+  "1038449": [
+    {
+      "type": "OFFICIAL_SERIES_PAGE",
+      "site": "Seven Seas — Made in Abyss",
+      "url": "https://sevenseasentertainment.com/series/made-in-abyss/",
+      "region": "Availability varies by retailer, region, and age",
+      "access": "Official English series page with print and digital retailer links; purchase is required",
+      "rank": 300,
+      "sourceClass": "PUBLISHER"
+    }
+  ],
   "1038482": [
     {
       "type": "OFFICIAL_SERIES_PAGE",
@@ -1417,6 +1505,17 @@
       "access": "Selected chapters can be read free without payment; membership may be required for the full archive",
       "rank": 100,
       "sourceClass": "AUTHORIZED_PLATFORM"
+    }
+  ],
+  "1040679": [
+    {
+      "type": "OFFICIAL_SERIES_PAGE",
+      "site": "VIZ — The Way of the Househusband",
+      "url": "https://www.viz.com/the-way-of-the-househusband",
+      "region": "Availability varies by VIZ territory",
+      "access": "Official series page with free volume previews; full volumes require purchase",
+      "rank": 200,
+      "sourceClass": "PUBLISHER"
     }
   ],
   "1040731": [
