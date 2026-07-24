@@ -903,6 +903,17 @@
       "sourceClass": "PUBLISHER"
     }
   ],
+  "1007140": [
+    {
+      "type": "OFFICIAL_SERIES_PAGE",
+      "site": "Hakusensha — Holyland, Volume 1",
+      "url": "https://www.hakusensha.co.jp/comicslist/40835/",
+      "region": "Japanese-language edition; purchasing availability varies by region",
+      "access": "Official publisher volume page for the complete 18-volume series; purchase is required",
+      "rank": 300,
+      "sourceClass": "PUBLISHER"
+    }
+  ],
   "1007176": [
     {
       "type": "OFFICIAL_READING_PAGE",
@@ -1345,6 +1356,17 @@
       "sourceClass": "AUTHORIZED_PLATFORM"
     }
   ],
+  "1019630": [
+    {
+      "type": "OFFICIAL_READING_PAGE",
+      "site": "Shueisha — Beelzebub, Volume 1",
+      "url": "https://www.shueisha.co.jp/books/items/contents.html?jdcn=08874732874732315501",
+      "region": "Japanese-language digital edition; purchasing availability varies by region",
+      "access": "Official publisher page with a sample preview and links to the complete 28-volume series; full editions require purchase",
+      "rank": 300,
+      "sourceClass": "PUBLISHER"
+    }
+  ],
   "1019682": [
     {
       "type": "OFFICIAL_READING_PAGE",
@@ -1416,6 +1438,17 @@
       "access": "Selected chapters can be read free without payment; membership may be required for the full archive",
       "rank": 100,
       "sourceClass": "AUTHORIZED_PLATFORM"
+    }
+  ],
+  "1021822": [
+    {
+      "type": "OFFICIAL_READING_PAGE",
+      "site": "Coamix — Our Happy Hours",
+      "url": "https://catalog.coamix.co.jp/watashitachi/",
+      "region": "Japanese-language edition; purchasing availability varies by region",
+      "access": "Official complete one-volume page with chapter 1 available as a free sample; the full edition requires purchase",
+      "rank": 300,
+      "sourceClass": "PUBLISHER"
     }
   ],
   "1021871": [
@@ -1733,6 +1766,17 @@
       "region": "Availability and retailer options vary by region",
       "access": "Official manga volume catalog with look-inside previews; full volumes require purchase",
       "rank": 200,
+      "sourceClass": "PUBLISHER"
+    }
+  ],
+  "1026623": [
+    {
+      "type": "OFFICIAL_READING_PAGE",
+      "site": "Akita Shoten — DEAD Tube, Volume 1",
+      "url": "https://www.akitashoten.co.jp/comics/4253237118",
+      "region": "Japanese-language edition; availability varies by region; mature readers only",
+      "access": "Official mature-audience publisher page with a sample preview and print/digital retailer links; full volume requires purchase",
+      "rank": 300,
       "sourceClass": "PUBLISHER"
     }
   ],
@@ -2102,6 +2146,17 @@
       "access": "Selected chapters are free; membership may be required for archive access",
       "rank": 100,
       "sourceClass": "AUTHORIZED_PLATFORM"
+    }
+  ],
+  "1038861": [
+    {
+      "type": "OFFICIAL_READING_PAGE",
+      "site": "Shogakukan eComic Store — Jagaaan",
+      "url": "https://e-comi.shogakukan.co.jp/books/091895050000d0000000",
+      "region": "Japanese-language digital edition; availability varies by region and age",
+      "access": "Official complete 14-volume series catalog with sample previews; full volumes require purchase",
+      "rank": 300,
+      "sourceClass": "PUBLISHER"
     }
   ],
   "1038865": [
