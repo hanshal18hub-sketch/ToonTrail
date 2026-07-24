@@ -690,7 +690,7 @@ function App() {
                 </div>
               ) : (
                 <div className="catalog-grid" aria-label="Catalogue results">
-                  {media.map((m) => {
+                  {media.map((m, index) => {
                     const saved = savedIds.has(m.id);
                     const cardTitle = `title-${m.id}`;
                     return (
@@ -704,34 +704,41 @@ function App() {
                           onClick={() => openMedia(m)}
                           aria-label={`View details for ${titleOf(m)}`}
                         >
+                          <span className="cover-art" aria-hidden="true">
+                            <b>
+                              {titleOf(m)
+                                .split(" ")
+                                .slice(0, 2)
+                                .map((x) => x[0])
+                                .join("")}
+                            </b>
+                          </span>
                           {m.coverImage.large ? (
                             <>
-                              <img
-                                className="poster-backdrop"
-                                src={m.coverImage.large}
-                                alt=""
-                                aria-hidden="true"
-                                loading="lazy"
-                              />
+                              {m.coverImage.large.includes(
+                                "dw9to29mmj727.cloudfront.net/social/",
+                              ) && (
+                                <img
+                                  className="poster-backdrop"
+                                  src={m.coverImage.large}
+                                  alt=""
+                                  aria-hidden="true"
+                                  loading={index < 6 ? "eager" : "lazy"}
+                                />
+                              )}
                               <img
                                 className="poster-image"
                                 src={m.coverImage.large}
                                 alt={`${titleOf(m)} cover`}
-                                loading="lazy"
+                                loading={index < 6 ? "eager" : "lazy"}
+                                fetchPriority={index < 4 ? "high" : "auto"}
                                 decoding="async"
+                                onError={(event) => {
+                                  event.currentTarget.style.display = "none";
+                                }}
                               />
                             </>
-                          ) : (
-                            <span className="cover-art">
-                              <b>
-                                {titleOf(m)
-                                  .split(" ")
-                                  .slice(0, 2)
-                                  .map((x) => x[0])
-                                  .join("")}
-                              </b>
-                            </span>
-                          )}
+                          ) : null}
                           <span>{m.kind}</span>
                         </button>
                         <div className="media-copy">
