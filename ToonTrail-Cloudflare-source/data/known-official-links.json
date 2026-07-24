@@ -1334,6 +1334,17 @@
       "access": "Authorized digital and print editions; purchase may be required"
     }
   ],
+  "1018812": [
+    {
+      "type": "OFFICIAL_READING_PAGE",
+      "site": "Shueisha — JoJo's Bizarre Adventure Part 8: JoJolion, Volume 1",
+      "url": "https://www.shueisha.co.jp/books/items/contents.html?isbn=978-4-08-870311-4",
+      "region": "Japanese-language edition; purchasing availability varies by region",
+      "access": "Official publisher page with a sample preview and links to the complete 27-volume series; full editions require purchase",
+      "rank": 300,
+      "sourceClass": "PUBLISHER"
+    }
+  ],
   "1019100": [
     {
       "type": "OFFICIAL_SERIES_PAGE",
@@ -1507,6 +1518,17 @@
       "url": "https://www.webtoons.com/en/action/noblesse/list?title_no=87",
       "region": "Availability varies by region",
       "access": "Official episodes; some episodes may require the WEBTOON app or account"
+    }
+  ],
+  "1024036": [
+    {
+      "type": "OFFICIAL_READING_PAGE",
+      "site": "Shueisha — You Are Dirty, My Queen",
+      "url": "https://www.shueisha.co.jp/books/items/contents.html?jdcn=08879525879525315501",
+      "region": "Japanese-language digital edition; availability varies by region; mature readers only",
+      "access": "Official mature-audience publisher page with a sample preview and links to both volumes; full editions require purchase",
+      "rank": 300,
+      "sourceClass": "PUBLISHER"
     }
   ],
   "1024147": [
@@ -1704,6 +1726,17 @@
       "access": "Authorized digital and print editions; purchase may be required"
     }
   ],
+  "1026002": [
+    {
+      "type": "OFFICIAL_SERIES_PAGE",
+      "site": "Kodansha Japan — FAIRY TAIL+",
+      "url": "https://www.kodansha.co.jp/comic/products/0000044724",
+      "region": "Japanese-language edition; purchasing availability varies by region",
+      "access": "Official publisher page for the single-volume artbook and side-story collection; purchase is required",
+      "rank": 300,
+      "sourceClass": "PUBLISHER"
+    }
+  ],
   "1026004": [
     {
       "type": "OFFICIAL_READING_PAGE",
@@ -1776,6 +1809,17 @@
       "url": "https://www.akitashoten.co.jp/comics/4253237118",
       "region": "Japanese-language edition; availability varies by region; mature readers only",
       "access": "Official mature-audience publisher page with a sample preview and print/digital retailer links; full volume requires purchase",
+      "rank": 300,
+      "sourceClass": "PUBLISHER"
+    }
+  ],
+  "1027175": [
+    {
+      "type": "OFFICIAL_SERIES_PAGE",
+      "site": "Earth Star Entertainment — ReLIFE, Volume 1",
+      "url": "https://www.earthstar.co.jp/service/detail/item-7805/",
+      "region": "Japanese-language print edition; purchasing availability varies by region",
+      "access": "Official publisher volume page for the full-color series with retailer links; purchase is required",
       "rank": 300,
       "sourceClass": "PUBLISHER"
     }
