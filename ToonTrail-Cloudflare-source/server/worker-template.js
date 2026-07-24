@@ -1,7 +1,3 @@
-Exit code: 0
-Wall time: 2.1 seconds
-Total output lines: 1301
-Output:
 const HTML = __TOONTRAIL_HTML__;
 const CATALOG_SEED = __TOONTRAIL_CATALOG_SEED__;
 const CATALOG_SEED_VERSION = __TOONTRAIL_CATALOG_SEED_VERSION__;

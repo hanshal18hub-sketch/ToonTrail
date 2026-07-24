@@ -1,7 +1,3 @@
-Exit code: 0
-Wall time: 1.8 seconds
-Total output lines: 1937
-Output:
 import React, { useEffect, useMemo, useRef, useState } from "react";
 import { createRoot } from "react-dom/client";
 import {
