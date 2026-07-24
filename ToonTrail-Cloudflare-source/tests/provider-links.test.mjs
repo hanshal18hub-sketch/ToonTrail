@@ -1,3 +1,6 @@
+Exit code: 0
+Wall time: 1.4 seconds
+Output:
 import assert from "node:assert/strict";
 import { readFile } from "node:fs/promises";
 import test from "node:test";
@@ -82,5 +85,16 @@ test("ranked alternatives prefer direct reading destinations", () => {
       assert.ok(readingIndex < seriesIndex);
     }
   }
+});
+
+test("community source suggestions stay in a private pending review queue", () => {
+  assert.match(worker, /CREATE TABLE IF NOT EXISTS source_suggestions/);
+  assert.match(worker, /review_status TEXT NOT NULL DEFAULT 'PENDING'/);
+  assert.match(worker, /path === "\/api\/source-suggestions"/);
+  assert.match(worker, /return json\(\{ ok: true, status: "PENDING" \}, 201\)/);
+  assert.doesNotMatch(
+    worker,
+    /external_links_json[^;\n]*source_suggestions|source_suggestions[^;\n]*external_links_json/,
+  );
 });
 
