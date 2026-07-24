@@ -584,6 +584,17 @@
       "sourceClass": "PUBLISHER"
     }
   ],
+  "1002037": [
+    {
+      "type": "OFFICIAL_SERIES_PAGE",
+      "site": "Dark Horse Digital — Elfen Lied",
+      "url": "https://digital.darkhorse.com/series/1279/elfen-lied",
+      "region": "Availability varies by region and age; digital purchase may be temporarily unavailable",
+      "access": "Official complete four-omnibus series catalog; full editions normally require purchase",
+      "rank": 200,
+      "sourceClass": "PUBLISHER"
+    }
+  ],
   "1002041": [
     {
       "type": "OFFICIAL_SERIES_PAGE",
@@ -1863,6 +1874,17 @@
       "url": "https://www.lezhinus.com/en/comic/killingstalking",
       "region": "Availability varies by region and age",
       "access": "Authorized mature-audience episodes; account or coins may be required",
+      "rank": 100,
+      "sourceClass": "AUTHORIZED_PLATFORM"
+    }
+  ],
+  "1038996": [
+    {
+      "type": "OFFICIAL_READING_PAGE",
+      "site": "Lezhin Comics — Blood Bank",
+      "url": "https://www.lezhinus.com/en/comic/bloodbank",
+      "region": "Availability varies by region; mature readers only",
+      "access": "Completed authorized mature-audience series; login and coins are required for restricted episodes",
       "rank": 100,
       "sourceClass": "AUTHORIZED_PLATFORM"
     }
