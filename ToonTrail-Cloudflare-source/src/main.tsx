@@ -123,11 +123,34 @@ const sourceInfo = (link: Link) => {
   }
 };
 const linkRank = (link: Link) => {
-  if (Number.isFinite(link.rank)) return Number(link.rank);
-  if (link.type?.includes("READING")) return 100;
-  if (link.sourceClass === "LIBRARY") return 200;
-  if (link.type?.includes("SERIES")) return 300;
-  return 400;
+  const access = (link.access || "").toLowerCase();
+  const accessPriority =
+    /complete available archive/.test(access) &&
+    /without (payment or )?login/.test(access)
+      ? 0
+      : /selected chapters|some episodes|free preview|preview is free/.test(access)
+        ? 20
+        : /wait|advert|free/.test(access)
+          ? 40
+          : link.sourceClass === "LIBRARY"
+            ? 100
+            : /purchase|buy|retailer/.test(access) ||
+                link.sourceClass === "RETAILER"
+              ? 300
+              : 160;
+  const destinationPriority = link.type?.includes("READING")
+    ? 0
+    : link.type?.includes("SERIES")
+      ? 30
+      : 60;
+  return accessPriority + destinationPriority + (Number(link.rank) || 0);
+};
+const isPurchaseLink = (link: Link) =>
+  link.sourceClass === "RETAILER" ||
+  /purchase|buy|retailer/.test((link.access || "").toLowerCase());
+const isFreeReadingLink = (link: Link) => {
+  const badge = accessBadge(link);
+  return link.type?.includes("READING") && ["free", "partial"].includes(badge.tone);
 };
 const accessBadge = (link: Link) => {
   // Keep source-choice labels derived from the audited access description.
@@ -1656,14 +1679,42 @@ function Detail({
     ),
     linkGroups = [
       {
-        label: "Read now",
-        description: "Direct chapter or full-work destinations",
-        links: links.filter((link) => link.type?.includes("READING")),
+        label: "Free reading",
+        description: "Confirmed free chapters or works, ranked first",
+        links: links.filter(isFreeReadingLink),
       },
       {
-        label: "More verified options",
-        description: "Publisher, library, discovery, and purchase pages",
-        links: links.filter((link) => !link.type?.includes("READING")),
+        label: "Other online access",
+        description: "Subscription, account, wait-to-unlock, or mixed access",
+        links: links.filter(
+          (link) =>
+            link.type?.includes("READING") &&
+            !isFreeReadingLink(link) &&
+            !isPurchaseLink(link) &&
+            link.sourceClass !== "LIBRARY",
+        ),
+      },
+      {
+        label: "Library access",
+        description: "Borrowing options; library membership may be required",
+        links: links.filter(
+          (link) => link.sourceClass === "LIBRARY" && !isPurchaseLink(link),
+        ),
+      },
+      {
+        label: "Publisher and title information",
+        description: "Verified discovery pages that may not provide online reading",
+        links: links.filter(
+          (link) =>
+            !link.type?.includes("READING") &&
+            link.sourceClass !== "LIBRARY" &&
+            !isPurchaseLink(link),
+        ),
+      },
+      {
+        label: "Purchase options",
+        description: "Retailer or paid-volume destinations, shown separately",
+        links: links.filter(isPurchaseLink),
       },
     ].filter((group) => group.links.length),
     dialog = useRef<HTMLElement>(null),
@@ -1828,6 +1879,7 @@ function Detail({
             const badge = accessBadge(link);
             const isSearch = link.type?.includes("SEARCH");
             const isReading = link.type?.includes("READING");
+            const isPurchase = isPurchaseLink(link);
             const provider = link.site.split("—")[0].trim();
             const trusted = info.verified || link.sourceClass === "CREATOR";
             const statusLabel = isSearch
@@ -1883,9 +1935,11 @@ function Detail({
                   href={link.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  aria-label={`${isSearch ? "Search for" : isReading ? "Read" : "View verified options for"} ${titleOf(media)} on ${link.site} (opens in a new tab)`}
+                  aria-label={`${isPurchase ? "View purchase options for" : isSearch ? "Search for" : isReading ? "Read" : "View verified options for"} ${titleOf(media)} on ${link.site} (opens in a new tab)`}
                 >
-                  {isSearch
+                  {isPurchase
+                    ? "View purchase"
+                    : isSearch
                     ? `Search ${provider}`
                     : isReading
                       ? "Read here"
