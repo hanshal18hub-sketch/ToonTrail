@@ -1549,6 +1549,17 @@
       "sourceClass": "PUBLISHER"
     }
   ],
+  "1024865": [
+    {
+      "type": "OFFICIAL_SERIES_PAGE",
+      "site": "Dark Horse — I Am a Hero Omnibus, Volume 1",
+      "url": "https://www.darkhorse.com/books/25-142/i-am-a-hero-omnibus-volume-1-tpb/",
+      "region": "Availability and retailer options vary by region; mature readers only",
+      "access": "Official English omnibus page with retailer options; the complete series spans eleven omnibuses and requires purchase",
+      "rank": 200,
+      "sourceClass": "PUBLISHER"
+    }
+  ],
   "1025108": [
     {
       "type": "OFFICIAL_SERIES_PAGE",
@@ -2211,6 +2222,17 @@
       "access": "Official editions and retailer options; purchase may be required"
     }
   ],
+  "1040299": [
+    {
+      "type": "OFFICIAL_READING_PAGE",
+      "site": "KADOKAWA — Redo of Healer, Volume 1",
+      "url": "https://www.kadokawa.co.jp/product/321712000780/",
+      "region": "Japanese-language edition; purchasing availability varies by region and age",
+      "access": "Official mature-audience manga page with a digital sample preview and links to the continuing series; full volumes require purchase",
+      "rank": 300,
+      "sourceClass": "PUBLISHER"
+    }
+  ],
   "1040324": [
     {
       "type": "OFFICIAL_SERIES_PAGE",
@@ -2231,6 +2253,17 @@
       "access": "Authorized mature-audience edition; the first listed episode is free and later episodes require points or account access",
       "rank": 100,
       "sourceClass": "AUTHORIZED_PLATFORM"
+    }
+  ],
+  "1040439": [
+    {
+      "type": "OFFICIAL_READING_PAGE",
+      "site": "Shueisha — I Sold My Life for Ten Thousand Yen per Year, Volume 1",
+      "url": "https://www.shueisha.co.jp/books/items/contents.html?jdcn=08881121881121315501",
+      "region": "Japanese-language digital edition; purchasing availability varies by region",
+      "access": "Official publisher page with a sample preview and links to the complete three-volume series; full editions require purchase",
+      "rank": 300,
+      "sourceClass": "PUBLISHER"
     }
   ],
   "1040474": [
@@ -2293,6 +2326,17 @@
       "url": "https://www.viz.com/shonenjump/chapters/jujutsu-kaisen",
       "region": "Available in supported VIZ territories",
       "access": "Selected chapters may be free; membership may be required for archive access"
+    }
+  ],
+  "1040927": [
+    {
+      "type": "OFFICIAL_SERIES_PAGE",
+      "site": "Shonen Gahosha — The Mischievous Gal Anjou-san catalog",
+      "url": "https://www.shonengahosha.co.jp/book_Search.php?bookTag=%E3%82%84%E3%82%93%E3%81%A1%E3%82%83%E3%82%AE%E3%83%A3%E3%83%AB%E3%81%AE%E5%AE%89%E5%9F%8E%E3%81%95%E3%82%93",
+      "region": "Japanese-language edition; purchasing availability varies by region",
+      "access": "Official publisher series search and volume catalog; purchase is required",
+      "rank": 300,
+      "sourceClass": "PUBLISHER"
     }
   ],
   "1040961": [
