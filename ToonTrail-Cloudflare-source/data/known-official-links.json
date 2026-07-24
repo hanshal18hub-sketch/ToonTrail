@@ -43,6 +43,17 @@
       "sourceClass": "PUBLISHER"
     }
   ],
+  "1000027": [
+    {
+      "type": "OFFICIAL_SERIES_PAGE",
+      "site": "Kodansha Japan — Tsubasa, Volume 1",
+      "url": "https://www.kodansha.co.jp/comic/products/0000011676",
+      "region": "Japanese-language edition; purchasing availability varies by region",
+      "access": "Official publisher volume page with links to the complete 28-volume series; purchase is required",
+      "rank": 300,
+      "sourceClass": "PUBLISHER"
+    }
+  ],
   "1000032": [
     {
       "type": "OFFICIAL_SERIES_PAGE",
@@ -1182,6 +1193,17 @@
       "access": "Official editions and retailer options; purchase may be required"
     }
   ],
+  "1017209": [
+    {
+      "type": "OFFICIAL_SERIES_PAGE",
+      "site": "Kodansha Japan — A Town Where You Live omnibus edition",
+      "url": "https://www.kodansha.co.jp/comic/products/0000310432",
+      "region": "Japanese-language digital edition; purchasing availability varies by region",
+      "access": "Official digital omnibus containing volumes 1–5; purchase is required",
+      "rank": 300,
+      "sourceClass": "PUBLISHER"
+    }
+  ],
   "1017216": [
     {
       "type": "OFFICIAL_SERIES_PAGE",
@@ -1810,6 +1832,17 @@
       "sourceClass": "PUBLISHER"
     }
   ],
+  "1036595": [
+    {
+      "type": "OFFICIAL_SERIES_PAGE",
+      "site": "Kodansha — FAIRY TAIL Side Stories: Rhodonite",
+      "url": "https://kodansha.us/series/fairy-tail-side-stories/",
+      "region": "Availability and retailer options vary by region",
+      "access": "Official English side-story catalog with a free chapter preview; the Rhodonite volume requires purchase",
+      "rank": 200,
+      "sourceClass": "PUBLISHER"
+    }
+  ],
   "1036766": [
     {
       "type": "OFFICIAL_READING_PAGE",
@@ -2311,6 +2344,17 @@
       "access": "Authorized episodes; some episodes are free, while login, ink, or wait-until-free access may apply",
       "rank": 100,
       "sourceClass": "AUTHORIZED_PLATFORM"
+    }
+  ],
+  "1054710": [
+    {
+      "type": "OFFICIAL_READING_PAGE",
+      "site": "VIZ — Jujutsu Kaisen 0 digital preview",
+      "url": "https://www.viz.com/manga-books/manga/jujutsu-kaisen-volume-0-0/product/6537/digital",
+      "region": "Availability varies by VIZ territory; teen-plus rating",
+      "access": "Free volume preview is available; the complete digital or print volume requires purchase",
+      "rank": 200,
+      "sourceClass": "PUBLISHER"
     }
   ],
   "1055099": [
