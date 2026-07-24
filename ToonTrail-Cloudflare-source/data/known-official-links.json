@@ -518,6 +518,39 @@
       "sourceClass": "AUTHORIZED_PLATFORM"
     }
   ],
+  "1003229": [
+    {
+      "type": "OFFICIAL_READING_PAGE",
+      "site": "VIZ Shonen Jump — Phantom Blood chapters",
+      "url": "https://www.viz.com/shonenjump/jojos-bizarre-adventure-part-one-chapter-1/chapter/4153",
+      "region": "Available in supported VIZ territories",
+      "access": "Chapters 1–3 are free; remaining chapters require Shonen Jump membership or volume purchase",
+      "rank": 100,
+      "sourceClass": "AUTHORIZED_PLATFORM"
+    }
+  ],
+  "1003476": [
+    {
+      "type": "OFFICIAL_READING_PAGE",
+      "site": "VIZ Shonen Jump — Battle Tendency chapters",
+      "url": "https://www.viz.com/shonenjump/chapters/jojos-bizarre-adventure-part-two",
+      "region": "Available in supported VIZ territories",
+      "access": "Chapters 1–3 are free; remaining chapters require Shonen Jump membership or volume purchase",
+      "rank": 100,
+      "sourceClass": "AUTHORIZED_PLATFORM"
+    }
+  ],
+  "1003480": [
+    {
+      "type": "OFFICIAL_READING_PAGE",
+      "site": "VIZ Shonen Jump — Kingdom chapters",
+      "url": "https://www.viz.com/shonenjump/kingdom-chapter-1/chapter/48522",
+      "region": "Available in supported VIZ territories",
+      "access": "Chapters 1–3 are free; additional available chapters require Shonen Jump membership or volume purchase",
+      "rank": 100,
+      "sourceClass": "AUTHORIZED_PLATFORM"
+    }
+  ],
   "1003625": [
     {
       "type": "OFFICIAL_READING_PAGE",
@@ -556,6 +589,17 @@
       "type": "OFFICIAL_READING_PAGE",
       "site": "VIZ Shonen Jump — Diamond Is Unbreakable chapters",
       "url": "https://www.viz.com/shonenjump/chapters/jojos-bizarre-adventure-part-4-diamond-is-unbreakable",
+      "region": "Available in supported VIZ territories",
+      "access": "Chapters 1–3 are free; remaining chapters require Shonen Jump membership or volume purchase",
+      "rank": 100,
+      "sourceClass": "AUTHORIZED_PLATFORM"
+    }
+  ],
+  "1006417": [
+    {
+      "type": "OFFICIAL_READING_PAGE",
+      "site": "VIZ Shonen Jump — Golden Wind chapters",
+      "url": "https://www.viz.com/shonenjump/chapters/jojos-bizarre-adventure-part-5?locale=en",
       "region": "Available in supported VIZ territories",
       "access": "Chapters 1–3 are free; remaining chapters require Shonen Jump membership or volume purchase",
       "rank": 100,
@@ -759,6 +803,17 @@
       "url": "https://sevenseasentertainment.com/series/orange/",
       "region": "Availability varies by region",
       "access": "Authorized editions and retailer options; purchase may be required"
+    }
+  ],
+  "1014180": [
+    {
+      "type": "OFFICIAL_SERIES_PAGE",
+      "site": "Seven Seas — Monster Musume",
+      "url": "https://sevenseasentertainment.com/series/monster-musume/",
+      "region": "Availability varies by retailer, region, and age",
+      "access": "Official English volume catalog with print and digital retailer links; purchase is required",
+      "rank": 200,
+      "sourceClass": "PUBLISHER"
     }
   ],
   "1014916": [
@@ -1677,6 +1732,17 @@
       "access": "Official editions and retailer options; purchase may be required"
     }
   ],
+  "1051379": [
+    {
+      "type": "OFFICIAL_SERIES_PAGE",
+      "site": "VIZ — Record of Ragnarok",
+      "url": "https://www.viz.com/record-of-ragnarok",
+      "region": "Availability varies by VIZ territory",
+      "access": "Official English series page with free volume previews; full volumes require purchase",
+      "rank": 200,
+      "sourceClass": "PUBLISHER"
+    }
+  ],
   "1053928": [
     {
       "type": "OFFICIAL_SERIES_PAGE",
@@ -1726,6 +1792,17 @@
       "url": "https://www.viz.com/shonenjump/chapters/mashle",
       "region": "Available in supported VIZ territories",
       "access": "Selected chapters can be read free without payment; membership may be required for the full archive",
+      "rank": 100,
+      "sourceClass": "AUTHORIZED_PLATFORM"
+    }
+  ],
+  "1056355": [
+    {
+      "type": "OFFICIAL_READING_PAGE",
+      "site": "VIZ Manga — Frieren: Beyond Journey’s End chapters",
+      "url": "https://www.viz.com/vizmanga/chapters/frieren-the-journeys-end",
+      "region": "Available in supported VIZ Manga territories",
+      "access": "Selected opening and latest chapters are free; archive access requires VIZ Manga membership or volume purchase",
       "rank": 100,
       "sourceClass": "AUTHORIZED_PLATFORM"
     }
