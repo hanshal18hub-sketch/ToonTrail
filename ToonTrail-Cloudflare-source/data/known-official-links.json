@@ -149,6 +149,17 @@
       "sourceClass": "AUTHORIZED_PLATFORM"
     }
   ],
+  "1000116": [
+    {
+      "type": "OFFICIAL_SERIES_PAGE",
+      "site": "VIZ — Gin Tama",
+      "url": "https://www.viz.com/gin-tama",
+      "region": "Availability varies by VIZ territory",
+      "access": "Official English volume catalog; purchase is required",
+      "rank": 200,
+      "sourceClass": "PUBLISHER"
+    }
+  ],
   "1000133": [
     {
       "type": "OFFICIAL_SERIES_PAGE",
@@ -230,6 +241,17 @@
       "region": "Availability and purchase options vary by region",
       "access": "Official digital series page; some editions may be temporarily unavailable",
       "rank": 300,
+      "sourceClass": "PUBLISHER"
+    }
+  ],
+  "1000766": [
+    {
+      "type": "OFFICIAL_SERIES_PAGE",
+      "site": "Kodansha — GTO: Great Teacher Onizuka",
+      "url": "https://archive.kodansha.us/series/gto-great-teacher-onizuka/index.html",
+      "region": "Digital retailer availability varies by region",
+      "access": "Official complete-series catalog with digital retailer options; purchase is required",
+      "rank": 200,
       "sourceClass": "PUBLISHER"
     }
   ],
@@ -379,6 +401,17 @@
       "access": "Official volumes and retailer options; purchase may be required"
     }
   ],
+  "1001563": [
+    {
+      "type": "OFFICIAL_SERIES_PAGE",
+      "site": "VIZ — Neon Genesis Evangelion",
+      "url": "https://www.viz.com/neon-genesis-evangelion",
+      "region": "Availability varies by VIZ territory",
+      "access": "Official series page with a free volume preview; full volumes require purchase",
+      "rank": 200,
+      "sourceClass": "PUBLISHER"
+    }
+  ],
   "1001637": [
     {
       "type": "OFFICIAL_SERIES_PAGE",
@@ -438,6 +471,17 @@
       "region": "Availability varies by region",
       "access": "Official preview, volumes, and retailer options; purchase may be required",
       "rank": 300,
+      "sourceClass": "PUBLISHER"
+    }
+  ],
+  "1002041": [
+    {
+      "type": "OFFICIAL_SERIES_PAGE",
+      "site": "Seven Seas — Homunculus (Omnibus)",
+      "url": "https://sevenseasentertainment.com/series/homunculus-omnibus/",
+      "region": "Availability varies by retailer, region, and age",
+      "access": "Official complete-series omnibus catalog with retailer links; purchase is required",
+      "rank": 200,
       "sourceClass": "PUBLISHER"
     }
   ],
@@ -505,6 +549,17 @@
       "access": "Official series page with a free volume preview and purchase options",
       "rank": 200,
       "sourceClass": "PUBLISHER"
+    }
+  ],
+  "1006413": [
+    {
+      "type": "OFFICIAL_READING_PAGE",
+      "site": "VIZ Shonen Jump — Diamond Is Unbreakable chapters",
+      "url": "https://www.viz.com/shonenjump/chapters/jojos-bizarre-adventure-part-4-diamond-is-unbreakable",
+      "region": "Available in supported VIZ territories",
+      "access": "Chapters 1–3 are free; remaining chapters require Shonen Jump membership or volume purchase",
+      "rank": 100,
+      "sourceClass": "AUTHORIZED_PLATFORM"
     }
   ],
   "1006423": [
@@ -999,6 +1054,17 @@
       "sourceClass": "PUBLISHER"
     }
   ],
+  "1025252": [
+    {
+      "type": "OFFICIAL_READING_PAGE",
+      "site": "VIZ Shonen Jump — All You Need Is Kill chapters",
+      "url": "https://www.viz.com/shonenjump/all-you-need-is-kill-manga-chapter-1/chapter/15203",
+      "region": "Available in supported VIZ territories",
+      "access": "Chapters 1–3 are free; remaining chapters require Shonen Jump membership or volume purchase",
+      "rank": 100,
+      "sourceClass": "AUTHORIZED_PLATFORM"
+    }
+  ],
   "1025356": [
     {
       "type": "OFFICIAL_SERIES_PAGE",
@@ -1035,6 +1101,17 @@
       "url": "https://yenpress.com/series/cheeky-brat",
       "region": "Availability varies by region",
       "access": "Authorized digital and print editions; purchase may be required"
+    }
+  ],
+  "1025524": [
+    {
+      "type": "OFFICIAL_SERIES_PAGE",
+      "site": "One Peace Books — The Rising of the Shield Hero manga",
+      "url": "https://www.onepeacebooks.com/jt/ShieldHeroManga.html",
+      "region": "Availability and retailer options vary by region",
+      "access": "Official manga series and volume page; purchase is required",
+      "rank": 200,
+      "sourceClass": "PUBLISHER"
     }
   ],
   "1025541": [
@@ -1117,6 +1194,17 @@
       "region": "Availability varies by region and age",
       "access": "Official mature-audience editions and retailer options; purchase may be required",
       "rank": 300,
+      "sourceClass": "PUBLISHER"
+    }
+  ],
+  "1027324": [
+    {
+      "type": "OFFICIAL_SERIES_PAGE",
+      "site": "SuBLime — Given",
+      "url": "https://www.sublimemanga.com/given",
+      "region": "Availability and retailer options vary by region and age",
+      "access": "Official English series page with a free preview; full volumes require purchase",
+      "rank": 200,
       "sourceClass": "PUBLISHER"
     }
   ],
@@ -1258,6 +1346,17 @@
       "access": "Official previews, editions, and retailer options; purchase may be required",
       "rank": 300,
       "sourceClass": "PUBLISHER"
+    }
+  ],
+  "1036766": [
+    {
+      "type": "OFFICIAL_READING_PAGE",
+      "site": "VIZ Shonen Jump — Boruto chapters",
+      "url": "https://www.viz.com/shonenjump/chapters/boruto?locale=en",
+      "region": "Available in supported VIZ territories",
+      "access": "Chapters 1–3 are free; remaining chapters require Shonen Jump membership or volume purchase",
+      "rank": 100,
+      "sourceClass": "AUTHORIZED_PLATFORM"
     }
   ],
   "1037141": [
@@ -1629,6 +1728,17 @@
       "access": "Selected chapters can be read free without payment; membership may be required for the full archive",
       "rank": 100,
       "sourceClass": "AUTHORIZED_PLATFORM"
+    }
+  ],
+  "1056391": [
+    {
+      "type": "OFFICIAL_SERIES_PAGE",
+      "site": "Yen Press — [Oshi No Ko]",
+      "url": "https://yenpress.com/series/oshi-no-ko",
+      "region": "Availability and retailer options vary by region",
+      "access": "Official English volume catalog; purchase is required",
+      "rank": 200,
+      "sourceClass": "PUBLISHER"
     }
   ],
   "1056452": [
