@@ -1058,6 +1058,17 @@
       "access": "Authorized editions and retailer options; purchase may be required"
     }
   ],
+  "1013491": [
+    {
+      "type": "OFFICIAL_READING_PAGE",
+      "site": "VIZ Manga — Like a Butterfly (Hibi Chouchou) chapters",
+      "url": "https://www.viz.com/vizmanga/chapters/like-a-butterfly",
+      "region": "Available in supported VIZ Manga territories",
+      "access": "Chapters 1–3 are free; remaining chapters require VIZ Manga membership or volume purchase",
+      "rank": 100,
+      "sourceClass": "AUTHORIZED_PLATFORM"
+    }
+  ],
   "1014180": [
     {
       "type": "OFFICIAL_SERIES_PAGE",
@@ -1286,6 +1297,17 @@
       "access": "Official complete manga edition page with a look-inside preview; purchase is required",
       "rank": 200,
       "sourceClass": "PUBLISHER"
+    }
+  ],
+  "1020771": [
+    {
+      "type": "OFFICIAL_READING_PAGE",
+      "site": "VIZ Manga — Daytime Shooting Star chapters",
+      "url": "https://www.viz.com/vizmanga/chapters/daytime-shooting-star",
+      "region": "Available in supported VIZ Manga territories",
+      "access": "Chapters 1–3 are free; remaining chapters require VIZ Manga membership or volume purchase",
+      "rank": 100,
+      "sourceClass": "AUTHORIZED_PLATFORM"
     }
   ],
   "1021550": [
