@@ -160,6 +160,17 @@
       "sourceClass": "AUTHORIZED_PLATFORM"
     }
   ],
+  "1000113": [
+    {
+      "type": "OFFICIAL_SERIES_PAGE",
+      "site": "VIZ — Eyeshield 21",
+      "url": "https://www.viz.com/eyeshield-21",
+      "region": "Availability varies by VIZ territory",
+      "access": "Official complete 37-volume catalog with volume previews; full volumes require purchase",
+      "rank": 200,
+      "sourceClass": "PUBLISHER"
+    }
+  ],
   "1000116": [
     {
       "type": "OFFICIAL_SERIES_PAGE",
@@ -478,6 +489,17 @@
       "sourceClass": "PUBLISHER"
     }
   ],
+  "1001634": [
+    {
+      "type": "OFFICIAL_SERIES_PAGE",
+      "site": "VIZ — Naoki Urasawa's 21st Century Boys",
+      "url": "https://www.viz.com/manga-books/manga/naoki-urasawa-s-21st-century-boys/all",
+      "region": "Availability varies by VIZ territory",
+      "access": "Official volume catalog with previews and retailer options; full volumes require purchase",
+      "rank": 200,
+      "sourceClass": "PUBLISHER"
+    }
+  ],
   "1001637": [
     {
       "type": "OFFICIAL_SERIES_PAGE",
@@ -659,6 +681,17 @@
       "access": "Chapters 1–3 are free; the remaining available chapters require Shonen Jump membership or volume purchase",
       "rank": 100,
       "sourceClass": "AUTHORIZED_PLATFORM"
+    }
+  ],
+  "1004567": [
+    {
+      "type": "OFFICIAL_SERIES_PAGE",
+      "site": "Kodansha — A Girl on the Shore",
+      "url": "https://kodansha.us/series/a-girl-on-the-shore/",
+      "region": "Availability and retailer options vary by region; mature readers only",
+      "access": "Chapter 1 can be read free; the complete one-volume edition requires purchase",
+      "rank": 200,
+      "sourceClass": "PUBLISHER"
     }
   ],
   "1006157": [
@@ -1039,6 +1072,17 @@
       "sourceClass": "PUBLISHER"
     }
   ],
+  "1018003": [
+    {
+      "type": "OFFICIAL_SERIES_PAGE",
+      "site": "SuBLime — Love Stage!!",
+      "url": "https://www.sublimemanga.com/love-stage",
+      "region": "Availability and retailer options vary by region and age",
+      "access": "Official complete seven-volume series page with free previews; full volumes require purchase",
+      "rank": 200,
+      "sourceClass": "PUBLISHER"
+    }
+  ],
   "1018123": [
     {
       "type": "OFFICIAL_SERIES_PAGE",
@@ -1312,6 +1356,17 @@
       "access": "Authorized digital and print editions; purchase may be required"
     }
   ],
+  "1025516": [
+    {
+      "type": "OFFICIAL_SERIES_PAGE",
+      "site": "Kodansha — Tsuredure Children",
+      "url": "https://kodansha.us/series/tsuredure-children/",
+      "region": "Digital availability and streaming options vary by region",
+      "access": "Free chapter preview is available; the complete 12-volume digital edition requires purchase or participating subscription access",
+      "rank": 200,
+      "sourceClass": "PUBLISHER"
+    }
+  ],
   "1025524": [
     {
       "type": "OFFICIAL_SERIES_PAGE",
@@ -1393,6 +1448,17 @@
       "url": "https://www.viz.com/shonenjump/chapters/tokyo-ghoul-re",
       "region": "Available in supported VIZ territories",
       "access": "Selected chapters may be free; membership may be required for archive access"
+    }
+  ],
+  "1026616": [
+    {
+      "type": "OFFICIAL_SERIES_PAGE",
+      "site": "Yen Press — Overlord manga",
+      "url": "https://yenpress.com/series/overlord-manga?format=Digital",
+      "region": "Availability and retailer options vary by region",
+      "access": "Official manga volume catalog with look-inside previews; full volumes require purchase",
+      "rank": 200,
+      "sourceClass": "PUBLISHER"
     }
   ],
   "1027182": [
@@ -1639,6 +1705,17 @@
       "url": "https://www.webtoons.com/en/thriller/bastard/list?title_no=485",
       "region": "Availability varies by region",
       "access": "Official episodes; some episodes may require the WEBTOON app or account"
+    }
+  ],
+  "1037711": [
+    {
+      "type": "OFFICIAL_SERIES_PAGE",
+      "site": "Seven Seas — Arifureta manga",
+      "url": "https://sevenseasentertainment.com/series/arifureta-from-commonplace-to-worlds-strongest-manga/",
+      "region": "Availability and retailer options vary by region",
+      "access": "Official manga volume catalog with print and digital retailer links; purchase is required",
+      "rank": 200,
+      "sourceClass": "PUBLISHER"
     }
   ],
   "1037781": [
@@ -2067,6 +2144,17 @@
       "url": "https://www.viz.com/shonenjump/chapters/mashle",
       "region": "Available in supported VIZ territories",
       "access": "Selected chapters can be read free without payment; membership may be required for the full archive",
+      "rank": 100,
+      "sourceClass": "AUTHORIZED_PLATFORM"
+    }
+  ],
+  "1056296": [
+    {
+      "type": "OFFICIAL_READING_PAGE",
+      "site": "Tapas — Villains Are Destined to Die",
+      "url": "https://tapas.io/series/villains-are-destined-to-die/info",
+      "region": "Availability varies by region",
+      "access": "Episode 1 is free; later episodes require login and may use ink or wait-until-free access, with the newest episodes excluded from wait-until-free",
       "rank": 100,
       "sourceClass": "AUTHORIZED_PLATFORM"
     }
