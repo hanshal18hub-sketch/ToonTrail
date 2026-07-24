@@ -44,11 +44,30 @@ for (const link of links.values()) {
     const warning = [401, 403, 429].includes(response.status);
     results.push({ ...link, status: response.status, finalUrl: response.url, warning });
   } catch (error) {
-    results.push({
-      ...link,
-      status: 0,
-      error: error instanceof Error ? error.message : String(error),
-    });
+    try {
+      const response = await fetch(link.url, {
+        method: "GET",
+        redirect: "follow",
+        signal: AbortSignal.timeout(timeoutMs * 2),
+        headers: {
+          "user-agent": "Mozilla/5.0 ToonTrail-LinkAudit/1.0",
+          range: "bytes=0-0",
+        },
+      });
+      results.push({
+        ...link,
+        status: response.status,
+        finalUrl: response.url,
+        warning: [401, 403, 429].includes(response.status),
+      });
+    } catch (retryError) {
+      results.push({
+        ...link,
+        status: 0,
+        warning: true,
+        error: retryError instanceof Error ? retryError.message : String(retryError),
+      });
+    }
   }
 }
 
@@ -58,13 +77,14 @@ console.table(
     title,
     site,
     status,
-    result: error ? `ERROR: ${error}` : warning ? "REVIEW" : "OK",
+    result: warning ? `REVIEW${error ? `: ${error}` : ""}` : error ? `ERROR: ${error}` : "OK",
     finalUrl,
   })),
 );
 
 const broken = results.filter(
-  ({ status }) => status === 0 || status === 404 || status === 410 || status >= 500,
+  ({ status, warning }) =>
+    (!warning && status === 0) || status === 404 || status === 410 || status >= 500,
 );
 const warnings = results.filter(({ warning }) => warning);
 if (broken.length) {
