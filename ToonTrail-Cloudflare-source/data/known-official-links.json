@@ -32,6 +32,17 @@
       "sourceClass": "PUBLISHER"
     }
   ],
+  "1000017": [
+    {
+      "type": "OFFICIAL_SERIES_PAGE",
+      "site": "Seven Seas — Yokohama Kaidashi Kikou: Deluxe Edition",
+      "url": "https://sevenseasentertainment.com/series/yokohama-kaidashi-kikou-deluxe-edition/",
+      "region": "Availability and retailer options vary by region",
+      "access": "Official complete five-volume English omnibus catalog with print and digital retailer links; purchase is required",
+      "rank": 200,
+      "sourceClass": "PUBLISHER"
+    }
+  ],
   "1000032": [
     {
       "type": "OFFICIAL_SERIES_PAGE",
@@ -977,6 +988,17 @@
       "url": "https://kodansha.us/series/attack-on-titan/",
       "region": "Availability varies by region",
       "access": "Official editions and retailer options; purchase may be required"
+    }
+  ],
+  "1015190": [
+    {
+      "type": "OFFICIAL_SERIES_PAGE",
+      "site": "VIZ — The Climber, Vol. 1",
+      "url": "https://www.viz.com/manga-books/manga/climber-volume-1/product/8278/paperback",
+      "region": "Availability varies by VIZ territory",
+      "access": "Official English volume page with a free preview and retailer options; the full volume requires purchase",
+      "rank": 200,
+      "sourceClass": "PUBLISHER"
     }
   ],
   "1016084": [
@@ -2239,6 +2261,17 @@
       "url": "https://www.viz.com/shonenjump/chapters/chainsaw-man",
       "region": "Available in supported VIZ territories",
       "access": "Part 2 is included in the series archive; selected chapters can be read free, while membership may be required for older chapters",
+      "rank": 100,
+      "sourceClass": "AUTHORIZED_PLATFORM"
+    }
+  ],
+  "1058485": [
+    {
+      "type": "OFFICIAL_READING_PAGE",
+      "site": "Tapas — SSS-Class Revival Hunter",
+      "url": "https://tapas.io/series/sss-class-revival-hunter/info",
+      "region": "Availability varies by region",
+      "access": "Authorized episodes; opening access is free and later episodes may require login, ink, or wait-until-free access",
       "rank": 100,
       "sourceClass": "AUTHORIZED_PLATFORM"
     }
