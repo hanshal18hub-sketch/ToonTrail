@@ -32,6 +32,17 @@
       "sourceClass": "PUBLISHER"
     }
   ],
+  "1000032": [
+    {
+      "type": "OFFICIAL_SERIES_PAGE",
+      "site": "Kodansha — xxxHOLiC Omnibus",
+      "url": "https://kodansha.us/series/xxxholic-omnibus/",
+      "region": "Availability and retailer options vary by region and age",
+      "access": "Free chapter preview is available; complete print and digital omnibus editions require purchase",
+      "rank": 200,
+      "sourceClass": "PUBLISHER"
+    }
+  ],
   "1000035": [
     {
       "type": "OFFICIAL_READING_PAGE",
@@ -178,6 +189,17 @@
       "url": "https://www.webtoons.com/en/drama/the-sound-of-magic-annarasumanara/list?title_no=77",
       "region": "Availability varies by region",
       "access": "Official episodes; some episodes may require the WEBTOON app or account"
+    }
+  ],
+  "1000138": [
+    {
+      "type": "OFFICIAL_READING_PAGE",
+      "site": "VIZ Shonen Jump — YuYu Hakusho chapters",
+      "url": "https://www.viz.com/shonenjump/chapters/yuyu-hakusho",
+      "region": "Available in supported VIZ territories",
+      "access": "Chapters 1–3 are free; remaining chapters require Shonen Jump membership or volume purchase",
+      "rank": 100,
+      "sourceClass": "AUTHORIZED_PLATFORM"
     }
   ],
   "1000189": [
@@ -450,6 +472,17 @@
       "url": "https://kodansha.us/series/battle-angel-alita/",
       "region": "Availability varies by region",
       "access": "Official editions and retailer options; purchase may be required"
+    }
+  ],
+  "1001899": [
+    {
+      "type": "OFFICIAL_READING_PAGE",
+      "site": "VIZ Shonen Jump — Stardust Crusaders chapters",
+      "url": "https://www.viz.com/shonenjump/chapters/jojos-bizarre-adventure-part-thr",
+      "region": "Available in supported VIZ territories",
+      "access": "Chapters 1–3 are free; remaining chapters require Shonen Jump membership or volume purchase",
+      "rank": 100,
+      "sourceClass": "AUTHORIZED_PLATFORM"
     }
   ],
   "1001947": [
@@ -884,6 +917,17 @@
       "region": "Availability varies by region",
       "access": "Official editions and retailer options; purchase may be required",
       "rank": 300,
+      "sourceClass": "PUBLISHER"
+    }
+  ],
+  "1016631": [
+    {
+      "type": "OFFICIAL_SERIES_PAGE",
+      "site": "SuBLime — Ten Count",
+      "url": "https://www.sublimemanga.com/ten-count",
+      "region": "Availability and retailer options vary by region and age",
+      "access": "Official complete six-volume series page with previews; full volumes require purchase",
+      "rank": 200,
       "sourceClass": "PUBLISHER"
     }
   ],
@@ -1338,6 +1382,17 @@
       "sourceClass": "PUBLISHER"
     }
   ],
+  "1035681": [
+    {
+      "type": "OFFICIAL_READING_PAGE",
+      "site": "VIZ Shonen Jump — Naruto: The Seventh Hokage and the Scarlet Spring",
+      "url": "https://www.viz.com/shonenjump/chapters/naruto-the-seventh-hokage-and-th",
+      "region": "Available in supported VIZ territories",
+      "access": "Chapters 701–703 are free; chapters 704–710 require Shonen Jump membership or volume purchase",
+      "rank": 100,
+      "sourceClass": "AUTHORIZED_PLATFORM"
+    }
+  ],
   "1035880": [
     {
       "type": "OFFICIAL_READING_PAGE",
@@ -1447,6 +1502,17 @@
       "sourceClass": "AUTHORIZED_PLATFORM"
     }
   ],
+  "1037173": [
+    {
+      "type": "OFFICIAL_SERIES_PAGE",
+      "site": "Yen Press — So I'm a Spider, So What? manga",
+      "url": "https://yenpress.com/series/so-i-m-a-spider-so-what-manga",
+      "region": "Availability and retailer options vary by region",
+      "access": "Official manga volume catalog with look-inside previews; full volumes require purchase",
+      "rank": 200,
+      "sourceClass": "PUBLISHER"
+    }
+  ],
   "1037280": [
     {
       "type": "OFFICIAL_READING_PAGE",
@@ -1454,6 +1520,17 @@
       "url": "https://www.viz.com/shonenjump/chapters/demon-slayer-kimetsu-no-yaiba",
       "region": "Available in supported VIZ territories",
       "access": "Selected chapters may be free; membership may be required for archive access"
+    }
+  ],
+  "1037532": [
+    {
+      "type": "OFFICIAL_SERIES_PAGE",
+      "site": "Seven Seas — The Girl From the Other Side",
+      "url": "https://sevenseasentertainment.com/series/the-girl-from-the-other-side-siuil-a-run/",
+      "region": "Availability and retailer options vary by region",
+      "access": "Official complete-series page with digital and print retailer options; purchase is required",
+      "rank": 200,
+      "sourceClass": "PUBLISHER"
     }
   ],
   "1037643": [
@@ -1705,6 +1782,17 @@
       "sourceClass": "AUTHORIZED_PLATFORM"
     }
   ],
+  "1040657": [
+    {
+      "type": "OFFICIAL_READING_PAGE",
+      "site": "VIZ Manga — Fly Me to the Moon chapters",
+      "url": "https://www.viz.com/vizmanga/chapters/fly-me-to-the-moon",
+      "region": "Available in supported VIZ Manga territories",
+      "access": "Opening and selected latest chapters are free; archive access requires VIZ Manga membership or volume purchase",
+      "rank": 100,
+      "sourceClass": "AUTHORIZED_PLATFORM"
+    }
+  ],
   "1040679": [
     {
       "type": "OFFICIAL_SERIES_PAGE",
@@ -1795,6 +1883,28 @@
       "region": "Availability varies by region",
       "access": "Official editions and retailer options; purchase may be required",
       "rank": 300,
+      "sourceClass": "PUBLISHER"
+    }
+  ],
+  "1054173": [
+    {
+      "type": "OFFICIAL_READING_PAGE",
+      "site": "Tapas — A Returner's Magic Should Be Special",
+      "url": "https://tapas.io/series/a-returners-magic-should-be-special/info",
+      "region": "Availability varies by region",
+      "access": "Completed authorized series; episode 1 is free and additional episodes use login, ink, or wait-until-free access",
+      "rank": 100,
+      "sourceClass": "AUTHORIZED_PLATFORM"
+    }
+  ],
+  "1054238": [
+    {
+      "type": "OFFICIAL_SERIES_PAGE",
+      "site": "Yen Press — The Eminence in Shadow manga",
+      "url": "https://yenpress.com/series/the-eminence-in-shadow-manga",
+      "region": "Availability and retailer options vary by region",
+      "access": "Official manga volume catalog with look-inside previews; full volumes require purchase",
+      "rank": 200,
       "sourceClass": "PUBLISHER"
     }
   ],
