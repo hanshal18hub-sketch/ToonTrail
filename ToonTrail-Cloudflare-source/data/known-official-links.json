@@ -160,6 +160,17 @@
       "sourceClass": "PUBLISHER"
     }
   ],
+  "1000081": [
+    {
+      "type": "OFFICIAL_READING_PAGE",
+      "site": "VIZ Manga — Love★Com chapters",
+      "url": "https://www.viz.com/vizmanga/chapters/love-com",
+      "region": "Available in supported VIZ Manga territories",
+      "access": "Chapters 1–3 are free; remaining chapters require VIZ Manga membership or volume purchase",
+      "rank": 100,
+      "sourceClass": "AUTHORIZED_PLATFORM"
+    }
+  ],
   "1000111": [
     {
       "type": "OFFICIAL_READING_PAGE",
@@ -480,6 +491,17 @@
       "sourceClass": "PUBLISHER"
     }
   ],
+  "1001519": [
+    {
+      "type": "OFFICIAL_SERIES_PAGE",
+      "site": "Seven Seas / Ghost Ship — To Love Ru",
+      "url": "https://sevenseasentertainment.com/series/to-love-ru/",
+      "region": "Availability and retailer options vary by region and age",
+      "access": "Official complete nine-omnibus English catalog with print and digital retailer links; purchase is required",
+      "rank": 200,
+      "sourceClass": "PUBLISHER"
+    }
+  ],
   "1001531": [
     {
       "type": "OFFICIAL_SERIES_PAGE",
@@ -593,6 +615,28 @@
       "access": "Official preview, volumes, and retailer options; purchase may be required",
       "rank": 300,
       "sourceClass": "PUBLISHER"
+    }
+  ],
+  "1001986": [
+    {
+      "type": "OFFICIAL_READING_PAGE",
+      "site": "VIZ Manga — Gyo",
+      "url": "https://www.viz.com/vizmanga/chapters/gyo",
+      "region": "Available in supported VIZ Manga territories; mature-content restrictions apply",
+      "access": "Chapters 1–3 are free; chapters 4–19 require VIZ Manga membership or volume purchase",
+      "rank": 100,
+      "sourceClass": "AUTHORIZED_PLATFORM"
+    }
+  ],
+  "1001994": [
+    {
+      "type": "OFFICIAL_READING_PAGE",
+      "site": "VIZ Manga — Tomie: Complete Deluxe Edition",
+      "url": "https://www.viz.com/vizmanga/chapters/tomie",
+      "region": "Available in supported VIZ Manga territories; mature-content restrictions apply",
+      "access": "Chapters 1–3 are free; chapters 4–20 require VIZ Manga membership or volume purchase",
+      "rank": 100,
+      "sourceClass": "AUTHORIZED_PLATFORM"
     }
   ],
   "1002037": [
@@ -734,6 +778,17 @@
       "url": "https://kodansha.us/series/a-girl-on-the-shore/",
       "region": "Availability and retailer options vary by region; mature readers only",
       "access": "Chapter 1 can be read free; the complete one-volume edition requires purchase",
+      "rank": 200,
+      "sourceClass": "PUBLISHER"
+    }
+  ],
+  "1004784": [
+    {
+      "type": "OFFICIAL_SERIES_PAGE",
+      "site": "Dark Horse Digital — Memories of Emanon",
+      "url": "https://digital.darkhorse.com/books/658edba1d473471a8dcd65867dc8ee3f/emanon-volume-1-memories-of-emanon",
+      "region": "Digital availability and purchasing options vary by region",
+      "access": "Official English digital edition page; full volume requires purchase",
       "rank": 200,
       "sourceClass": "PUBLISHER"
     }
@@ -1127,6 +1182,17 @@
       "sourceClass": "PUBLISHER"
     }
   ],
+  "1017631": [
+    {
+      "type": "OFFICIAL_SERIES_PAGE",
+      "site": "VIZ — GANGSTA.",
+      "url": "https://www.viz.com/gangsta",
+      "region": "Availability varies by VIZ territory and age",
+      "access": "Official English volume catalog; preview requires login and full volumes require purchase",
+      "rank": 200,
+      "sourceClass": "PUBLISHER"
+    }
+  ],
   "1018003": [
     {
       "type": "OFFICIAL_SERIES_PAGE",
@@ -1384,6 +1450,17 @@
       "sourceClass": "AUTHORIZED_PLATFORM"
     }
   ],
+  "1025290": [
+    {
+      "type": "OFFICIAL_READING_PAGE",
+      "site": "VIZ Manga — Dead Dead Demon's Dededede Destruction",
+      "url": "https://www.viz.com/vizmanga/chapters/dead-dead-demons-dededede-destru",
+      "region": "Available in supported VIZ Manga territories; adults 18 and older",
+      "access": "Authorized complete 100-chapter archive; chapter access requires age verification and VIZ Manga membership or volume purchase",
+      "rank": 100,
+      "sourceClass": "AUTHORIZED_PLATFORM"
+    }
+  ],
   "1025356": [
     {
       "type": "OFFICIAL_SERIES_PAGE",
@@ -1577,6 +1654,17 @@
       "region": "Availability varies by region and age",
       "access": "Official mature-audience editions and retailer options; purchase may be required",
       "rank": 300,
+      "sourceClass": "PUBLISHER"
+    }
+  ],
+  "1032875": [
+    {
+      "type": "OFFICIAL_SERIES_PAGE",
+      "site": "Seven Seas — Miss Kobayashi's Dragon Maid",
+      "url": "https://sevenseasentertainment.com/series/miss-kobayashis-dragon-maid/",
+      "region": "Availability and retailer options vary by region",
+      "access": "Official English volume catalog with print and digital retailer links; purchase is required",
+      "rank": 200,
       "sourceClass": "PUBLISHER"
     }
   ],
@@ -2168,6 +2256,17 @@
       "url": "https://yenpress.com/series/the-eminence-in-shadow-manga",
       "region": "Availability and retailer options vary by region",
       "access": "Official manga volume catalog with look-inside previews; full volumes require purchase",
+      "rank": 200,
+      "sourceClass": "PUBLISHER"
+    }
+  ],
+  "1054417": [
+    {
+      "type": "OFFICIAL_SERIES_PAGE",
+      "site": "Yen Press — Chained Soldier",
+      "url": "https://yenpress.com/series/chained-soldier?format=Digital",
+      "region": "Availability and retailer options vary by region; adults 18 and older",
+      "access": "Official digital volume catalog with look-inside previews; full volumes require purchase",
       "rank": 200,
       "sourceClass": "PUBLISHER"
     }
