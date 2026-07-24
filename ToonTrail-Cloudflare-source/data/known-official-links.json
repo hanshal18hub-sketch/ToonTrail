@@ -374,6 +374,17 @@
       "sourceClass": "AUTHORIZED_PLATFORM"
     }
   ],
+  "1001331": [
+    {
+      "type": "OFFICIAL_SERIES_PAGE",
+      "site": "VIZ — Future Diary",
+      "url": "https://www.viz.com/future-diary",
+      "region": "Availability varies by VIZ territory; teen-plus rating",
+      "access": "Official digital volume catalog with free previews; the listed full volumes require purchase",
+      "rank": 200,
+      "sourceClass": "PUBLISHER"
+    }
+  ],
   "1001361": [
     {
       "type": "OFFICIAL_SERIES_PAGE",
@@ -692,6 +703,17 @@
       "access": "Chapters 1–3 are free; additional available chapters require Shonen Jump membership or volume purchase",
       "rank": 100,
       "sourceClass": "AUTHORIZED_PLATFORM"
+    }
+  ],
+  "1003516": [
+    {
+      "type": "OFFICIAL_SERIES_PAGE",
+      "site": "Shueisha — LIAR GAME, Volume 1",
+      "url": "https://www.shueisha.co.jp/books/items/contents.html?jdcn=08876855876855315501",
+      "region": "Japanese-language edition; purchasing availability varies by region",
+      "access": "Official Japanese publisher volume page and edition information; purchase is required",
+      "rank": 300,
+      "sourceClass": "PUBLISHER"
     }
   ],
   "1003625": [
@@ -1325,6 +1347,17 @@
       "url": "https://kodansha.us/series/my-little-monster/",
       "region": "Availability varies by region",
       "access": "Official editions and retailer options; purchase may be required",
+      "rank": 300,
+      "sourceClass": "PUBLISHER"
+    }
+  ],
+  "1024746": [
+    {
+      "type": "OFFICIAL_SERIES_PAGE",
+      "site": "Hakusensha — LOVE SO LIFE, Volume 1",
+      "url": "https://www.hakusensha.co.jp/comicslist/44745/",
+      "region": "Japanese-language edition; purchasing availability varies by region",
+      "access": "Official Japanese publisher volume page and edition information; purchase is required",
       "rank": 300,
       "sourceClass": "PUBLISHER"
     }
