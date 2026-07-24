@@ -233,6 +233,17 @@
       "access": "Official episodes; some episodes may require the WEBTOON app or account"
     }
   ],
+  "1000616": [
+    {
+      "type": "OFFICIAL_SERIES_PAGE",
+      "site": "Seven Seas — Last Game",
+      "url": "https://sevenseasentertainment.com/series/last-game/",
+      "region": "Availability and retailer options vary by region",
+      "access": "Official complete English volume catalog with print and digital retailer links; purchase is required",
+      "rank": 200,
+      "sourceClass": "PUBLISHER"
+    }
+  ],
   "1000618": [
     {
       "type": "OFFICIAL_SERIES_PAGE",
@@ -960,6 +971,17 @@
       "sourceClass": "AUTHORIZED_PLATFORM"
     }
   ],
+  "1020255": [
+    {
+      "type": "OFFICIAL_SERIES_PAGE",
+      "site": "Kodansha — House of the Sun",
+      "url": "https://kodansha.us/series/house-of-the-sun/",
+      "region": "Digital availability and purchasing options vary by region",
+      "access": "Free chapter preview is available; the complete 13-volume digital edition requires purchase",
+      "rank": 200,
+      "sourceClass": "PUBLISHER"
+    }
+  ],
   "1020282": [
     {
       "type": "OFFICIAL_SERIES_PAGE",
@@ -1650,6 +1672,28 @@
       "sourceClass": "PUBLISHER"
     }
   ],
+  "1040349": [
+    {
+      "type": "OFFICIAL_READING_PAGE",
+      "site": "Tappytoon — Cherry Blossoms After Winter [Steamy]",
+      "url": "https://www.tappytoon.com/en/book/cherrybaws3m",
+      "region": "Availability varies by region; adults 18 and older only",
+      "access": "Authorized mature-audience edition; the first listed episode is free and later episodes require points or account access",
+      "rank": 100,
+      "sourceClass": "AUTHORIZED_PLATFORM"
+    }
+  ],
+  "1040474": [
+    {
+      "type": "OFFICIAL_SERIES_PAGE",
+      "site": "Seven Seas / Ghost Ship — DARLING in the FRANXX",
+      "url": "https://sevenseasentertainment.com/series/darling-in-the-franxx/",
+      "region": "Availability varies by retailer, region, and age",
+      "access": "Official complete English omnibus catalog with print and digital retailer links; purchase is required",
+      "rank": 200,
+      "sourceClass": "PUBLISHER"
+    }
+  ],
   "1040546": [
     {
       "type": "OFFICIAL_READING_PAGE",
@@ -1761,6 +1805,17 @@
       "url": "https://sevenseasentertainment.com/series/who-made-me-a-princess/",
       "region": "Availability varies by region",
       "access": "Authorized editions and retailer options; purchase may be required"
+    }
+  ],
+  "1054690": [
+    {
+      "type": "OFFICIAL_READING_PAGE",
+      "site": "Tapas — Second Life Ranker",
+      "url": "https://tapas.io/series/second-life-ranker",
+      "region": "Availability varies by region",
+      "access": "Authorized episodes; some episodes are free, while login, ink, or wait-until-free access may apply",
+      "rank": 100,
+      "sourceClass": "AUTHORIZED_PLATFORM"
     }
   ],
   "1055099": [
