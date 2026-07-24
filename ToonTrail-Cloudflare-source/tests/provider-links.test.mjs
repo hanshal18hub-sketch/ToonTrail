@@ -10,6 +10,10 @@ const worker = await readFile(
 const knownLinks = JSON.parse(
   await readFile(new URL("../data/known-official-links.json", import.meta.url), "utf8"),
 );
+const packager = await readFile(
+  new URL("../scripts/package.mjs", import.meta.url),
+  "utf8",
+);
 const start = worker.indexOf("const knownOfficialLinks");
 const end = worker.indexOf("const mediaFromRow", start);
 assert.notEqual(start, -1, "known official link definitions must exist");
@@ -93,4 +97,9 @@ test("community source suggestions stay in a private pending review queue", () =
     worker,
     /external_links_json[^;\n]*source_suggestions|source_suggestions[^;\n]*external_links_json/,
   );
+});
+
+test("generated browser title is encoding-safe", () => {
+  assert.match(packager, /<title>ToonTrail &mdash; Manga, Manhwa & Manhua<\/title>/);
+  assert.doesNotMatch(packager, /â€”/);
 });
