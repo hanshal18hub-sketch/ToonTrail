@@ -1974,6 +1974,28 @@
       "access": "Official episodes; some episodes may require the WEBTOON app or account"
     }
   ],
+  "1035883": [
+    {
+      "type": "OFFICIAL_CREATOR_PAGE",
+      "site": "ONE — official creator profile and original One-Punch Man gateway",
+      "url": "https://x.com/ONE_rakugaki",
+      "region": "Original Japanese-language webcomic; X and the linked creator site may vary by region",
+      "access": "ONE's official profile links to the creator-hosted original webcomic, which is free to read; X login may be requested and the external FC2 reader uses HTTP",
+      "rank": 200,
+      "sourceClass": "CREATOR"
+    }
+  ],
+  "1035886": [
+    {
+      "type": "CREATOR_READING_PAGE",
+      "site": "Tan Jiu — official Weibo SQ feed",
+      "url": "https://weibo.com/u/1300957955?is_all=1",
+      "region": "Original Chinese-language creator feed; Weibo availability varies by region",
+      "access": "Creator-posted ongoing SQ / Their Story installments are free to view where Weibo permits guest access; login may be required in some regions",
+      "rank": 100,
+      "sourceClass": "CREATOR"
+    }
+  ],
   "1035896": [
     {
       "type": "OFFICIAL_READING_PAGE",
@@ -2072,6 +2094,17 @@
       "access": "Chapters 1–3 are free; remaining chapters require Shonen Jump membership or volume purchase",
       "rank": 100,
       "sourceClass": "AUTHORIZED_PLATFORM"
+    }
+  ],
+  "1036786": [
+    {
+      "type": "OFFICIAL_READING_PAGE",
+      "site": "KADOKAWA — SQ 1: Begin W/Your Name!",
+      "url": "https://www.kadokawa.co.jp/product/321912000494/",
+      "region": "Japanese-language authorized edition; availability and purchasing vary by region",
+      "access": "Official translated volume page with a BOOK WALKER sample preview and digital retailer links; the full edition requires purchase",
+      "rank": 300,
+      "sourceClass": "PUBLISHER"
     }
   ],
   "1037141": [
