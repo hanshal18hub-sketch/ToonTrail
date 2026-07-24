@@ -175,12 +175,6 @@ async function init(db) {
     db.prepare(
       "CREATE INDEX IF NOT EXISTS beta_feedback_created_idx ON beta_feedback(created_at DESC)",
     ),
-    db.prepare(
-      "CREATE TABLE IF NOT EXISTS source_suggestions (id INTEGER PRIMARY KEY AUTOINCREMENT, media_id INTEGER NOT NULL, title TEXT NOT NULL, source_url TEXT NOT NULL, language TEXT NOT NULL, region TEXT NOT NULL, access_mode TEXT NOT NULL, completeness TEXT NOT NULL, requires_account INTEGER NOT NULL DEFAULT 0, evidence TEXT NOT NULL, contact_email TEXT, page_path TEXT NOT NULL DEFAULT '/', review_status TEXT NOT NULL DEFAULT 'PENDING', created_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP)",
-    ),
-    db.prepare(
-      "CREATE INDEX IF NOT EXISTS source_suggestions_review_idx ON source_suggestions(review_status,created_at DESC)",
-    ),
   ]);
 }
 const CURATED_COVERS = {
@@ -249,14 +243,14 @@ const CATALOG = [
     10001,
     "Solo Leveling",
     "Solo Leveling",
-    "ë‚˜ í˜¼ìžë§Œ ë ˆë²¨ì—…",
+    "나 혼자만 레벨업",
     "Manhwa",
     "COMPLETED",
     "Sung Jinwoo, once known as humanity's weakest hunter, receives an extraordinary chance to level up beyond normal limits.",
     ["Action", "Fantasy"],
     [
       {
-        site: "Tapas â€” official English comic",
+        site: "Tapas — official English comic",
         url: "https://tapas.io/series/solo-leveling-comic/info",
       },
     ],
@@ -265,14 +259,14 @@ const CATALOG = [
     10002,
     "Solo Leveling: Ragnarok",
     "Solo Leveling: Ragnarok",
-    "ë‚˜ í˜¼ìžë§Œ ë ˆë²¨ì—…: ë¼ê·¸ë‚˜ë¡œí¬",
+    "나 혼자만 레벨업: 라그나로크",
     "Manhwa",
     "RELEASING",
     "Sung Suho faces a new threat as gates spill monsters into the world and his inherited powers awaken.",
     ["Action", "Fantasy"],
     [
       {
-        site: "Tapas â€” official English comic",
+        site: "Tapas — official English comic",
         url: "https://tapas.io/series/solo-leveling-ragnarok/info",
       },
     ],
@@ -281,14 +275,14 @@ const CATALOG = [
     10003,
     "Omniscient Reader",
     "Omniscient Reader's Viewpoint",
-    "ì „ì§€ì  ë…ìž ì‹œì ",
+    "전지적 독자 시점",
     "Manhwa",
     "RELEASING",
     "An office worker's favourite web novel becomes reality, leaving him as the only person who knows how the story ends.",
     ["Action", "Fantasy", "Isekai"],
     [
       {
-        site: "WEBTOON â€” official English series",
+        site: "WEBTOON — official English series",
         url: "https://www.webtoons.com/en/action/omniscient-reader/list?title_no=2154",
       },
     ],
@@ -297,14 +291,14 @@ const CATALOG = [
     10004,
     "Tower of God",
     "Tower of God",
-    "ì‹ ì˜ íƒ‘",
+    "신의 탑",
     "Manhwa",
     "RELEASING",
     "A young man enters a mysterious tower where each floor presents a new test, society, and danger.",
     ["Action", "Fantasy"],
     [
       {
-        site: "WEBTOON â€” official English platform",
+        site: "WEBTOON — official English platform",
         url: "https://www.webtoons.com/en/fantasy/tower-of-god/list?title_no=95",
       },
     ],
@@ -313,14 +307,14 @@ const CATALOG = [
     10005,
     "True Beauty",
     "True Beauty",
-    "ì—¬ì‹ ê°•ë¦¼",
+    "여신강림",
     "Manhwa",
     "COMPLETED",
     "A shy comic fan gains confidence through makeup while navigating identity, friendship, and romance.",
     ["Romance", "Drama"],
     [
       {
-        site: "WEBTOON â€” official English series",
+        site: "WEBTOON — official English series",
         url: "https://www.webtoons.com/en/romance/truebeauty/list?title_no=1436",
       },
     ],
@@ -329,14 +323,14 @@ const CATALOG = [
     10006,
     "Tomb Raider King",
     "Tomb Raider King",
-    "ë„êµ´ì™•",
+    "도굴왕",
     "Manhwa",
     "COMPLETED",
     "A betrayed relic explorer returns to the past before supernatural tombs appeared and uses his knowledge to change his fate.",
     ["Action", "Fantasy"],
     [
       {
-        site: "Tapas â€” official English comic",
+        site: "Tapas — official English comic",
         url: "https://tapas.io/series/tomb-raider-king/info",
       },
     ],
@@ -345,14 +339,14 @@ const CATALOG = [
     10007,
     "Latna Saga: Survival of a Sword King",
     "Survival Story of a Sword King",
-    "ì´ê³„ ê²€ì™• ìƒì¡´ê¸°",
+    "이계 검왕 생존기",
     "Manhwa",
     "RELEASING",
     "A man trapped in a broken tutorial for years finally enters another world where outsiders are feared.",
     ["Action", "Fantasy", "Isekai"],
     [
       {
-        site: "Tapas â€” official English comic",
+        site: "Tapas — official English comic",
         url: "https://tapas.io/series/latna-saga-survival-of-a-sword-king/info",
       },
     ],
@@ -361,14 +355,14 @@ const CATALOG = [
     10008,
     "Leveling Up Alone",
     "Leveling Up Alone",
-    "ë‚˜ í™€ë¡œ ì£¼ë¬¸ ì‚¬ìš©ìž",
+    "나 홀로 주문 사용자",
     "Manhwa",
     "COMPLETED",
     "A powerless porter receives unexpected abilities in a world protected by supernatural hunters.",
     ["Action", "Fantasy"],
     [
       {
-        site: "Tapas â€” official English comic",
+        site: "Tapas — official English comic",
         url: "https://tapas.io/series/leveling-up-alone/info",
       },
     ],
@@ -377,19 +371,19 @@ const CATALOG = [
     10009,
     "One Piece",
     "One Piece",
-    "ãƒ¯ãƒ³ãƒ”ãƒ¼ã‚¹",
+    "ワンピース",
     "Manga",
     "RELEASING",
     "Monkey D. Luffy sails with his crew in search of the legendary treasure known as the One Piece.",
     ["Adventure", "Action", "Fantasy"],
     [
       {
-        site: "MANGA Plus â€” official title page",
+        site: "MANGA Plus — official title page",
         url: "https://mangaplus.shueisha.co.jp/titles/100020",
         access: "Latest chapters are free; catalogue access varies",
       },
       {
-        site: "VIZ Shonen Jump â€” official chapter page",
+        site: "VIZ Shonen Jump — official chapter page",
         url: "https://www.viz.com/shonenjump/chapters/one-piece",
         region: "Available in supported VIZ territories",
         access: "Free chapters; membership for archive access",
@@ -400,19 +394,19 @@ const CATALOG = [
     10010,
     "Chainsaw Man",
     "Chainsaw Man",
-    "ãƒã‚§ãƒ³ã‚½ãƒ¼ãƒžãƒ³",
+    "チェンソーマン",
     "Manga",
     "RELEASING",
     "A young devil hunter merges with his chainsaw devil companion and is drawn into a violent supernatural world.",
     ["Action", "Horror", "Supernatural"],
     [
       {
-        site: "MANGA Plus â€” official title page",
+        site: "MANGA Plus — official title page",
         url: "https://mangaplus.shueisha.co.jp/titles/100037",
         access: "Latest chapters are free; catalogue access varies",
       },
       {
-        site: "VIZ Shonen Jump â€” official chapter page",
+        site: "VIZ Shonen Jump — official chapter page",
         url: "https://www.viz.com/shonenjump/chapters/chainsaw-man",
         region: "Available in supported VIZ territories",
         access: "Free chapters; membership for archive access",
@@ -423,19 +417,19 @@ const CATALOG = [
     10011,
     "SPY x FAMILY",
     "SPY x FAMILY",
-    "SPYÃ—FAMILY",
+    "SPY×FAMILY",
     "Manga",
     "RELEASING",
     "A spy, an assassin, and a telepath form a family while each hides their true identity.",
     ["Comedy", "Action", "Family"],
     [
       {
-        site: "MANGA Plus â€” official title page",
+        site: "MANGA Plus — official title page",
         url: "https://mangaplus.shueisha.co.jp/titles/100056",
         access: "Latest chapters are free; catalogue access varies",
       },
       {
-        site: "VIZ Shonen Jump â€” official chapter page",
+        site: "VIZ Shonen Jump — official chapter page",
         url: "https://www.viz.com/shonenjump/chapters/spy-x-family",
         region: "Available in supported VIZ territories",
         access: "Free chapters; membership for archive access",
@@ -446,19 +440,19 @@ const CATALOG = [
     10012,
     "Kaiju No. 8",
     "Kaiju No. 8",
-    "æ€ªç£8å·",
+    "怪獣8号",
     "Manga",
     "COMPLETED",
     "A cleanup worker gains kaiju powers while pursuing his old dream of joining the defence force.",
     ["Action", "Science Fiction"],
     [
       {
-        site: "MANGA Plus â€” official title page",
+        site: "MANGA Plus — official title page",
         url: "https://mangaplus.shueisha.co.jp/titles/200053",
         access: "Available chapters vary by language and region",
       },
       {
-        site: "VIZ Shonen Jump â€” official chapter page",
+        site: "VIZ Shonen Jump — official chapter page",
         url: "https://www.viz.com/shonenjump/chapters/kaiju-no-8",
         region: "Available in supported VIZ territories",
         access: "Free chapters; membership for archive access",
@@ -469,19 +463,19 @@ const CATALOG = [
     10013,
     "Dandadan",
     "Dandadan",
-    "ãƒ€ãƒ³ãƒ€ãƒ€ãƒ³",
+    "ダンダダン",
     "Manga",
     "RELEASING",
     "Two students clash over ghosts and aliens before discovering that both kinds of supernatural threat are real.",
     ["Action", "Comedy", "Supernatural"],
     [
       {
-        site: "MANGA Plus â€” official title page",
+        site: "MANGA Plus — official title page",
         url: "https://mangaplus.shueisha.co.jp/titles/400007",
         access: "Available chapters vary by language and region",
       },
       {
-        site: "VIZ Shonen Jump â€” official chapter page",
+        site: "VIZ Shonen Jump — official chapter page",
         url: "https://www.viz.com/shonenjump/chapters/dandadan",
         region: "Available in supported VIZ territories",
         access: "Latest free chapters may redirect to MANGA Plus",
@@ -492,14 +486,14 @@ const CATALOG = [
     10014,
     "Apotheosis",
     "Apotheosis",
-    "ç™¾ç‚¼æˆç¥ž",
+    "百炼成神",
     "Manhua",
     "RELEASING",
     "A fallen young master begins a cultivation journey through a world of martial power and dangerous rivals.",
     ["Action", "Cultivation", "Fantasy"],
     [
       {
-        site: "INKR â€” official English series",
+        site: "INKR — official English series",
         url: "https://comics.inkr.com/title/155-apotheosis",
       },
     ],
@@ -508,14 +502,14 @@ const CATALOG = [
     10015,
     "Tales of Demons and Gods",
     "Tales of Demons and Gods",
-    "å¦–ç¥žè®°",
+    "妖神记",
     "Manhua",
     "RELEASING",
     "A powerful spiritualist is reborn into his younger self and uses memories of his former life to protect his city.",
     ["Action", "Cultivation", "Fantasy"],
     [
       {
-        site: "INKR â€” official English series",
+        site: "INKR — official English series",
         url: "https://comics.inkr.com/title/480-tales-of-demons-and-gods",
       },
     ],
@@ -524,14 +518,14 @@ const CATALOG = [
     10016,
     "Apocalypse Online",
     "Apocalypse Online",
-    "è¯¸ç•Œæœ«æ—¥åœ¨çº¿",
+    "诸界末日在线",
     "Manhua",
     "RELEASING",
     "A fighter returns to an earlier point in an apocalyptic timeline with knowledge that may avert disaster.",
     ["Action", "Fantasy", "Science Fiction"],
     [
       {
-        site: "INKR â€” official English series",
+        site: "INKR — official English series",
         url: "https://comics.inkr.com/title/1075-apocalypse-online",
       },
     ],
@@ -554,7 +548,253 @@ const catalogRow = (value) => ({
   cover: value.cover ?? value.coverImage?.large ?? "",
   score: value.score ?? value.averageScore ?? 0,
   popularity: value.popularity || 0,
-  siteUrl: value.siteUrl || value.links?.…2189 tokens truncated…SHED"
+  siteUrl: value.siteUrl || value.links?.[0]?.url || "",
+  links: value.links ?? value.externalLinks ?? [],
+});
+async function seedCatalog(db) {
+  const meta = await db
+    .prepare("SELECT value FROM app_meta WHERE key='catalog_seed_version'")
+    .first();
+  if (meta?.value === CATALOG_SEED_VERSION) return;
+  const values = [...CATALOG_SEED.map(catalogRow), ...CATALOG.map(catalogRow)];
+  for (let offset = 0; offset < values.length; offset += 40) {
+    const statements = values
+      .slice(offset, offset + 40)
+      .map((v) =>
+        db
+          .prepare(
+            "INSERT INTO catalog_titles(id,source,source_id,english_title,romaji_title,native_title,kind,format,status,description,genres_json,chapters,cover_url,average_score,popularity,site_url,external_links_json,updated_at) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,CURRENT_TIMESTAMP) ON CONFLICT(id) DO UPDATE SET source=excluded.source,source_id=excluded.source_id,english_title=excluded.english_title,romaji_title=excluded.romaji_title,native_title=excluded.native_title,kind=excluded.kind,format=excluded.format,status=excluded.status,description=excluded.description,genres_json=excluded.genres_json,chapters=excluded.chapters,cover_url=excluded.cover_url,average_score=excluded.average_score,popularity=excluded.popularity,site_url=excluded.site_url,external_links_json=CASE WHEN excluded.external_links_json='[]' THEN catalog_titles.external_links_json ELSE excluded.external_links_json END,updated_at=CURRENT_TIMESTAMP",
+          )
+          .bind(
+            v.id,
+            v.source,
+            v.sourceId,
+            v.english,
+            v.romaji,
+            v.native,
+            v.kind,
+            v.format,
+            v.status,
+            v.description,
+            JSON.stringify(v.genres),
+            v.chapters,
+            httpsUrl(v.cover),
+            v.score,
+            v.popularity,
+            httpsUrl(v.siteUrl),
+            JSON.stringify(v.links),
+          ),
+      );
+    await db.batch(statements);
+  }
+  await db
+    .prepare(
+      "INSERT INTO app_meta(key,value) VALUES('catalog_seed_version',?) ON CONFLICT(key) DO UPDATE SET value=excluded.value",
+    )
+    .bind(String(CATALOG_SEED_VERSION))
+    .run();
+}
+const parseJson = (value, fallback) => {
+  try {
+    return JSON.parse(value);
+  } catch {
+    return fallback;
+  }
+};
+const knownOfficialLinks = new Map(
+  Object.entries(__TOONTRAIL_KNOWN_OFFICIAL_LINKS__).map(([id, links]) => [
+    Number(id),
+    links,
+  ]),
+);
+const providerDiscoveryLinks = (row) => {
+  const known = knownOfficialLinks.get(Number(row.id));
+  return known || [];
+};
+const mediaFromRow = (row) => ({
+  id: row.id,
+  title: {
+    english: row.english_title || undefined,
+    romaji: row.romaji_title,
+    native: row.native_title || undefined,
+  },
+  kind: row.kind,
+  format: row.format,
+  status: row.status,
+  description: row.description || "",
+  genres: parseJson(row.genres_json, []),
+  chapters: row.chapters,
+  coverImage: { large: row.cover_url || "", color: null },
+  averageScore: row.average_score || 0,
+  popularity: row.popularity || 0,
+  siteUrl: row.site_url || "",
+  externalLinks: (() => {
+    const exact = parseJson(row.external_links_json, []);
+    return exact.length ? exact : providerDiscoveryLinks(row);
+  })(),
+});
+async function d1Catalog(url, db) {
+  const page = Math.max(
+      1,
+      Math.min(1000, Number(url.searchParams.get("page")) || 1),
+    ),
+    search = (url.searchParams.get("q") || "").trim().slice(0, 120),
+    kind = url.searchParams.get("kind") || "ALL",
+    genre = (url.searchParams.get("genre") || "ALL").slice(0, 40),
+    status = url.searchParams.get("status") || "ALL";
+  const where = [],
+    bind = [];
+  if (search) {
+    where.push(
+      "(LOWER(english_title) LIKE ? OR LOWER(romaji_title) LIKE ? OR LOWER(native_title) LIKE ?)",
+    );
+    const term = `%${search.toLowerCase()}%`;
+    bind.push(term, term, term);
+  }
+  if (["MANGA", "MANHWA", "MANHUA"].includes(kind)) {
+    where.push("UPPER(kind)=?");
+    bind.push(kind);
+  }
+  if (genre !== "ALL") {
+    where.push("genres_json LIKE ?");
+    bind.push(`%\"${genre.replaceAll('"', "")}\"%`);
+  }
+  if (["RELEASING", "FINISHED", "HIATUS"].includes(status)) {
+    where.push("status=?");
+    bind.push(status);
+  }
+  const clause = where.length ? ` WHERE ${where.join(" AND ")}` : "";
+  const totalRow = await db
+    .prepare(`SELECT COUNT(*) total FROM catalog_titles${clause}`)
+    .bind(...bind)
+    .first();
+  const total = Number(totalRow?.total) || 0,
+    offset = (page - 1) * 18;
+  const rows = await db
+    .prepare(
+      `SELECT * FROM catalog_titles${clause} ORDER BY popularity DESC, english_title COLLATE NOCASE LIMIT 18 OFFSET ?`,
+    )
+    .bind(...bind, offset)
+    .all();
+  return json({
+    media: rows.results.map(mediaFromRow),
+    pageInfo: {
+      currentPage: page,
+      hasNextPage: offset + 18 < total,
+      lastPage: Math.max(1, Math.ceil(total / 18)),
+      total,
+    },
+    catalogueMode: "cloudflare-d1",
+  });
+}
+const ANILIST_QUERY = `query($page:Int,$search:String,$country:CountryCode,$status:MediaStatus,$genre:String){Page(page:$page,perPage:18){pageInfo{currentPage hasNextPage lastPage total}media(type:MANGA,isAdult:false,search:$search,countryOfOrigin:$country,status:$status,genre:$genre,sort:POPULARITY_DESC){id title{english romaji native}format status description genres chapters coverImage{large color}averageScore popularity siteUrl countryOfOrigin externalLinks{site url type}}}}`;
+async function catalog(url) {
+  const search = url.searchParams.get("q")?.trim() || null;
+  const page = Math.max(
+    1,
+    Math.min(1000, Number(url.searchParams.get("page")) || 1),
+  );
+  const kind = url.searchParams.get("kind") || "ALL",
+    genre = url.searchParams.get("genre") || "ALL",
+    status = url.searchParams.get("status") || "ALL";
+  const country =
+    kind === "MANGA"
+      ? "JP"
+      : kind === "MANHWA"
+        ? "KR"
+        : kind === "MANHUA"
+          ? "CN"
+          : null;
+  try {
+    const response = await fetch("https://graphql.anilist.co", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+        accept: "application/json",
+        "user-agent": "ToonTrail/0.1 (catalogue discovery)",
+      },
+      body: JSON.stringify({
+        query: ANILIST_QUERY,
+        variables: {
+          page,
+          search,
+          country,
+          status: status === "ALL" ? null : status,
+          genre: genre === "ALL" ? null : genre,
+        },
+      }),
+    });
+    if (!response.ok) throw Error(`AniList returned ${response.status}`);
+    const data = await response.json();
+    if (data.errors || !data.data?.Page)
+      throw Error("AniList catalogue unavailable");
+    const media = data.data.Page.media.map((m) => ({
+      ...m,
+      kind:
+        m.countryOfOrigin === "KR"
+          ? "Manhwa"
+          : m.countryOfOrigin === "CN"
+            ? "Manhua"
+            : "Manga",
+      externalLinks: (m.externalLinks || []).filter((x) => x.url),
+    }));
+    return json({
+      media,
+      pageInfo: data.data.Page.pageInfo,
+      catalogueMode: "anilist-live",
+    });
+  } catch (error) {
+    try {
+      const genreIds = {
+        Action: 1,
+        Adventure: 2,
+        Comedy: 4,
+        Drama: 8,
+        Fantasy: 10,
+        Horror: 14,
+        Mystery: 7,
+        Romance: 22,
+        "Sci-Fi": 24,
+        "Slice of Life": 36,
+        Sports: 30,
+        Supernatural: 37,
+      };
+      const params = new URLSearchParams({
+        page: String(page),
+        limit: "18",
+        order_by: "popularity",
+        sort: "asc",
+        sfw: "true",
+      });
+      if (search) params.set("q", search);
+      if (kind !== "ALL") params.set("type", kind.toLowerCase());
+      if (genre !== "ALL" && genreIds[genre])
+        params.set("genres", String(genreIds[genre]));
+      if (status === "RELEASING") params.set("status", "publishing");
+      if (status === "FINISHED") params.set("status", "complete");
+      const response = await fetch(`https://api.jikan.moe/v4/manga?${params}`, {
+        headers: {
+          accept: "application/json",
+          "user-agent": "ToonTrail/0.1 (catalogue discovery)",
+        },
+      });
+      if (!response.ok) throw Error(`Jikan returned ${response.status}`);
+      const data = await response.json();
+      let media = (data.data || []).map((m) => ({
+        id: m.mal_id,
+        title: {
+          english: m.title_english || m.title,
+          romaji: m.title || m.title_english,
+          native: m.title_japanese || "",
+        },
+        kind: /manhwa/i.test(m.type)
+          ? "Manhwa"
+          : /manhua/i.test(m.type)
+            ? "Manhua"
+            : "Manga",
+        format: m.type || "Manga",
+        status: /finished/i.test(m.status)
+          ? "FINISHED"
           : /hiatus/i.test(m.status)
             ? "HIATUS"
             : "RELEASING",
@@ -851,51 +1091,6 @@ export default {
         ]);
         return json({ ok: true }, 201);
       }
-      if (path === "/api/source-suggestions" && request.method === "POST") {
-        const parsed = await readJson(request);
-        if (parsed.error) return parsed.error;
-        const body = parsed.value || {};
-        if (String(body.website || "").trim()) return json({ ok: true });
-        const mediaId = safeInteger(body.mediaId),
-          title = String(body.title || "").trim().slice(0, 240),
-          sourceUrl = httpsUrl(body.url),
-          language = String(body.language || "").trim().slice(0, 80),
-          region = String(body.region || "").trim().slice(0, 120),
-          evidence = String(body.evidence || "").trim(),
-          contact = String(body.contact || "").trim().toLowerCase(),
-          page = String(body.page || "/").slice(0, 300),
-          accessModes = ["FREE", "FREE_SELECTED", "WAIT_OR_ADS", "SUBSCRIPTION", "PURCHASE", "LIBRARY", "MIXED"],
-          completenessValues = ["COMPLETE", "ONGOING", "SELECTED_CHAPTERS", "PREVIEW", "VOLUME", "UNKNOWN"],
-          accessMode = accessModes.includes(body.accessMode) ? body.accessMode : "MIXED",
-          completeness = completenessValues.includes(body.completeness) ? body.completeness : "UNKNOWN";
-        if (!mediaId || !title || !sourceUrl || !language || !region)
-          return json({ error: "Title, HTTPS source, language, and region are required" }, 400);
-        const hostname = new URL(sourceUrl).hostname.toLowerCase();
-        if (
-          hostname === "localhost" ||
-          hostname.endsWith(".local") ||
-          hostname === "0.0.0.0" ||
-          hostname === "127.0.0.1" ||
-          hostname === "::1" ||
-          /^10\./.test(hostname) ||
-          /^192\.168\./.test(hostname) ||
-          /^172\.(1[6-9]|2\d|3[01])\./.test(hostname)
-        )
-          return json({ error: "Private or local network URLs are not accepted" }, 400);
-        if (evidence.length < 10 || evidence.length > 2000)
-          return json({ error: "Review notes must be between 10 and 2000 characters" }, 400);
-        if (contact && (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(contact) || contact.length > 200))
-          return json({ error: "Please enter a valid contact email or leave it blank" }, 400);
-        const titleExists = await env.DB.prepare("SELECT 1 found FROM catalog_titles WHERE id=?").bind(mediaId).first();
-        if (!titleExists) return json({ error: "Catalogue title not found" }, 404);
-        await env.DB.batch([
-          env.DB.prepare(
-            "INSERT INTO source_suggestions(media_id,title,source_url,language,region,access_mode,completeness,requires_account,evidence,contact_email,page_path,review_status,created_at) VALUES(?,?,?,?,?,?,?,?,?,?,?,'PENDING',CURRENT_TIMESTAMP)",
-          ).bind(mediaId, title, sourceUrl, language, region, accessMode, completeness, body.requiresAccount ? 1 : 0, evidence, contact || null, page.startsWith("/") ? page : "/"),
-          env.DB.prepare("DELETE FROM source_suggestions WHERE created_at < datetime('now','-365 days') AND review_status!='APPROVED'"),
-        ]);
-        return json({ ok: true, status: "PENDING" }, 201);
-      }
       if (path === "/api/ratings" && request.method === "GET") {
         const ids = (url.searchParams.get("ids") || "")
           .split(",")
@@ -1001,7 +1196,7 @@ export default {
         const id = safeInteger(b.mediaId),
           score = Number(b.score);
         if (!id || !Number.isInteger(score) || score < 1 || score > 5)
-          return json({ error: "Rating must be 1â€“5" }, 400);
+          return json({ error: "Rating must be 1–5" }, 400);
         await env.DB.prepare(
           "INSERT INTO user_ratings(user_email,media_id,score,updated_at) VALUES(?,?,?,CURRENT_TIMESTAMP) ON CONFLICT(user_email,media_id) DO UPDATE SET score=excluded.score,updated_at=CURRENT_TIMESTAMP",
         )
@@ -1052,4 +1247,3 @@ export default {
     });
   },
 };
-

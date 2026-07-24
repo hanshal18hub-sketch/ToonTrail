@@ -84,14 +84,3 @@ test("ranked alternatives prefer direct reading destinations", () => {
   }
 });
 
-test("community source suggestions stay in a private pending review queue", () => {
-  assert.match(worker, /CREATE TABLE IF NOT EXISTS source_suggestions/);
-  assert.match(worker, /review_status TEXT NOT NULL DEFAULT 'PENDING'/);
-  assert.match(worker, /path === "\/api\/source-suggestions"/);
-  assert.match(worker, /return json\(\{ ok: true, status: "PENDING" \}, 201\)/);
-  assert.doesNotMatch(
-    worker,
-    /external_links_json[^;\n]*source_suggestions|source_suggestions[^;\n]*external_links_json/,
-  );
-});
-
