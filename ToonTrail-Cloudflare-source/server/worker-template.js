@@ -175,6 +175,12 @@ async function init(db) {
     db.prepare(
       "CREATE INDEX IF NOT EXISTS beta_feedback_created_idx ON beta_feedback(created_at DESC)",
     ),
+    db.prepare(
+      "CREATE TABLE IF NOT EXISTS source_suggestions (id INTEGER PRIMARY KEY AUTOINCREMENT, media_id INTEGER NOT NULL, title TEXT NOT NULL, source_url TEXT NOT NULL, language TEXT NOT NULL, region TEXT NOT NULL, access_mode TEXT NOT NULL, completeness TEXT NOT NULL, requires_account INTEGER NOT NULL DEFAULT 0, evidence TEXT NOT NULL, contact_email TEXT, page_path TEXT NOT NULL DEFAULT '/', review_status TEXT NOT NULL DEFAULT 'PENDING', created_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP)",
+    ),
+    db.prepare(
+      "CREATE INDEX IF NOT EXISTS source_suggestions_review_idx ON source_suggestions(review_status,created_at DESC)",
+    ),
   ]);
 }
 const CURATED_COVERS = {
@@ -1090,6 +1096,51 @@ export default {
           ),
         ]);
         return json({ ok: true }, 201);
+      }
+      if (path === "/api/source-suggestions" && request.method === "POST") {
+        const parsed = await readJson(request);
+        if (parsed.error) return parsed.error;
+        const body = parsed.value || {};
+        if (String(body.website || "").trim()) return json({ ok: true });
+        const mediaId = safeInteger(body.mediaId),
+          title = String(body.title || "").trim().slice(0, 240),
+          sourceUrl = httpsUrl(body.url),
+          language = String(body.language || "").trim().slice(0, 80),
+          region = String(body.region || "").trim().slice(0, 120),
+          evidence = String(body.evidence || "").trim(),
+          contact = String(body.contact || "").trim().toLowerCase(),
+          page = String(body.page || "/").slice(0, 300),
+          accessModes = ["FREE", "FREE_SELECTED", "WAIT_OR_ADS", "SUBSCRIPTION", "PURCHASE", "LIBRARY", "MIXED"],
+          completenessValues = ["COMPLETE", "ONGOING", "SELECTED_CHAPTERS", "PREVIEW", "VOLUME", "UNKNOWN"],
+          accessMode = accessModes.includes(body.accessMode) ? body.accessMode : "MIXED",
+          completeness = completenessValues.includes(body.completeness) ? body.completeness : "UNKNOWN";
+        if (!mediaId || !title || !sourceUrl || !language || !region)
+          return json({ error: "Title, HTTPS source, language, and region are required" }, 400);
+        const hostname = new URL(sourceUrl).hostname.toLowerCase();
+        if (
+          hostname === "localhost" ||
+          hostname.endsWith(".local") ||
+          hostname === "0.0.0.0" ||
+          hostname === "127.0.0.1" ||
+          hostname === "::1" ||
+          /^10\./.test(hostname) ||
+          /^192\.168\./.test(hostname) ||
+          /^172\.(1[6-9]|2\d|3[01])\./.test(hostname)
+        )
+          return json({ error: "Private or local network URLs are not accepted" }, 400);
+        if (evidence.length < 10 || evidence.length > 2000)
+          return json({ error: "Review notes must be between 10 and 2000 characters" }, 400);
+        if (contact && (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(contact) || contact.length > 200))
+          return json({ error: "Please enter a valid contact email or leave it blank" }, 400);
+        const titleExists = await env.DB.prepare("SELECT 1 found FROM catalog_titles WHERE id=?").bind(mediaId).first();
+        if (!titleExists) return json({ error: "Catalogue title not found" }, 404);
+        await env.DB.batch([
+          env.DB.prepare(
+            "INSERT INTO source_suggestions(media_id,title,source_url,language,region,access_mode,completeness,requires_account,evidence,contact_email,page_path,review_status,created_at) VALUES(?,?,?,?,?,?,?,?,?,?,?,'PENDING',CURRENT_TIMESTAMP)",
+          ).bind(mediaId, title, sourceUrl, language, region, accessMode, completeness, body.requiresAccount ? 1 : 0, evidence, contact || null, page.startsWith("/") ? page : "/"),
+          env.DB.prepare("DELETE FROM source_suggestions WHERE created_at < datetime('now','-365 days') AND review_status!='APPROVED'"),
+        ]);
+        return json({ ok: true, status: "PENDING" }, 201);
       }
       if (path === "/api/ratings" && request.method === "GET") {
         const ids = (url.searchParams.get("ids") || "")

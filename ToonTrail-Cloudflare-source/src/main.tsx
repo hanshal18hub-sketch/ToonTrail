@@ -29,8 +29,13 @@ type Link = {
   site: string;
   url: string;
   type: string;
+  language?: string;
   region?: string;
   access?: string;
+  accessMode?: "FREE" | "FREE_SELECTED" | "WAIT_OR_ADS" | "SUBSCRIPTION" | "PURCHASE" | "LIBRARY" | "MIXED";
+  completeness?: "COMPLETE" | "ONGOING" | "SELECTED_CHAPTERS" | "PREVIEW" | "VOLUME" | "UNKNOWN";
+  requiresAccount?: boolean;
+  verificationStatus?: "VERIFIED_AUTHORIZED" | "CREATOR_AUTHORIZED" | "REGION_UNTESTED";
   rank?: number;
   sourceClass?: "PUBLISHER" | "AUTHORIZED_PLATFORM" | "CREATOR" | "LIBRARY" | "RETAILER";
 };
@@ -167,6 +172,7 @@ function App() {
     [notice, setNotice] = useState(""),
     [feedbackOpen, setFeedbackOpen] = useState(false),
     [feedbackDraft, setFeedbackDraft] = useState({ category: "GENERAL", message: "" }),
+    [sourceSuggestion, setSourceSuggestion] = useState<Media | null>(null),
     [me, setMe] = useState<Me | null>(null),
     [library, setLibrary] = useState<Saved[]>([]),
     [savingIds, setSavingIds] = useState<Set<number>>(new Set()),
@@ -905,6 +911,20 @@ function App() {
             setActive(null);
             setFeedbackOpen(true);
           }}
+          onSuggestSource={() => {
+            setSourceSuggestion(active);
+            setActive(null);
+          }}
+        />
+      )}
+      {sourceSuggestion && (
+        <SourceSuggestionDialog
+          media={sourceSuggestion}
+          onClose={() => setSourceSuggestion(null)}
+          onSubmitted={() => {
+            setSourceSuggestion(null);
+            setNotice("Source received for review. It will not appear publicly unless it passes verification.");
+          }}
         />
       )}
       {feedbackOpen && (
@@ -918,6 +938,104 @@ function App() {
           }}
         />
       )}
+    </div>
+  );
+}
+
+function SourceSuggestionDialog({
+  media,
+  onClose,
+  onSubmitted,
+}: {
+  media: Media;
+  onClose: () => void;
+  onSubmitted: () => void;
+}) {
+  const [url, setUrl] = useState(""),
+    [language, setLanguage] = useState("English"),
+    [region, setRegion] = useState("Worldwide"),
+    [accessMode, setAccessMode] = useState("FREE"),
+    [completeness, setCompleteness] = useState("UNKNOWN"),
+    [requiresAccount, setRequiresAccount] = useState(false),
+    [evidence, setEvidence] = useState(""),
+    [contact, setContact] = useState(""),
+    [website, setWebsite] = useState(""),
+    [submitting, setSubmitting] = useState(false),
+    [error, setError] = useState("");
+  const close = useRef<HTMLButtonElement>(null);
+  useEffect(() => {
+    const previous = document.activeElement as HTMLElement;
+    close.current?.focus();
+    const key = (event: KeyboardEvent) => event.key === "Escape" && onClose();
+    addEventListener("keydown", key);
+    return () => {
+      removeEventListener("keydown", key);
+      previous?.focus();
+    };
+  }, [onClose]);
+  async function submit(event: React.FormEvent) {
+    event.preventDefault();
+    setSubmitting(true);
+    setError("");
+    try {
+      const response = await fetch("/api/source-suggestions", {
+        method: "POST",
+        headers: { "content-type": "application/json" },
+        body: JSON.stringify({
+          mediaId: media.id,
+          title: titleOf(media),
+          url: url.trim(),
+          language: language.trim(),
+          region: region.trim(),
+          accessMode,
+          completeness,
+          requiresAccount,
+          evidence: evidence.trim(),
+          contact: contact.trim(),
+          website,
+          page: `${location.pathname}${location.search}`,
+        }),
+      });
+      const data = await response.json();
+      if (!response.ok) throw Error(data.error || "Source could not be submitted");
+      onSubmitted();
+    } catch (reason) {
+      setError(reason instanceof Error ? reason.message : "Source could not be submitted");
+    } finally {
+      setSubmitting(false);
+    }
+  }
+  return (
+    <div className="feedback-overlay" onMouseDown={(event) => event.target === event.currentTarget && onClose()}>
+      <section className="feedback-dialog" role="dialog" aria-modal="true" aria-labelledby="source-suggestion-title">
+        <button ref={close} className="close" onClick={onClose} aria-label="Close source suggestion form"><X /></button>
+        <span className="kicker">Community source review</span>
+        <h2 id="source-suggestion-title">Suggest a source.</h2>
+        <p>For <b>{titleOf(media)}</b>. Suggestions enter a private review queue and are never published automatically. Please include evidence that the publisher, creator, library, or platform is authorized to provide the work.</p>
+        <form onSubmit={submit}>
+          <label>HTTPS source URL<input type="url" required pattern="https://.*" value={url} onChange={(event) => setUrl(event.target.value)} maxLength={1000} placeholder="https://…" /></label>
+          <div className="form-grid">
+            <label>Language<input required value={language} onChange={(event) => setLanguage(event.target.value)} maxLength={80} /></label>
+            <label>Region<input required value={region} onChange={(event) => setRegion(event.target.value)} maxLength={120} /></label>
+            <label>Access
+              <select value={accessMode} onChange={(event) => setAccessMode(event.target.value)}>
+                <option value="FREE">Free</option><option value="FREE_SELECTED">Selected chapters free</option><option value="WAIT_OR_ADS">Wait or ads</option><option value="SUBSCRIPTION">Subscription</option><option value="PURCHASE">Purchase</option><option value="LIBRARY">Library access</option><option value="MIXED">Mixed</option>
+              </select>
+            </label>
+            <label>Coverage
+              <select value={completeness} onChange={(event) => setCompleteness(event.target.value)}>
+                <option value="UNKNOWN">Unknown</option><option value="COMPLETE">Complete</option><option value="ONGOING">Ongoing/current</option><option value="SELECTED_CHAPTERS">Selected chapters</option><option value="PREVIEW">Preview</option><option value="VOLUME">Volumes</option>
+              </select>
+            </label>
+          </div>
+          <label className="check-label"><input type="checkbox" checked={requiresAccount} onChange={(event) => setRequiresAccount(event.target.checked)} /> Requires an account</label>
+          <label>Authorization evidence or review notes<textarea required minLength={10} maxLength={2000} value={evidence} onChange={(event) => setEvidence(event.target.value)} placeholder="Link to the creator/publisher statement, platform imprint, library record, or other evidence." /></label>
+          <label>Contact email <small>(optional)</small><input type="email" value={contact} onChange={(event) => setContact(event.target.value)} maxLength={200} /></label>
+          <label className="feedback-honeypot" aria-hidden="true">Website<input value={website} onChange={(event) => setWebsite(event.target.value)} tabIndex={-1} autoComplete="off" /></label>
+          {error && <p className="form-error" role="alert">{error}</p>}
+          <button className="feedback-submit" disabled={submitting || !url.trim() || evidence.trim().length < 10}>{submitting ? <><LoaderCircle /> Sending…</> : <><Send /> Send for review</>}</button>
+        </form>
+      </section>
     </div>
   );
 }
@@ -1094,6 +1212,13 @@ function LegalPage({
             page path, submission time, and an optional contact email you choose
             to provide. Feedback does not automatically include your Google
             account identity and is retained for up to 180 days.
+          </li>
+          <li>
+            <b>Source suggestions:</b> title, submitted URL, language, region,
+            access and coverage claims, authorization evidence, page path,
+            submission time, and an optional contact email. Suggestions remain
+            private while reviewed and rejected or unresolved submissions may
+            be removed after 365 days.
           </li>
           <li>
             <b>Basic service data:</b> Cloudflare may process request
@@ -1507,6 +1632,7 @@ function Detail({
   onRemove,
   onRate,
   onFeedback,
+  onSuggestSource,
 }: {
   media: Media;
   saved: boolean;
@@ -1516,6 +1642,7 @@ function Detail({
   onRemove: (id: number) => void;
   onRate: (id: number, s: number) => void;
   onFeedback: () => void;
+  onSuggestSource: () => void;
 }) {
   const links = [...(media.externalLinks || [])].sort(
       (a, b) => linkRank(a) - linkRank(b),
@@ -1690,68 +1817,76 @@ function Detail({
                 <span>{group.links.length}</span>
               </div>
               {group.links.map((link) => {
-                const info = sourceInfo(link);
-                const badge = accessBadge(link);
-                const isSearch = link.type?.includes("SEARCH");
-                const isReading = link.type?.includes("READING");
-                const provider = link.site.split("—")[0].trim();
-                const trusted =
-                  info.verified || link.sourceClass === "CREATOR";
-                const statusLabel = isSearch
-                  ? "Verified provider search"
-                  : trusted
-                    ? isReading
-                      ? link.sourceClass === "CREATOR"
-                        ? "Creator-authorized source"
-                        : "Verified reading source"
-                      : "Verified title page"
-                    : "External resource";
-                return (
-                  <article
-                    className={`source ${isSearch ? "source-search" : "source-direct"}`}
-                    key={link.url}
-                  >
-                    <div className="rank" aria-hidden="true">
-                      {links.indexOf(link) + 1}
-                    </div>
-                    <div className="source-copy">
-                      <div className="provider-heading">
-                        <b>{provider}</b>
-                        <span className={trusted ? "verified" : "unverified"}>
-                          {trusted ? (
-                            isSearch ? <Search /> : <ShieldCheck />
-                          ) : null}
-                          {statusLabel}
-                        </span>
-                      </div>
-                      <small className="provider-domain">{info.domain}</small>
-                      <div className="access-summary">
-                        <span className={`access-badge access-${badge.tone}`}>
-                          {badge.label}
-                        </span>
-                        <span>
-                          {link.region || "Availability varies by region"}
-                        </span>
-                      </div>
-                      <small className="access-detail">
-                        {link.access || "Chapter access may vary"}
-                      </small>
-                    </div>
-                    <a
-                      href={link.url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      aria-label={`${isSearch ? "Search for" : isReading ? "Read" : "View verified options for"} ${titleOf(media)} on ${link.site} (opens in a new tab)`}
+            const info = sourceInfo(link);
+            const badge = accessBadge(link);
+            const isSearch = link.type?.includes("SEARCH");
+            const isReading = link.type?.includes("READING");
+            const provider = link.site.split("—")[0].trim();
+            const trusted = info.verified || link.sourceClass === "CREATOR";
+            const statusLabel = isSearch
+              ? "Verified provider search"
+              : trusted
+                ? isReading
+                  ? link.sourceClass === "CREATOR"
+                    ? "Creator-authorized source"
+                    : "Verified reading source"
+                  : "Verified title page"
+                : "External resource";
+            return (
+              <article
+                className={`source ${isSearch ? "source-search" : "source-direct"}`}
+                key={link.url}
+              >
+                <div className="rank" aria-hidden="true">
+                  {links.indexOf(link) + 1}
+                </div>
+                <div className="source-copy">
+                  <div className="provider-heading">
+                    <b>{provider}</b>
+                    <span
+                      className={trusted ? "verified" : "unverified"}
                     >
-                      {isSearch
-                        ? `Search ${provider}`
-                        : isReading
-                          ? "Read here"
-                          : "View options"}
-                      <ExternalLink />
-                    </a>
-                  </article>
-                );
+                      {trusted ? (
+                        isSearch ? (
+                          <Search />
+                        ) : (
+                          <ShieldCheck />
+                        )
+                      ) : null}
+                      {statusLabel}
+                    </span>
+                  </div>
+                  <small className="provider-domain">{info.domain}</small>
+                  <div className="access-summary">
+                    <span className={`access-badge access-${badge.tone}`}>
+                      {badge.label}
+                    </span>
+                    <span>
+                      {link.region || "Availability varies by region"}
+                    </span>
+                    <span>{link.language || "Language not specified"}</span>
+                    <span>{link.completeness ? humanize(link.completeness) : "Coverage varies"}</span>
+                    <span>{link.requiresAccount ? "Account required" : "No account indicated"}</span>
+                  </div>
+                  <small className="access-detail">
+                    {link.access || "Chapter access may vary"}
+                  </small>
+                </div>
+                <a
+                  href={link.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={`${isSearch ? "Search for" : isReading ? "Read" : "View verified options for"} ${titleOf(media)} on ${link.site} (opens in a new tab)`}
+                >
+                  {isSearch
+                    ? `Search ${provider}`
+                    : isReading
+                      ? "Read here"
+                      : "View options"}
+                  <ExternalLink />
+                </a>
+              </article>
+            );
               })}
             </section>
           ))
@@ -1781,6 +1916,10 @@ function Detail({
         >
           <TriangleAlert />
           Report a broken or incorrect link
+        </button>
+        <button className="suggest-source" onClick={onSuggestSource}>
+          <ExternalLink />
+          Suggest another regional source
         </button>
         <button
           className="save"
