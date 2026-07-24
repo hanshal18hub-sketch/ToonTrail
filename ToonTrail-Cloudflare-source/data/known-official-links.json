@@ -43,6 +43,17 @@
       "sourceClass": "PUBLISHER"
     }
   ],
+  "1000023": [
+    {
+      "type": "OFFICIAL_SERIES_PAGE",
+      "site": "Kodansha Japan — Hajime no Ippo, Volume 1",
+      "url": "https://www.kodansha.co.jp/comic/products/0000005071",
+      "region": "Japanese-language edition; purchasing availability varies by region",
+      "access": "Official publisher volume page with links to the continuing series; purchase is required",
+      "rank": 300,
+      "sourceClass": "PUBLISHER"
+    }
+  ],
   "1000027": [
     {
       "type": "OFFICIAL_SERIES_PAGE",
@@ -212,6 +223,17 @@
       "region": "Availability varies by VIZ territory",
       "access": "Official English volume catalog; purchase is required",
       "rank": 200,
+      "sourceClass": "PUBLISHER"
+    }
+  ],
+  "1000125": [
+    {
+      "type": "OFFICIAL_SERIES_PAGE",
+      "site": "Shueisha — Reborn!, Volume 1",
+      "url": "https://www.shueisha.co.jp/books/items/contents.html?isbn=4-08-873680-X",
+      "region": "Japanese-language edition; purchasing availability varies by region",
+      "access": "Official publisher page with a sample preview and links to the complete volume list; full editions require purchase",
+      "rank": 300,
       "sourceClass": "PUBLISHER"
     }
   ],
@@ -932,6 +954,17 @@
       "access": "Authorized editions and retailer options; purchase may be required"
     }
   ],
+  "1007818": [
+    {
+      "type": "OFFICIAL_SERIES_PAGE",
+      "site": "Kodansha Japan — Yankee-kun to Megane-chan",
+      "url": "https://www.kodansha.co.jp/titles/1000002576",
+      "region": "Japanese-language edition; purchasing availability varies by region",
+      "access": "Official complete-series catalog with digital and print editions; purchase is required",
+      "rank": 300,
+      "sourceClass": "PUBLISHER"
+    }
+  ],
   "1008287": [
     {
       "type": "OFFICIAL_SERIES_PAGE",
@@ -994,6 +1027,17 @@
       "url": "https://www.viz.com/manga-books/manga/goodnight-punpun/all",
       "region": "Availability varies by region",
       "access": "Official previews, editions, and retailer options; purchase may be required",
+      "rank": 300,
+      "sourceClass": "PUBLISHER"
+    }
+  ],
+  "1010975": [
+    {
+      "type": "OFFICIAL_READING_PAGE",
+      "site": "Shogakukan eComic Store — Nozoki Ana",
+      "url": "https://e-comi.shogakukan.co.jp/books/091827260000d0000000",
+      "region": "Japanese-language digital edition; availability varies by region and age",
+      "access": "Official complete 13-volume mature-audience catalog with sample previews; promotional free access may be temporary and full volumes normally require purchase",
       "rank": 300,
       "sourceClass": "PUBLISHER"
     }
@@ -1111,6 +1155,17 @@
       "sourceClass": "PUBLISHER"
     }
   ],
+  "1015448": [
+    {
+      "type": "OFFICIAL_READING_PAGE",
+      "site": "Shogakukan eComic Store — The World God Only Knows",
+      "url": "https://e-comi.shogakukan.co.jp/books/091214300000d0000000",
+      "region": "Japanese-language digital edition; availability and purchasing vary by region",
+      "access": "Official complete 26-volume series catalog with sample previews; full volumes require purchase",
+      "rank": 300,
+      "sourceClass": "PUBLISHER"
+    }
+  ],
   "1016084": [
     {
       "type": "OFFICIAL_SERIES_PAGE",
@@ -1158,6 +1213,17 @@
       "url": "https://kodansha.us/series/no-6/",
       "region": "Availability varies by region",
       "access": "Official editions and retailer options; purchase may be required",
+      "rank": 300,
+      "sourceClass": "PUBLISHER"
+    }
+  ],
+  "1016605": [
+    {
+      "type": "OFFICIAL_READING_PAGE",
+      "site": "Shueisha — The Disastrous Life of Saiki K., Volume 1",
+      "url": "https://www.shueisha.co.jp/books/items/contents.html?isbn=978-4-08-870504-0",
+      "region": "Japanese-language edition; purchasing availability varies by region",
+      "access": "Official publisher page with a sample preview and links to the complete volume list; full editions require purchase",
       "rank": 300,
       "sourceClass": "PUBLISHER"
     }
@@ -1457,6 +1523,17 @@
       "url": "https://kodansha.us/series/my-little-monster/",
       "region": "Availability varies by region",
       "access": "Official editions and retailer options; purchase may be required",
+      "rank": 300,
+      "sourceClass": "PUBLISHER"
+    }
+  ],
+  "1024594": [
+    {
+      "type": "OFFICIAL_READING_PAGE",
+      "site": "Shueisha — Medaka Box, Volume 1",
+      "url": "https://www.shueisha.co.jp/books/items/contents.html?jdcn=08874776874776315501",
+      "region": "Japanese-language digital edition; purchasing availability varies by region",
+      "access": "Official publisher page with a sample preview and links to the complete volume list; full editions require purchase",
       "rank": 300,
       "sourceClass": "PUBLISHER"
     }
